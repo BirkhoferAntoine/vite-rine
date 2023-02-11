@@ -1,11 +1,20 @@
-import React from 'react';
+import {Navigation} from "./Navigation";
+import React, {Fragment} from "react";
+import {styled} from "@mui/material";
+import {Outlet} from "react-router-dom";
+import LightbulbLayout from "./LightbulbLayout.jsx";
 
-function DefaultLayout(props) {
+
+const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
+export const DefaultLayout = () => {
     return (
-        <div>
-
-        </div>
+        <Fragment>
+            <Navigation/>
+            <Offset/>
+            <LightbulbLayout/>
+            <main>
+                <Outlet/>
+            </main>
+        </Fragment>
     );
 }
-
-export default DefaultLayout;

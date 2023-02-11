@@ -1,12 +1,7 @@
 import {Component} from "react";
 import {GsapTrainingComponent} from "./GsapTrainingComponent.jsx";
-import {Container, Typography} from "@mui/material";
+import {Container, Paper, Typography} from "@mui/material";
 export class Homepage extends Component {
-    constructor() {
-        super();
-
-    }
-
     render() {
 
         const sxStyles = {
@@ -17,11 +12,11 @@ export class Homepage extends Component {
 
         return (
             <>
-                <main>
                 <Container>
-                    <Typography variant={'h1'}>Hello wurld</Typography>
+                    <Paper>
+                        <Typography variant={'h1'}>Hello wurld</Typography>
+                    </Paper>
                 </Container>
-                </main>
             </>
         );
     }
