@@ -34,11 +34,13 @@ export const Navigation = () => {
             color: theme.palette.text.primary,
         },
         header: {
+            height: 'var(--header-height)',
             background: 'transparent',
             border: 'none',
             boxShadow: 'none',
         },
         toolbar: {
+            height: 'var(--header-height)',
             backgroundColor: 'transparent',
         }
     }

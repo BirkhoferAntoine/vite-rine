@@ -53,6 +53,12 @@ const theme = createTheme({
       `,
         },
     },
+    mixins: {
+        toolbar: {
+            minHeight: 64,
+            '@media(minWidth:600px)': { minHeight: 120},
+        }
+    },
     /*components: {
         MuiTableHead: {
             styleOverrides: {
@@ -65,6 +71,7 @@ const theme = createTheme({
 });
 
 export const DefaultThemeProvider = (props) => {
+    console.log("-> theme", theme);
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline/>
