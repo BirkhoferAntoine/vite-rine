@@ -12,7 +12,7 @@ const sxStyles = {
         width: '40%',
         borderTop: '1px solid',
         borderBottom: '1px solid',
-        backgroundColor: 'transparent'
+        background: 'radial-gradient(56.65% 57.99% at 50% 57.99%, rgba(252, 216, 28, 0.05) 0%, rgba(123, 106, 14, 0.05) 50%, rgba(16, 14, 2, 0.05) 100%), #100E02',
     },
     lightbulbBox: {
         margin: '-1.5em',

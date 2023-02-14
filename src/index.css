@@ -5,7 +5,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
-  --header-height: 96px;
+  --header-height: 13vh;
   --circuit-width: 4px;
   --header-margin: calc(var(--header-height) + var(--circuit-width));
   --header-margin-minus: calc(var(--header-margin) * -1);

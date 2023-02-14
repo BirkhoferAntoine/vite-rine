@@ -15,26 +15,52 @@ export class Homepage extends Component {
                 display: 'flex',
                 //justifyContent: 'center',
                 flexDirection: 'column',
+                filter: 'drop-shadow(0px 0px 15px #FCD81C)',
             },
             typoDesign: {
-                fontFamily: 'julius-sans-one',
-                fontSize: '3.5em',
+                color: '#EBEAE3',
+                fontFamily: 'Julius Sans One',
+                fontWeight: '400',
+                fontSize: '3.8em',
                 lineHeight: 1,
+                textShadow: '0px 0px 15px #FCD81C',
+
+                '-webkit-text-stroke-width': '1px',
+                '-webkit-text-stroke-color': 'rgba(253, 52, 52, 0.4)',
+                border: '1px solid rgba(253, 52, 52, 0.4)',
             },
             typoDevelop: {
-                fontFamily: 'jost',
+                color: '#E0D6A3',
+                fontFamily: 'Jost',
                 fontSize: '4em',
                 lineHeight: 1,
+                fontWeight: '400',
+                textShadow: '0px 0px 15px #FCD81C',
+
+                '-webkit-text-stroke-width': '1px',
+                '-webkit-text-stroke-color': 'rgba(253, 52, 52, 0.6)',
             },
             typoPower: {
-                fontFamily: 'ibarra-real-nova',
+                color: '#DDDDDD',
+                fontFamily: 'Ibarra Real Nova',
                 fontSize: '6em',
                 lineHeight: 1,
+                fontWeight: '600',
+                textShadow: '0px 0px 15px #FCD81C',
+
+                '-webkit-text-stroke-width': '1px',
+                '-webkit-text-stroke-color': 'rgba(253, 52, 52, 0.8)',
             },
             typoUp: {
+                color: '#FCD81C',
                 fontFamily: 'Beth Ellen',
                 fontSize: '7em',
                 lineHeight: 1,
+                fontWeight: '400',
+                textShadow: '0px 0px 15px #FCD81C',
+
+                '-webkit-text-stroke-width': '2px',
+                '-webkit-text-stroke-color': '#100E02',
             },
         };
 
@@ -42,10 +68,10 @@ export class Homepage extends Component {
             <>
                 <section id={'hero-section'}>
                     <Container sx={sxStyles.heroTextContainer}>
-                        <Typography sx={sxStyles.typoDesign}>Design</Typography>
-                        <Typography sx={sxStyles.typoDevelop}>Develop</Typography>
-                        <Typography sx={sxStyles.typoPower}>Power</Typography>
-                        <Typography sx={sxStyles.typoUp}>Up</Typography>
+                        <Typography sx={sxStyles.typoDesign} className={'text-outline-red'}>Design</Typography>
+                        <Typography sx={sxStyles.typoDevelop} className={'text-outline-red'}>Develop</Typography>
+                        <Typography sx={sxStyles.typoPower} className={'text-outline-red'}>POWER</Typography>
+                        <Typography sx={sxStyles.typoUp} className={'text-outline-dark'}>UP</Typography>
                     </Container>
                 </section>
                 <section id={'about-section'}>

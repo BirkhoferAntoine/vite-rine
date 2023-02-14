@@ -18,6 +18,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ListIcon from '@mui/icons-material/List';
 import LabelIcon from '@mui/icons-material/Label';
 import {Link} from "react-router-dom";
+import Stepper from "./NavigationStepper.jsx";
 
 export const Navigation = () => {
     //styles
@@ -42,6 +43,14 @@ export const Navigation = () => {
         toolbar: {
             height: 'var(--header-height)',
             backgroundColor: 'transparent',
+        },
+        textName: {
+            fontSize: '2.3em',
+            filter: 'drop-shadow(0px 0px 15px #FCD81C)',
+        },
+        textJob: {
+            fontSize: '1.5em',
+            filter: 'drop-shadow(0px 0px 15px #FCD81C)',
         }
     }
     const StyledLink = styled(Link)(({theme}) => sxStyles.link);
@@ -67,29 +76,42 @@ export const Navigation = () => {
     ]
 
     return (
-        <AppBar position={'fixed'} sx={sxStyles.header}>
-            <Toolbar sx={sxStyles.toolbar}>
-                <IconButton onClick={toggleDrawer} sx={sxStyles.menuIcon} edge={'start'}><MenuIcon/></IconButton>
-                <StyledLink to={'/'} >
-                    <Typography variant={'h6'} color={'textPrimary'}>
-                        Antoine Birkhofer
-                    </Typography>
-                </StyledLink>
-                <Box flexGrow={1} />
-            </Toolbar>
-            <Drawer anchor={'left'} variant={'temporary'}
-                    onClose={toggleDrawer} onClick={toggleDrawer} open={drawerOpen}>
-                <List sx={sxStyles.drawerList}>
-                    {drawerItems.map(prop => (
-                        <StyledLink to={prop.link} key={prop.text+'Link'}>
-                            <ListItem button onClick={toggleDrawer}>
-                                <ListItemIcon>{prop.icon}</ListItemIcon>
-                                <ListItemText>{prop.text}</ListItemText>
-                            </ListItem>
-                        </StyledLink>
-                    ))}
-                </List>
-            </Drawer>
-        </AppBar>
+        <>
+            <AppBar position={'fixed'} sx={sxStyles.header}>
+                <Toolbar sx={sxStyles.toolbar}>
+                    <IconButton onClick={toggleDrawer} sx={sxStyles.menuIcon} edge={'start'}><MenuIcon/></IconButton>
+                    <StyledLink to={'/'} >
+                        <Box className={'logo-container'}>
+                            <Box className={'logo-image-box'}>
+                                <img src={'src/assets/image.png'} />
+                            </Box>
+                            <Box className={'logo-title-box'}>
+                                <Typography sx={sxStyles.textName} variant={'h5'} color={'textPrimary'}>
+                                    Antoine Birkhofer
+                                </Typography>
+                                <Typography sx={sxStyles.textJob} variant={'h6'} color={'textPrimary'}>
+                                    Web Developer
+                                </Typography>
+                            </Box>
+                        </Box>
+                    </StyledLink>
+                    <Box flexGrow={1} />
+                </Toolbar>
+                <Drawer anchor={'left'} variant={'temporary'}
+                        onClose={toggleDrawer} onClick={toggleDrawer} open={drawerOpen}>
+                    <List sx={sxStyles.drawerList}>
+                        {drawerItems.map(prop => (
+                            <StyledLink to={prop.link} key={prop.text+'Link'}>
+                                <ListItem button onClick={toggleDrawer}>
+                                    <ListItemIcon>{prop.icon}</ListItemIcon>
+                                    <ListItemText>{prop.text}</ListItemText>
+                                </ListItem>
+                            </StyledLink>
+                        ))}
+                    </List>
+                </Drawer>
+            </AppBar>
+            <Stepper/>
+        </>
     );
 }
