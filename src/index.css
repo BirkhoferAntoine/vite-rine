@@ -5,6 +5,11 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  --color-primary: #FCD81C;
+  --bgColor-default: #100E02;
+  --bgYellowRadiant: radial-gradient(56.65% 57.99% at 50% 57.99%, rgba(252, 216, 28, 0.05) 0%, rgba(123, 106, 14, 0.05) 50%, rgba(16, 14, 2, 0.05) 100%), #100E02;
+  --bgYellowRadiant2: radial-gradient(88.52% 90.62% at 51.49% 90.62%, rgba(252, 216, 28, 0.05) 18.29%, rgba(245, 210, 28, 0.05) 18.3%, rgba(123, 106, 14, 0.05) 36.52%, rgba(16, 14, 2, 0.05) 92.42%), #100E02;
+
   --header-height: 13vh;
   --circuit-width: 4px;
   --header-margin: calc(var(--header-height) + var(--circuit-width));

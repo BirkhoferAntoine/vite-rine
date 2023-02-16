@@ -1,7 +1,10 @@
-import {Component} from "react";
+import React, {Component} from "react";
 import {GsapTrainingComponent} from "./GsapTrainingComponent.jsx";
-import {Box, Container, Paper, Typography} from "@mui/material";
+import {Box, Container, Link, Paper, Typography} from "@mui/material";
+import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
+import EmailSharpIcon from '@mui/icons-material/EmailSharp';
 import HighlightGeometry from "../themes/HighlightGeometry.jsx";
+import CircuitLine from "../themes/CircuitLine.jsx";
 export class Homepage extends Component {
     render() {
 
@@ -62,6 +65,20 @@ export class Homepage extends Component {
                 '-webkit-text-stroke-width': '2px',
                 '-webkit-text-stroke-color': '#100E02',
             },
+            textExtra: {
+
+            },
+            heroFooterContainer: {
+                display: 'flex',
+                justifyContent: 'space-between',
+            },
+            aboutContainer: {
+                display: 'flex',
+                justifyContent: 'center',
+            },
+            aboutPhotoBox: {
+
+            },
         };
 
         return (
@@ -73,18 +90,43 @@ export class Homepage extends Component {
                         <Typography sx={sxStyles.typoPower} className={'text-outline-red'}>POWER</Typography>
                         <Typography sx={sxStyles.typoUp} className={'text-outline-dark'}>UP</Typography>
                     </Container>
+                    <Box sx={sxStyles.heroFooterContainer}>
+                        <Box sx={{ml: '4em', mr:'4em'}}>
+                            <LocationOnSharpIcon/>
+                            <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight-yellow'}>Paris - France</Typography>
+                        </Box>
+                        <Box sx={{ml: '4em', mr:'4em'}}>
+                            <EmailSharpIcon/>
+                            <Link href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
+                                <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight-yellow'}>Send me an email</Typography>
+                            </Link>
+                        </Box>
+                    </Box>
+
                 </section>
+                <Box className={'bg-design-container-center'}>
+                    <CircuitLine width={'96vh'} rotate={'90deg'} top={'27vh'} circleTip/>
+                </Box>
+                <Box className={'section-separator backdrop-filter-blur'}></Box>
                 <section id={'about-section'}>
-                    <Typography variant={'h1'}>About me</Typography>
+                    <Container sx={sxStyles.aboutContainer}>
+                        <Box height={'33vh'} mt={1} className={'about-picture-box shadow-highlight-yellow backdrop-filter-blur'}>
+                            <img height={'100%'} src={'src/assets/profil.png'} />
+                        </Box>
+                    </Container>
+                    {/*<Typography variant={'h1'}>About me</Typography>*/}
                 </section>
+                <Box className={'section-separator'}></Box>
                 <section id={'work-section'}>
-                    <Typography variant={'h1'}>Works</Typography>
+                    {/*<Typography variant={'h1'}>Works</Typography>*/}
                 </section>
+                <Box className={'section-separator'}></Box>
                 <section id={'skill-section'}>
-                    <Typography variant={'h1'}>Skills</Typography>
+                    {/*<Typography variant={'h1'}>Skills</Typography>*/}
                 </section>
+                <Box className={'section-separator'}></Box>
                 <section id={'contact-section'}>
-                    <Typography variant={'h1'}>Contact</Typography>
+                    {/*<Typography variant={'h1'}>Contact</Typography>*/}
                 </section>
             </>
         );

@@ -24,7 +24,7 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-  background: radial-gradient(56.65% 57.99% at 50% 57.99%, rgba(252, 216, 28, 0.05) 18.29%, rgba(123, 106, 14, 0.05) 36.52%, rgba(16, 14, 2, 0.05) 92.42%), rgba(16,14,2,1);
+  /*background: radial-gradient(56.65% 57.99% at 50% 57.99%, rgba(252, 216, 28, 0.05) 18.29%, rgba(123, 106, 14, 0.05) 36.52%, rgba(16, 14, 2, 0.05) 92.42%), rgba(16,14,2,1);*/
 }
 
 main {
@@ -36,7 +36,16 @@ section {
   width: 100vw;
   display: flex;
   justify-content: center;
-  background: radial-gradient(88.52% 90.62% at 51.49% 90.62%, rgba(252, 216, 28, 0.05) 18.29%, rgba(123, 106, 14, 0.05) 36.52%, rgba(16, 14, 2, 0.05) 92.42%), rgba(16,14,2,0.3);
+  background: var(--bgYellowRadiant);
+}
+
+.section-separator {
+  position: relative;
+  z-index: -1;
+  background: var(--bgYellowRadiant2);
+  height: 60vh;
+  opacity: 1;
+  transform: rotate(180deg);
 }
 
 /*.lightbulb-box {
@@ -46,7 +55,7 @@ section {
 .lightbulb-box img {
   transform: rotate(180deg);
   max-height: 16vh;
-  filter: drop-shadow(0px 1px 15px #FCD81C) drop-shadow(0px 6px 1px #FD3434);
+  filter: drop-shadow(0px 1px 15px var(--color-primary)) drop-shadow(0px 6px 1px #FD3434);
 }
 
 .logo-container {
@@ -58,7 +67,7 @@ section {
 .logo-image-box img {
   max-height: 15vh;
   transform: matrix(-1, 0, 0, 1, 0, 0);
-  filter: drop-shadow(1px 1px 25px #FCD81C);
+  filter: drop-shadow(1px 1px 25px var(--color-primary));
   /*backdrop-filter: blur(2px);*/
   order: 0;
   flex-grow: 0;
@@ -76,8 +85,72 @@ section {
 }
 
 
+.text-outline-yellow {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--color-primary);
+}
+.text-outline-dark {
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--bgColor-default);
+}
+
+.shadow-highlight-yellow {
+  box-shadow: 0px 0px 15px var(--color-primary);
+}
+
+.filter-highlight-yellow {
+  filter: drop-shadow(0px 0px 15px var(--color-primary));
+}
+
+.backdrop-filter-blur {
+  backdrop-filter: blur(2px);
+}
+
+.bg-design-container-center{
+  display: flex;
+  justify-content: center;
+  height: 0;
+}
+
+.circuit-line-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.circuit-circle {
+  height: 24px;
+  width: 24px;
+  border: 1px solid var(--bgColor-default);
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+
+.circuit-line {
+  position: relative;
+  margin-left: -4px;
+  margin-right: -4px;
+  height: 4px;
+  border: 1px solid var(--color-primary);
+  border-left: none;
+  border-right: none;
+}
+
 #hero-section {
+  background: var(--bgYellowRadiant2);
   height: calc(100vh - var(--header-margin) - 2em);
   flex-direction: column;
   justify-content: center;
+}
+
+#about-section {
+  padding-top: 15vh;
+}
+
+.about-picture-box {
+  height: 33vh;
+  border: 2px solid var(--color-primary);
+
 }

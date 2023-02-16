@@ -7,24 +7,44 @@ import {
     Button,
     Typography,
 } from '@mui/material';
-
+import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
+import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
+import OfflineBoltSharpIcon from '@mui/icons-material/OfflineBoltSharp';
 
 const sxStyles = {
     stepperContainer: {
         position: 'fixed',
-        top: '200px',
-        left: '112px',
+        top: '30vh',
+        left: '-2em',
+        height: '40vh',
         zIndex: '9999',
         display: 'flex',
-        flexDirection: 'column',
-
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        textShadow: '0px 0px 15px #FCD81C',
     },
     stepperPrevNextContainer: {
-        transform: 'rotate(270deg)',
+        transform: 'rotate(90deg)',
+        height: '2.5em',
+        mr: '-2em',
     },
 }
 
-const steps = ['Home', 'About me', 'Works', 'Skills', 'Contact'];
+const steps         = [
+    {label: 'Home', target: 'root'},
+    {label: 'About me', target: 'about-section'},
+    {label: 'Works', target: 'work-section'},
+    {label: 'Skills', target: 'skill-section'},
+    {label: 'Contact', target: 'contact-section'}
+];
+const stepsLabel    = [
+    'root',
+    'about-section',
+    'work-section',
+    'skill-section',
+    'contact-section'
+];
 
 const NavigationStepper = () => {
 
@@ -47,6 +67,11 @@ const NavigationStepper = () => {
         return completedSteps() === totalSteps();
     };
 
+    const handleStep = (step, target) => () => {
+        setActiveStep(step);
+        document.querySelector('#'+target).scrollIntoView({behavior: "smooth"});
+    };
+
     const handleNext = () => {
         const newActiveStep =
             isLastStep() && !allStepsCompleted()
@@ -55,40 +80,39 @@ const NavigationStepper = () => {
                 steps.findIndex((step, i) => !(i in completed))
                 : activeStep + 1;
         setActiveStep(newActiveStep);
+        document.querySelector('#'+steps[newActiveStep].target).scrollIntoView({behavior: "smooth"});
     };
 
     const handleBack = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    };
-
-    const handleStep = (step) => () => {
-        setActiveStep(step);
+        const newActiveStep = activeStep === 0 ? 0 : activeStep-1;
+        setActiveStep(newActiveStep);
+        document.querySelector('#'+steps[newActiveStep].target).scrollIntoView({behavior: "smooth"});
     };
 
 
     return (
         <Box sx={sxStyles.stepperContainer}>
             <Box sx={sxStyles.stepperPrevNextContainer}>
-                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                     <Button
                         color="inherit"
                         disabled={activeStep === 0}
                         onClick={handleBack}
                         sx={{ mr: 1 }}
                     >
-                        Back
+                        <NavigateBeforeSharpIcon/>
                     </Button>
                     <Box sx={{ flex: '1 1 auto' }} />
                     <Button onClick={handleNext} sx={{ mr: 1 }}>
-                        Next
+                        <NavigateNextSharpIcon/>
                     </Button>
                 </Box>
             </Box>
             <Stepper orientation={'vertical'} nonLinear activeStep={activeStep}>
-                {steps.map((label, index) => (
-                    <Step key={'step-'+label} completed={completed[index]}>
-                        <StepButton color="inherit" onClick={handleStep(index)}>
-                            {label}
+                {steps.map((step, index) => (
+                    <Step key={'step-'+step.label} completed={completed[index]}>
+                        <StepButton icon={<OfflineBoltSharpIcon/>}  color="inherit" onClick={handleStep(index, step.target)}>
+                            {step.label}
                         </StepButton>
                     </Step>
                 ))}
