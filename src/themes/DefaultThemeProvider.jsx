@@ -33,8 +33,8 @@ const theme = createTheme({
     },
     typography: {
         fontFamily: [
-            'inter',
             'jost',
+            'inter',
             'ibarra-real-nova',
             'beth-ellen',
             'julius-sans-one'

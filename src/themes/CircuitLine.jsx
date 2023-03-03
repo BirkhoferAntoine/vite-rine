@@ -22,9 +22,9 @@ const CircuitLine = (props) => {
 
     return (
         <Box sx={sxStyles.container} className={'circuit-line-container'}>
-            <Box className={'circuit-circle shadow-highlight-yellow backdrop-filter-blur'}></Box>
-            <Box sx={sxStyles.line} className={'circuit-line shadow-highlight-yellow backdrop-filter-blur'}></Box>
-            {(circleTip && <Box className={'circuit-circle shadow-highlight-yellow backdrop-filter-blur'}></Box>)}
+            <Box className={'circuit-circle shadow-highlight backdrop-filter-blur'}></Box>
+            <Box sx={sxStyles.line} className={'circuit-line shadow-highlight backdrop-filter-blur'}></Box>
+            {(circleTip && <Box className={'circuit-circle shadow-highlight backdrop-filter-blur'}></Box>)}
         </Box>
     );
 };

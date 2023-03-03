@@ -6,11 +6,23 @@
   -webkit-text-size-adjust: 100%;
 
   --color-primary: #FCD81C;
-  --bgColor-default: #100E02;
-  --bgYellowRadiant: radial-gradient(56.65% 57.99% at 50% 57.99%, rgba(252, 216, 28, 0.05) 0%, rgba(123, 106, 14, 0.05) 50%, rgba(16, 14, 2, 0.05) 100%), #100E02;
-  --bgYellowRadiant2: radial-gradient(88.52% 90.62% at 51.49% 90.62%, rgba(252, 216, 28, 0.05) 18.29%, rgba(245, 210, 28, 0.05) 18.3%, rgba(123, 106, 14, 0.05) 36.52%, rgba(16, 14, 2, 0.05) 92.42%), #100E02;
+  --color-secondary: #E53D00;
+  --orange-peel: #FF9F00;
+  --red-carnelian: #BA1B1D;
+  --bg-color-default: #100E02;
+  --bg-yellow-radial: radial-gradient(56.65% 57.99% at 50% 57.99%, rgba(252, 216, 28, 0.05) 0%, rgba(123, 106, 14, 0.05) 50%, rgba(16, 14, 2, 0.05) 100%),
+    var(--bg-color-default);
+  --bg-yellow-radial2: radial-gradient(88.52% 90.62% at 51.49% 90.62%, rgba(252, 216, 28, 0.05) 18.29%, rgba(245, 210, 28, 0.05) 18.3%, rgba(123, 106, 14, 0.05) 36.52%, rgba(16, 14, 2, 0.05) 92.42%),
+    var(--bg-color-default);
+  --bg-yellow-radial-highlighted: radial-gradient(56.65% 57.99% at 50% 57.99%, rgba(252, 216, 28, 0.15) 0%, rgba(123, 106, 14, 0.15) 50%, rgba(16, 14, 2, 0.15) 100%),
+    #100E02;
+  --bg-light-radial: radial-gradient(63.13% 50% at 50% 50%, #FCD81C 0%, rgba(252, 218, 38, 0) 100%);
+  --yellow-grad: linear-gradient(180deg, rgba(252, 215, 28, 0.2) 0%, rgba(252, 215, 28, 0) 100%),
+    linear-gradient(180deg, rgba(248, 122, 0, 0) 0%, rgba(248, 122, 0, 0.6) 100%);
+  --red-orange-grad: linear-gradient(180deg, rgba(252, 216, 28, 0.2) 0%, rgba(252, 216, 28, 0) 37.5%), linear-gradient(180deg, rgba(248, 0, 0, 0) 0%, rgba(248, 0, 0, 0.6) 99.99%, rgba(248, 0, 0, 0.6) 100%),
+    #F87A00;
 
-  --header-height: 13vh;
+  --header-height: 10vh;
   --circuit-width: 4px;
   --header-margin: calc(var(--header-height) + var(--circuit-width));
   --header-margin-minus: calc(var(--header-margin) * -1);

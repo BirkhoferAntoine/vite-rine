@@ -33,6 +33,7 @@ export const Navigation = () => {
         link: {
             textDecoration: 'none',
             color: theme.palette.text.primary,
+            /*width: '100%',*/
         },
         header: {
             height: 'var(--header-height)',
@@ -45,10 +46,12 @@ export const Navigation = () => {
             backgroundColor: 'transparent',
         },
         textName: {
+            fontFamily: 'Beth Ellen',
             fontSize: '2.3em',
             filter: 'drop-shadow(0px 0px 15px #FCD81C)',
         },
         textJob: {
+            fontFamily: 'Jost',
             fontSize: '1.5em',
             filter: 'drop-shadow(0px 0px 15px #FCD81C)',
         }
@@ -80,11 +83,11 @@ export const Navigation = () => {
             <AppBar position={'fixed'} sx={sxStyles.header}>
                 <Toolbar sx={sxStyles.toolbar}>
                     <IconButton onClick={toggleDrawer} sx={sxStyles.menuIcon} edge={'start'}><MenuIcon/></IconButton>
-                    <StyledLink to={'/'} >
+                    <StyledLink to={'/'} width={'100%'}>
                         <Box className={'logo-container'}>
-                            <Box className={'logo-image-box'}>
+                            {/*<Box className={'logo-image-box'}>
                                 <img src={'src/assets/image.png'} />
-                            </Box>
+                            </Box>*/}
                             <Box className={'logo-title-box'}>
                                 <Typography sx={sxStyles.textName} variant={'h5'} color={'textPrimary'}>
                                     Antoine Birkhofer

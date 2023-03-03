@@ -5,6 +5,7 @@ import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import EmailSharpIcon from '@mui/icons-material/EmailSharp';
 import HighlightGeometry from "../themes/HighlightGeometry.jsx";
 import CircuitLine from "../themes/CircuitLine.jsx";
+import CircuitLineSquare from "../themes/CircuitLineSquare.jsx";
 export class Homepage extends Component {
     render() {
 
@@ -18,7 +19,7 @@ export class Homepage extends Component {
                 display: 'flex',
                 //justifyContent: 'center',
                 flexDirection: 'column',
-                filter: 'drop-shadow(0px 0px 15px #FCD81C)',
+                filter: 'drop-shadow(0px 0px 15px var(--color-primary)',
             },
             typoDesign: {
                 color: '#EBEAE3',
@@ -26,10 +27,9 @@ export class Homepage extends Component {
                 fontWeight: '400',
                 fontSize: '3.8em',
                 lineHeight: 1,
-                textShadow: '0px 0px 15px #FCD81C',
 
-                '-webkit-text-stroke-width': '1px',
-                '-webkit-text-stroke-color': 'rgba(253, 52, 52, 0.4)',
+                WebkitTextStrokeWidth: '1px',
+                WebkitTextStrokeColor: 'rgba(253, 52, 52, 0.4)',
                 border: '1px solid rgba(253, 52, 52, 0.4)',
             },
             typoDevelop: {
@@ -38,10 +38,9 @@ export class Homepage extends Component {
                 fontSize: '4em',
                 lineHeight: 1,
                 fontWeight: '400',
-                textShadow: '0px 0px 15px #FCD81C',
 
-                '-webkit-text-stroke-width': '1px',
-                '-webkit-text-stroke-color': 'rgba(253, 52, 52, 0.6)',
+                WebkitTextStrokeWidth: '1px',
+                WebkitTextStrokeColor: 'rgba(253, 52, 52, 0.6)',
             },
             typoPower: {
                 color: '#DDDDDD',
@@ -49,21 +48,19 @@ export class Homepage extends Component {
                 fontSize: '6em',
                 lineHeight: 1,
                 fontWeight: '600',
-                textShadow: '0px 0px 15px #FCD81C',
 
-                '-webkit-text-stroke-width': '1px',
-                '-webkit-text-stroke-color': 'rgba(253, 52, 52, 0.8)',
+                WebkitTextStrokeWidth: '1px',
+                WebkitTextStrokeColor: 'rgba(253, 52, 52, 0.8)',
             },
             typoUp: {
-                color: '#FCD81C',
+                color: 'var(--color-primary)',
                 fontFamily: 'Beth Ellen',
                 fontSize: '7em',
                 lineHeight: 1,
                 fontWeight: '400',
-                textShadow: '0px 0px 15px #FCD81C',
 
-                '-webkit-text-stroke-width': '2px',
-                '-webkit-text-stroke-color': '#100E02',
+                WebkitTextStrokeWidth: '2px',
+                WebkitTextStrokeColor: 'var(--bg-color-default)',
             },
             textExtra: {
 
@@ -74,51 +71,94 @@ export class Homepage extends Component {
             },
             aboutContainer: {
                 display: 'flex',
+                justifyContent: 'space-around',
+                alignItems: 'center',
+                paddingBottom: '20vh',
+            },
+            aboutTextContainer: {
+                display: 'inline-flex',
                 justifyContent: 'center',
             },
             aboutPhotoBox: {
 
             },
+            workContainer: {
+                display: 'flex',
+                justifyContent: 'center',
+            }
         };
 
         return (
             <>
                 <section id={'hero-section'}>
                     <Container sx={sxStyles.heroTextContainer}>
-                        <Typography sx={sxStyles.typoDesign} className={'text-outline-red'}>Design</Typography>
-                        <Typography sx={sxStyles.typoDevelop} className={'text-outline-red'}>Develop</Typography>
-                        <Typography sx={sxStyles.typoPower} className={'text-outline-red'}>POWER</Typography>
-                        <Typography sx={sxStyles.typoUp} className={'text-outline-dark'}>UP</Typography>
+                        <Typography sx={sxStyles.typoDesign} className={'text-outline-red text-shadow'}>Design</Typography>
+                        <Typography sx={sxStyles.typoDevelop} className={'text-outline-red text-shadow'}>Develop</Typography>
+                        <Typography sx={sxStyles.typoPower} className={'text-outline-red text-shadow'}>POWER</Typography>
+                        <Typography sx={sxStyles.typoUp} className={'text-outline-dark text-shadow'}>UP</Typography>
                     </Container>
                     <Box sx={sxStyles.heroFooterContainer}>
                         <Box sx={{ml: '4em', mr:'4em'}}>
                             <LocationOnSharpIcon/>
-                            <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight-yellow'}>Paris - France</Typography>
+                            <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight'}>Paris - France</Typography>
                         </Box>
                         <Box sx={{ml: '4em', mr:'4em'}}>
                             <EmailSharpIcon/>
                             <Link href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
-                                <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight-yellow'}>Send me an email</Typography>
+                                <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight'}>Send me an email</Typography>
                             </Link>
                         </Box>
                     </Box>
 
                 </section>
+
                 <Box className={'bg-design-container-center'}>
                     <CircuitLine width={'96vh'} rotate={'90deg'} top={'27vh'} circleTip/>
                 </Box>
                 <Box className={'section-separator backdrop-filter-blur'}></Box>
+
                 <section id={'about-section'}>
+                    {/*<Typography variant={'h1'}>About me</Typography>*/}
+                    <Box className={'bg-design-container-center'}>
+                        <CircuitLineSquare width={'55vh'} rotate={'45deg'}></CircuitLineSquare>
+                    </Box>
+
                     <Container sx={sxStyles.aboutContainer}>
-                        <Box height={'33vh'} mt={1} className={'about-picture-box shadow-highlight-yellow backdrop-filter-blur'}>
-                            <img height={'100%'} src={'src/assets/profil.png'} />
+                        <Box sx={sxStyles.aboutPhotoBox} mt={1} className={'about-picture-box shadow-highlight backdrop-filter-blur'}>
+                            <img className={'filter-highlight'} src={'src/assets/profil-noBg.png'} />
+                            <Box className={'about-picture-box-highlight about-picture-box-highlight-square filter-highlight shadow-highlight'}></Box>
+                            <Box className={'about-picture-box-highlight about-picture-box-highlight-circle filter-highlight shadow-highlight'}></Box>
+                            <Box className={'about-picture-box-highlight about-picture-box-highlight-circle2 filter-highlight shadow-highlight'}></Box>
+                        </Box>
+                        <Box sx={sxStyles.aboutTextContainer} className={'about-text-container text-container shadow-highlight'}>
+                            <Typography variant={'h4'} className={'typography-highlight'}>
+                                Hi, my name is Antoine i am a creative Web Developer
+                            </Typography>
                         </Box>
                     </Container>
-                    {/*<Typography variant={'h1'}>About me</Typography>*/}
+
+                    <Box className={'bg-design-container-center'}>
+                        <CircuitLine width={'96vh'} rotate={'90deg'} top={'100vh'} circleTip/>
+                    </Box>
+                    <Box className={'section-separator backdrop-filter-blur'}></Box>
+
                 </section>
+
                 <Box className={'section-separator'}></Box>
                 <section id={'work-section'}>
                     {/*<Typography variant={'h1'}>Works</Typography>*/}
+                    <Box className={'bg-design-container-center'}>
+
+                    </Box>
+                    <Container sx={sxStyles.workContainer}>
+                            <Box className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
+                                <Box className={'work-slider'}>
+                                    <Box className={'work-slider-wrapper filter-blur'}>
+                                        <img src={'src/assets/Frizlive.jpg'} />
+                                    </Box>
+                                </Box>
+                            </Box>
+                    </Container>
                 </section>
                 <Box className={'section-separator'}></Box>
                 <section id={'skill-section'}>
