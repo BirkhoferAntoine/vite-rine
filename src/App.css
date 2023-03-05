@@ -37,6 +37,7 @@ section {
   display: flex;
   justify-content: center;
   background: var(--bg-yellow-radial);
+  padding-top: 15vh;
 }
 
 .section-separator {
@@ -111,6 +112,8 @@ section {
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
 }
+
+/** BACKGROUND DESIGN **/
 
 .bg-design-container-center{
   position: absolute;
@@ -217,6 +220,8 @@ section {
   background: var(--yellow-grad);
 }
 
+/** HERO SECTION **/
+
 #hero-section {
   background: var(--bg-yellow-radial2);
   height: calc(100vh - var(--header-margin) - 2em);
@@ -224,10 +229,25 @@ section {
   justify-content: center;
 }
 
+
+.hero-footer-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/** ABOUT SECTION **/
+
 #about-section {
   padding-top: 15vh;
 }
 
+
+.about-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 20vh;
+}
 
 .about-picture-box {
   overflow: hidden;
@@ -295,6 +315,8 @@ section {
 }
 
 .about-text-container {
+  display: inline-flex;
+  justify-content: center;
   width: 33vh;
   height: 33vh;
   z-index: 54;
@@ -334,6 +356,20 @@ section {
 
 }
 
+/** WORK SECTION **/
+
+.work-section {
+  padding-top: 5vh;
+}
+
+.work-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5vh;
+}
+
 .work-slider-container {
   box-sizing: border-box;
   position: relative;
@@ -347,6 +383,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  /*padding: 1rem 0;*/
 }
 
 .work-slider {
@@ -378,3 +415,28 @@ section {
   object-fit: cover;
 }
 
+.work-brand-logo-container {
+  /*padding: 1rem 0 2rem 0;*/
+  background: black;
+  display: flex;
+  align-items: baseline;
+  border: transparent 1px solid;
+  border-radius: 16px;
+  margin: 1rem;
+}
+
+.work-brand-logo-container img {
+  max-height: 5rem;
+}
+
+.work-text-container {
+  display: inline-flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.work-text {
+  font-size: 20pt;
+}
+
+/** SKILL SECTION **/

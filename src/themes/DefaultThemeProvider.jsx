@@ -52,6 +52,13 @@ const theme = createTheme({
           }
       `,
         },
+        MuiContainer: {
+            styleOverrides: {
+                root: {
+                    display: 'flex'
+                },
+            },
+        },
     },
     mixins: {
         toolbar: {

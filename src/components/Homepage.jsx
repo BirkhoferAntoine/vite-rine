@@ -62,30 +62,6 @@ export class Homepage extends Component {
                 WebkitTextStrokeWidth: '2px',
                 WebkitTextStrokeColor: 'var(--bg-color-default)',
             },
-            textExtra: {
-
-            },
-            heroFooterContainer: {
-                display: 'flex',
-                justifyContent: 'space-between',
-            },
-            aboutContainer: {
-                display: 'flex',
-                justifyContent: 'space-around',
-                alignItems: 'center',
-                paddingBottom: '20vh',
-            },
-            aboutTextContainer: {
-                display: 'inline-flex',
-                justifyContent: 'center',
-            },
-            aboutPhotoBox: {
-
-            },
-            workContainer: {
-                display: 'flex',
-                justifyContent: 'center',
-            }
         };
 
         return (
@@ -97,7 +73,7 @@ export class Homepage extends Component {
                         <Typography sx={sxStyles.typoPower} className={'text-outline-red text-shadow'}>POWER</Typography>
                         <Typography sx={sxStyles.typoUp} className={'text-outline-dark text-shadow'}>UP</Typography>
                     </Container>
-                    <Box sx={sxStyles.heroFooterContainer}>
+                    <Box className={'hero-footer-container'}>
                         <Box sx={{ml: '4em', mr:'4em'}}>
                             <LocationOnSharpIcon/>
                             <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight'}>Paris - France</Typography>
@@ -123,14 +99,14 @@ export class Homepage extends Component {
                         <CircuitLineSquare width={'55vh'} rotate={'45deg'}></CircuitLineSquare>
                     </Box>
 
-                    <Container sx={sxStyles.aboutContainer}>
-                        <Box sx={sxStyles.aboutPhotoBox} mt={1} className={'about-picture-box shadow-highlight backdrop-filter-blur'}>
+                    <Container className={'about-container'}>
+                        <Box mt={1} className={'about-picture-box shadow-highlight backdrop-filter-blur'}>
                             <img className={'filter-highlight'} src={'src/assets/profil-noBg.png'} />
                             <Box className={'about-picture-box-highlight about-picture-box-highlight-square filter-highlight shadow-highlight'}></Box>
                             <Box className={'about-picture-box-highlight about-picture-box-highlight-circle filter-highlight shadow-highlight'}></Box>
                             <Box className={'about-picture-box-highlight about-picture-box-highlight-circle2 filter-highlight shadow-highlight'}></Box>
                         </Box>
-                        <Box sx={sxStyles.aboutTextContainer} className={'about-text-container text-container shadow-highlight'}>
+                        <Box className={'about-text-container text-container shadow-highlight'}>
                             <Typography variant={'h4'} className={'typography-highlight'}>
                                 Hi, my name is Antoine i am a creative Web Developer
                             </Typography>
@@ -145,26 +121,44 @@ export class Homepage extends Component {
                 </section>
 
                 <Box className={'section-separator'}></Box>
+
                 <section id={'work-section'}>
                     {/*<Typography variant={'h1'}>Works</Typography>*/}
                     <Box className={'bg-design-container-center'}>
 
                     </Box>
-                    <Container sx={sxStyles.workContainer}>
-                            <Box className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
-                                <Box className={'work-slider'}>
-                                    <Box className={'work-slider-wrapper filter-blur'}>
-                                        <img src={'src/assets/Frizlive.jpg'} />
-                                    </Box>
+                    <Container className={'work-container'}>
+                        <Box className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
+                            <Box className={'work-slider'}>
+                                <Box className={'work-slider-wrapper filter-blur'}>
+                                    <img src={'src/assets/Frizlive.jpg'} />
                                 </Box>
                             </Box>
+                        </Box>
+                        <Box className={'work-brand-logo-container filter-highlight'}>
+                            <img className={'brand-logo'} src={'src/assets/2022Logo-FRIZZZY.png'} alt={'frizzzy'}/>
+                        </Box>
+                        <Box className={'work-text-container text-container shadow-highlight'}>
+                            <Typography className={'work-text typography-highlight'} align={'justify'} >
+                                Hi, my name is Antoine i am a creative Web Developer <br/>
+                                Hi, my name is Antoine i am a creative Web Developer <br/>
+                                Hi, my name is Antoine i am a creative Web Developer <br/>
+                            </Typography>
+                        </Box>
                     </Container>
                 </section>
+
                 <Box className={'section-separator'}></Box>
+
                 <section id={'skill-section'}>
                     {/*<Typography variant={'h1'}>Skills</Typography>*/}
+                    <Box className={'bg-design-container-center'}>
+                        <Box className={''}></Box>
+                    </Box>
                 </section>
+
                 <Box className={'section-separator'}></Box>
+
                 <section id={'contact-section'}>
                     {/*<Typography variant={'h1'}>Contact</Typography>*/}
                 </section>
