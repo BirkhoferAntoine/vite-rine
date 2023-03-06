@@ -88,7 +88,7 @@ export const Navigation = () => {
                             {/*<Box className={'logo-image-box'}>
                                 <img src={'src/assets/image.png'} />
                             </Box>*/}
-                            <Box className={'logo-title-box'}>
+                            <Box className={'logo-title-box logo'}>
                                 <Typography sx={sxStyles.textName} variant={'h5'} color={'textPrimary'}>
                                     Antoine Birkhofer
                                 </Typography>

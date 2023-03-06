@@ -5,7 +5,7 @@ import {
     Step,
     StepButton,
     Button,
-    Typography,
+    Typography, StepLabel,
 } from '@mui/material';
 import NavigateBeforeSharpIcon from '@mui/icons-material/NavigateBeforeSharp';
 import NavigateNextSharpIcon from '@mui/icons-material/NavigateNextSharp';
@@ -95,6 +95,7 @@ const NavigationStepper = () => {
             <Box sx={sxStyles.stepperPrevNextContainer}>
                 <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                     <Button
+                        className={'stepper-btn'}
                         color="inherit"
                         disabled={activeStep === 0}
                         onClick={handleBack}
@@ -103,7 +104,9 @@ const NavigationStepper = () => {
                         <NavigateBeforeSharpIcon/>
                     </Button>
                     <Box sx={{ flex: '1 1 auto' }} />
-                    <Button onClick={handleNext} sx={{ mr: 1 }}>
+                    <Button
+                        className={'stepper-btn'}
+                        onClick={handleNext} sx={{ mr: 1 }}>
                         <NavigateNextSharpIcon/>
                     </Button>
                 </Box>
@@ -111,7 +114,10 @@ const NavigationStepper = () => {
             <Stepper orientation={'vertical'} nonLinear activeStep={activeStep}>
                 {steps.map((step, index) => (
                     <Step key={'step-'+step.label} completed={completed[index]}>
-                        <StepButton icon={<OfflineBoltSharpIcon/>}  color="inherit" onClick={handleStep(index, step.target)}>
+                        <StepButton icon={<OfflineBoltSharpIcon/>}
+                                    className={'stepper-btn'}
+                                    color="inherit"
+                                    onClick={handleStep(index, step.target)}>
                             {step.label}
                         </StepButton>
                     </Step>
@@ -120,6 +126,7 @@ const NavigationStepper = () => {
         </Box>
     );
 };
+
 
 export default NavigationStepper;
 

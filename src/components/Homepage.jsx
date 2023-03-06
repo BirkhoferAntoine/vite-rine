@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import {GsapTrainingComponent} from "./GsapTrainingComponent.jsx";
-import {Box, Container, Link, Paper, Typography} from "@mui/material";
+import {Box, Button, Card, Container, Link, Paper, Typography} from "@mui/material";
 import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import EmailSharpIcon from '@mui/icons-material/EmailSharp';
 import HighlightGeometry from "../themes/HighlightGeometry.jsx";
 import CircuitLine from "../themes/CircuitLine.jsx";
 import CircuitLineSquare from "../themes/CircuitLineSquare.jsx";
+import OrbText from "./OrbText.jsx";
 export class Homepage extends Component {
     render() {
 
@@ -62,6 +63,23 @@ export class Homepage extends Component {
                 WebkitTextStrokeWidth: '2px',
                 WebkitTextStrokeColor: 'var(--bg-color-default)',
             },
+            contactBtn: {
+
+            },
+            contactRedBtn: {
+                padding: '5rem',
+                borderRadius: '50%',
+            },
+            contactTypo: {
+                color: 'var(--color-primary)',
+                fontFamily: 'Beth Ellen',
+                fontSize: '2rem',
+                lineHeight: 1,
+                fontWeight: '400',
+
+                WebkitTextStrokeWidth: '2px',
+                WebkitTextStrokeColor: 'var(--bg-color-default)',
+            },
         };
 
         return (
@@ -95,9 +113,9 @@ export class Homepage extends Component {
 
                 <section id={'about-section'}>
                     {/*<Typography variant={'h1'}>About me</Typography>*/}
-                    <Box className={'bg-design-container-center'}>
+                    <Paper className={'bg-design-container-center'}>
                         <CircuitLineSquare width={'55vh'} rotate={'45deg'}></CircuitLineSquare>
-                    </Box>
+                    </Paper>
 
                     <Container className={'about-container'}>
                         <Box mt={1} className={'about-picture-box shadow-highlight backdrop-filter-blur'}>
@@ -146,21 +164,42 @@ export class Homepage extends Component {
                             </Typography>
                         </Box>
                     </Container>
-                </section>
 
+
+                </section>
+                <Box className={'bg-design-container-center'}>
+                    <CircuitLine width={'75vh'} rotate={'90deg'} top={'35vh'} circleTip/>
+                </Box>
                 <Box className={'section-separator'}></Box>
 
                 <section id={'skill-section'}>
                     {/*<Typography variant={'h1'}>Skills</Typography>*/}
-                    <Box className={'bg-design-container-center'}>
-                        <Box className={''}></Box>
-                    </Box>
+                    <Paper sx={{width: '100%', height:'70vh', display: 'flex', justifyContent:'center', alignItems:'center'}}>
+                        <Box className={'bg-design-container-center'}>
+                            <Paper elevation={1} className={'paper-circle shadow-highlight'}>
+                                <Box className={'inner-circle shadow-highlight'}></Box>
+                            </Paper>
+                        </Box>
+                        <OrbText/>
+                    </Paper>
                 </section>
-
+                <Box className={'bg-design-container-center'}>
+                    <CircuitLine width={'90vh'} rotate={'90deg'} top={'30vh'} circleTip/>
+                </Box>
                 <Box className={'section-separator'}></Box>
 
                 <section id={'contact-section'}>
                     {/*<Typography variant={'h1'}>Contact</Typography>*/}
+                    <Container className={'contact-container'}>
+                        <Paper className={'contact-paper'}>
+                                <Card className={'contact-box'}>
+                                    <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
+                                        Contact me
+                                    </Typography>
+                                    <Button sx={sxStyles.contactRedBtn} variant={'contained'} className={'contact-btn'} color={'warning'}></Button>
+                                </Card>
+                        </Paper>
+                    </Container>
                 </section>
             </>
         );

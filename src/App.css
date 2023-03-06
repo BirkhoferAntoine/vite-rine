@@ -6,15 +6,31 @@
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
   will-change: filter;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.highlight-on-hover:hover,
+.shadow-highlight:hover,
+.filter-highlight:hover,
+.highlight-geometry:hover,
+.typography-highlight:hover,
+.text-shadow:hover,
+.text-outline-yellow:hover {
+  filter: drop-shadow(0 0 20rem var(--color-primary));
+  text-shadow: var(--bg-color-default) 0 0 2rem;
+  transition: all 0.3s ease-out;
 }
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.circuit-line:hover,
+.stepper-btn:hover,
+.logo:hover {
+  filter: drop-shadow(0 0 1rem var(--color-primary));
+  text-shadow: var(--bg-color-default) 0 0 2rem;
+  transition: all 0.3s ease-out;
+}
+
+.stepper-btn:hover {
+  color: red;
 }
 
 body {
@@ -158,7 +174,7 @@ section {
   box-sizing: border-box;
   background-clip: padding-box;
   border: solid 24px transparent;
-  border-radius: 1em;
+  border-radius: 1rem;
 }
 
 .circuit-line-square-container::before {
@@ -440,3 +456,50 @@ section {
 }
 
 /** SKILL SECTION **/
+
+.skill-section {
+  padding-bottom: 15vh;
+}
+
+.paper-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+  width: 50vh;
+  border-radius: 50% !important;
+  box-shadow: 0 0 20px 10px rgba(0,0,0,0.2);
+  background: var(--bg-yellow-radial) !important;
+}
+
+.inner-circle {
+  background: var(--color-primary);
+  height: 9%;
+  width: 9%;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+}
+
+.contact-section {
+  padding: 15vh;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  /*align-items: center;*/
+}
+
+
+.contact-paper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 45vh;
+  width: 45vh;
+
+}
+
+.contact-typography {
+  font-family: 'Beth Ellen';
+}

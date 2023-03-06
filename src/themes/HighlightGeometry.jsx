@@ -51,15 +51,15 @@ const HighlightGeometry = () => {
 
     return (
         <Box className={'highlight-geometry-container'}>
-            <Box className={'highlight-geometry-square'} sx={sxStyles.squareHighlight}/>
+            <Box className={'highlight-geometry-square highlight-geometry'} sx={sxStyles.squareHighlight}/>
             <Box sx={sxStyles.triangleContainer} className={'highlight-geometry-triangleContainer'}>
-                <Box className={'highlight-geometry-triangle'} sx={sxStyles.triangleTall}/>
+                <Box className={'highlight-geometry-triangle highlight-geometry'} sx={sxStyles.triangleTall}/>
             </Box>
             <Box sx={sxStyles.triangleContainer} className={'highlight-geometry-triangleContainer'}>
-                <Box className={'highlight-geometry-triangle'} sx={sxStyles.triangleWide}/>
+                <Box className={'highlight-geometry-triangle highlight-geometry'} sx={sxStyles.triangleWide}/>
             </Box>
             <Box sx={sxStyles.triangleContainer} className={'highlight-geometry-triangleContainer'}>
-                <Box className={'highlight-geometry-triangle'} sx={sxStyles.triangleCenter}/>
+                <Box className={'highlight-geometry-triangle highlight-geometry'} sx={sxStyles.triangleCenter}/>
             </Box>
         </Box>
     );
