@@ -7,6 +7,7 @@ import HighlightGeometry from "../themes/HighlightGeometry.jsx";
 import CircuitLine from "../themes/CircuitLine.jsx";
 import CircuitLineSquare from "../themes/CircuitLineSquare.jsx";
 import OrbText from "./OrbText.jsx";
+import OrbTextTwo from "./OrbTextTwo.jsx";
 export class Homepage extends Component {
     render() {
 
@@ -180,7 +181,7 @@ export class Homepage extends Component {
                                 <Box className={'inner-circle shadow-highlight'}></Box>
                             </Paper>
                         </Box>
-                        <OrbText/>
+                        <OrbTextTwo/>
                     </Paper>
                 </section>
                 <Box className={'bg-design-container-center'}>
