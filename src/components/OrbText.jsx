@@ -20,6 +20,8 @@ const OrbText = () => {
         const material  = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
         const sphere    = new THREE.Mesh(geometry, material);
         scene.add(sphere);
+        const light = new THREE.AmbientLight(0xffffff, 1);
+        scene.add(light);
 
         const loader = new FontLoader();
         loader.load('src/assets/helvetiker_bold.typeface.json', (font) => {
@@ -100,8 +102,7 @@ const OrbText = () => {
                 });*/
             }
         });
-        const light = new THREE.AmbientLight(0xffffff, 1);
-        scene.add(light);
+
 
         camera.position.z = 500;
 

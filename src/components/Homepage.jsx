@@ -6,12 +6,28 @@ import EmailSharpIcon from '@mui/icons-material/EmailSharp';
 import HighlightGeometry from "../themes/HighlightGeometry.jsx";
 import CircuitLine from "../themes/CircuitLine.jsx";
 import CircuitLineSquare from "../themes/CircuitLineSquare.jsx";
-import OrbText from "./OrbText.jsx";
-import OrbTextTwo from "./OrbTextTwo.jsx";
+/*import OrbText from "./OrbText.jsx";
+import OrbTextTwo from "./OrbTextTwo.jsx";*/
+import CallToActionButton from "./CallToActionButton.jsx";
 export class Homepage extends Component {
     render() {
 
         const sxStyles = {
+            callToActionBtn: {
+                position: 'relative',
+                zIndex: 9999,
+                background: 'linear-gradient(45deg,  var(--color-secondary) 30%,var(--color-primary) 90%)',
+                borderRadius: 5,
+                /*border: '2px solid var(--color-primary)',*/
+                color: 'white',//'#FCD81C',
+                height: 48,
+                width: 360,
+                padding: '0 30px',
+                boxShadow: '0 2px 4px 2px var(--bg-color-default)',
+                display: 'inline-flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+            },
             heroSection: {
                 height: 'calc(100vh - var(--header-margin))'
             },
@@ -21,6 +37,7 @@ export class Homepage extends Component {
                 display: 'flex',
                 //justifyContent: 'center',
                 flexDirection: 'column',
+                alignItems: 'center',
                 filter: 'drop-shadow(0px 0px 15px var(--color-primary)',
             },
             typoDesign: {
@@ -89,18 +106,23 @@ export class Homepage extends Component {
                     <Container sx={sxStyles.heroTextContainer}>
                         <Typography sx={sxStyles.typoDesign} className={'text-outline-red text-shadow'}>Design</Typography>
                         <Typography sx={sxStyles.typoDevelop} className={'text-outline-red text-shadow'}>Develop</Typography>
-                        <Typography sx={sxStyles.typoPower} className={'text-outline-red text-shadow'}>POWER</Typography>
-                        <Typography sx={sxStyles.typoUp} className={'text-outline-dark text-shadow'}>UP</Typography>
+                        <Box className={'power-up-box'} mb={9} sx={{display:"flex", justifyContent:'center', flexDirection:'row', alignItems:'flex-end'}}>
+                            <Typography sx={sxStyles.typoPower} className={'text-outline-red text-shadow'}>POWER</Typography>
+                            <Typography sx={sxStyles.typoUp} className={'text-outline-dark text-shadow'}>UP</Typography>
+                        </Box>
+                        <Link sx={sxStyles.callToActionBtn} className={'box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
+                            <Typography sx={{fontSize: '20pt', fontWeight: 'bold',}}>Contact me</Typography>
+                        </Link>
                     </Container>
                     <Box className={'hero-footer-container'}>
                         <Box sx={{ml: '4em', mr:'4em'}}>
                             <LocationOnSharpIcon/>
-                            <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight'}>Paris - France</Typography>
+                            <Typography className={'text-outline-yellow filter-highlight'}>Paris - France</Typography>
                         </Box>
                         <Box sx={{ml: '4em', mr:'4em'}}>
                             <EmailSharpIcon/>
                             <Link href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
-                                <Typography sx={sxStyles.textExtra} className={'text-outline-yellow filter-highlight'}>Send me an email</Typography>
+                                <Typography className={'text-outline-yellow filter-highlight'}>Send me an email</Typography>
                             </Link>
                         </Box>
                     </Box>
@@ -181,7 +203,7 @@ export class Homepage extends Component {
                                 <Box className={'inner-circle shadow-highlight'}></Box>
                             </Paper>
                         </Box>
-                        <OrbTextTwo/>
+                        {/*<OrbTextTwo/>*/}
                     </Paper>
                 </section>
                 <Box className={'bg-design-container-center'}>

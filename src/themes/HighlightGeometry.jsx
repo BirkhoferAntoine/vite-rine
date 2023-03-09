@@ -31,7 +31,7 @@ const sxStyles = {
         height: 'calc(100vh - var(--header-margin))',
         clipPath: 'polygon(50% 0%, 0% 100%, 100% 100%)',
         background: 'conic-gradient(from 136.06deg at 50% 2.59%, rgba(253, 52, 52, 0) 0deg, #FCD81C 39.37deg, rgba(253, 52, 52, 0) 360deg)',
-
+        border: 'var(--color-primary) 2px solid',
     },
     triangleContainer: {
         position: 'relative',

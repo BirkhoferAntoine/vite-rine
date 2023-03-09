@@ -239,8 +239,10 @@ section {
 /** HERO SECTION **/
 
 #hero-section {
+  padding-top: 0;
   background: var(--bg-yellow-radial2);
-  height: calc(100vh - var(--header-margin) - 2em);
+  height: calc(110vh - var(--header-margin) - 2em);
+  margin-top: -10vh;
   flex-direction: column;
   justify-content: center;
 }

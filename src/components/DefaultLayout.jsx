@@ -13,7 +13,7 @@ export const DefaultLayout = () => {
         <Fragment>
             <Navigation/>
             <Offset/>
-            <LightbulbLayout/>
+            {/*<LightbulbLayout/>*/}
             <HighlightGeometry/>
             <main>
                 <Outlet/>
