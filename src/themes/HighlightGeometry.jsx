@@ -2,7 +2,7 @@ import React from 'react';
 import {Box} from "@mui/material";
 
 const sxStyles = {
-    squareHighlight: {
+    losangeHighlight: {
         position: 'absolute',
         width: '100%',
         height: '100%',
@@ -51,7 +51,7 @@ const HighlightGeometry = () => {
 
     return (
         <Box className={'highlight-geometry-container'}>
-            <Box className={'highlight-geometry-square highlight-geometry'} sx={sxStyles.squareHighlight}/>
+            <Box className={'highlight-geometry-losange highlight-geometry'} sx={sxStyles.losangeHighlight}/>
             <Box sx={sxStyles.triangleContainer} className={'highlight-geometry-triangleContainer'}>
                 <Box className={'highlight-geometry-triangle highlight-geometry'} sx={sxStyles.triangleTall}/>
             </Box>

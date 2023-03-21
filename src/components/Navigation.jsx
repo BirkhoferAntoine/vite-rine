@@ -17,8 +17,10 @@ import {
 import MenuIcon from '@mui/icons-material/Menu';
 import ListIcon from '@mui/icons-material/List';
 import LabelIcon from '@mui/icons-material/Label';
+import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import {Link} from "react-router-dom";
 import Stepper from "./NavigationStepper.jsx";
+import SocialMediaBox from "./SocialMediaBox.jsx";
 
 export const Navigation = () => {
     //styles
@@ -99,6 +101,11 @@ export const Navigation = () => {
                         </Box>
                     </StyledLink>
                     <Box flexGrow={1} />
+                    <SocialMediaBox/>
+                    <Box sx={{ml: '4em', mr:'4em', display:'flex', flexDirection:'row', width:'60px', alignItems:'center', justifyContent:'space-between'}}>
+                        <LocationOnSharpIcon/>
+                        <Typography className={'text-outline-yellow filter-highlight'}>Paris</Typography>
+                    </Box>
                 </Toolbar>
                 <Drawer anchor={'left'} variant={'temporary'}
                         onClose={toggleDrawer} onClick={toggleDrawer} open={drawerOpen}>

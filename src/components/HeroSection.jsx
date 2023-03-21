@@ -1,5 +1,7 @@
 export const HeroSection = () => {
     return (
-        <></>
+        <>
+
+        </>
     );
 };

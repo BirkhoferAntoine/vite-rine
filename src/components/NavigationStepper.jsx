@@ -15,7 +15,7 @@ const sxStyles = {
     stepperContainer: {
         position: 'fixed',
         top: '30vh',
-        left: '-2em',
+        left: '-2rem',
         height: '40vh',
         zIndex: '9999',
         display: 'flex',

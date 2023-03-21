@@ -5,11 +5,19 @@ import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import EmailSharpIcon from '@mui/icons-material/EmailSharp';
 import HighlightGeometry from "../themes/HighlightGeometry.jsx";
 import CircuitLine from "../themes/CircuitLine.jsx";
-import CircuitLineSquare from "../themes/CircuitLineSquare.jsx";
+import CircuitLineLosange from "../themes/CircuitLineLosange.jsx";
 /*import OrbText from "./OrbText.jsx";
 import OrbTextTwo from "./OrbTextTwo.jsx";*/
 import CallToActionButton from "./CallToActionButton.jsx";
+import CircuitLineRectangle from "../themes/CircuitLineRectangle.jsx";
+import SliderNavigationStepper from "./SliderNavigationStepper.jsx";
+
+
 export class Homepage extends Component {
+    constructor(props) {
+        super(props);
+
+    }
     render() {
 
         const sxStyles = {
@@ -100,6 +108,15 @@ export class Homepage extends Component {
             },
         };
 
+        const sliderSteps           = [
+            {label: 'Frizlive', target: 'src/assets/Frizlive.jpg'},
+            {label: 'FrizboxAdmin', target: 'src/assets/2022Logo-FRIZZZY.png'},
+            {label: 'Frizbox', target: 'src/assets/Photobooth.jpg'},
+            {label: 'FrizFactory', target: 'src/assets/2022Logo-FRIZZZY.png'},
+            {label: 'VideoFriz', target: 'src/assets/2022Logo-FRIZZZY.png'},
+        ];
+        const sliderWrapperElement  = 'work-slider-wrapper';
+
         return (
             <>
                 <section id={'hero-section'}>
@@ -114,7 +131,7 @@ export class Homepage extends Component {
                             <Typography sx={{fontSize: '20pt', fontWeight: 'bold',}}>Contact me</Typography>
                         </Link>
                     </Container>
-                    <Box className={'hero-footer-container'}>
+                    {/*<Box className={'hero-footer-container'}>
                         <Box sx={{ml: '4em', mr:'4em'}}>
                             <LocationOnSharpIcon/>
                             <Typography className={'text-outline-yellow filter-highlight'}>Paris - France</Typography>
@@ -125,7 +142,7 @@ export class Homepage extends Component {
                                 <Typography className={'text-outline-yellow filter-highlight'}>Send me an email</Typography>
                             </Link>
                         </Box>
-                    </Box>
+                    </Box>*/}
 
                 </section>
 
@@ -137,18 +154,18 @@ export class Homepage extends Component {
                 <section id={'about-section'}>
                     {/*<Typography variant={'h1'}>About me</Typography>*/}
                     <Paper className={'bg-design-container-center'}>
-                        <CircuitLineSquare width={'55vh'} rotate={'45deg'}></CircuitLineSquare>
+                        <CircuitLineLosange width={'55vh'} rotate={'45deg'}></CircuitLineLosange>
                     </Paper>
 
                     <Container className={'about-container'}>
                         <Box mt={1} className={'about-picture-box shadow-highlight backdrop-filter-blur'}>
                             <img className={'filter-highlight'} src={'src/assets/profil-noBg.png'} />
-                            <Box className={'about-picture-box-highlight about-picture-box-highlight-square filter-highlight shadow-highlight'}></Box>
+                            <Box className={'about-picture-box-highlight about-picture-box-highlight-losange filter-highlight shadow-highlight'}></Box>
                             <Box className={'about-picture-box-highlight about-picture-box-highlight-circle filter-highlight shadow-highlight'}></Box>
                             <Box className={'about-picture-box-highlight about-picture-box-highlight-circle2 filter-highlight shadow-highlight'}></Box>
                         </Box>
                         <Box className={'about-text-container text-container shadow-highlight'}>
-                            <Typography variant={'h4'} className={'typography-highlight'}>
+                            <Typography sx={{fontSize:'1.8rem'}} className={'about-text typography-highlight'}>
                                 Hi, my name is Antoine i am a creative Web Developer
                             </Typography>
                         </Box>
@@ -166,18 +183,18 @@ export class Homepage extends Component {
                 <section id={'work-section'}>
                     {/*<Typography variant={'h1'}>Works</Typography>*/}
                     <Box className={'bg-design-container-center'}>
-
+                        <SliderNavigationStepper element={'.'+sliderWrapperElement} steps={sliderSteps} />
+                        <CircuitLineRectangle height={'66vh'} width={'66vw'} rotate={'0deg'}></CircuitLineRectangle>
                     </Box>
                     <Container className={'work-container'}>
                         <Box className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
                             <Box className={'work-slider'}>
-                                <Box className={'work-slider-wrapper filter-blur'}>
-                                    <img src={'src/assets/Frizlive.jpg'} />
+                                <Box className={sliderWrapperElement+' filter-blur'}>
+                                    {sliderSteps.map(element => (
+                                        <img className={'slider-image'} src={element.target} key={'slider-image-'+element.label}/>
+                                    ))}
                                 </Box>
                             </Box>
-                        </Box>
-                        <Box className={'work-brand-logo-container filter-highlight'}>
-                            <img className={'brand-logo'} src={'src/assets/2022Logo-FRIZZZY.png'} alt={'frizzzy'}/>
                         </Box>
                         <Box className={'work-text-container text-container shadow-highlight'}>
                             <Typography className={'work-text typography-highlight'} align={'justify'} >
