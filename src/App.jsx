@@ -8,9 +8,9 @@ import {
     RouterProvider,
     Routes
 } from "react-router-dom";
-import {Homepage} from "./components/Homepage.jsx";
-import {DefaultLayout} from "./components/DefaultLayout";
-import {NotFound} from "./components/NotFound.jsx";
+import {Homepage} from "./components/pages/Homepage.jsx";
+import {DefaultLayout} from "./components/layout/DefaultLayout.jsx";
+import {NotFound} from "./components/pages/NotFound.jsx";
 import './App.css'
 
 

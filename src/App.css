@@ -405,17 +405,40 @@ section {
 
 /** WORK SECTION **/
 
-.work-section {
-  padding-top: 5vh;
+#work-section {
+  height: 400vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: -15vh;
 }
 
 .work-container {
+  padding-top: 15vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding-bottom: 5vh;
+  min-height: 100vh;
 }
+
+#frizFactory {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-height: 100vh;
+}
+
+#frizFactory .work-container {
+  padding-top: 15vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 5vh;
+}
+
+
 
 .work-slider-container {
   box-sizing: border-box;
@@ -462,6 +485,10 @@ section {
   object-fit: cover;
 }
 
+.slider-image {
+  margin-left: -160px;
+}
+
 .work-brand-logo-container {
   /*padding: 1rem 0 2rem 0;*/
   background: black;
@@ -472,6 +499,8 @@ section {
   margin: 1rem;
   margin-right: 3rem;
 }
+
+
 
 .work-slider-stepper {
 
@@ -506,8 +535,28 @@ section {
   padding: 2rem;
 }
 
+.work-content-text-container {
+  display: inline-flex;
+  justify-content: center;
+  padding: 2rem;
+  background: none;
+}
+
 .work-text {
   font-size: 20pt;
+}
+
+.work-content {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.frizbox-image {
+  max-width: 280px;
 }
 
 /** SKILL SECTION **/

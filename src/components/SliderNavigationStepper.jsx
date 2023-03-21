@@ -15,7 +15,7 @@ import OfflineBoltSharpIcon from '@mui/icons-material/OfflineBoltSharp';
 
 const sxStyles = {
     stepperContainer: {
-        position: 'absolute',
+        position: 'fixed',
         top: '0',
         right: '1rem',
         height: '100%',
@@ -52,8 +52,7 @@ const SliderNavigationStepper = (props) => {
     const [activeStep, setActiveStep]   = React.useState(0);
     const [completed, setCompleted]     = React.useState({});
 
-    const {element, steps}      = props;
-    const sliderWrapperImage    = element + ' img';
+    const {steps}      = props;
 
     const totalSteps = () => {
         return steps.length;
@@ -73,7 +72,7 @@ const SliderNavigationStepper = (props) => {
 
     const handleStep = (step, target) => () => {
         setActiveStep(step);
-        /*document.querySelector('#'+target).scrollIntoView({behavior: "smooth"});*/
+        document.querySelector('#'+target).scrollIntoView({behavior: "smooth"});
     };
 
     const handleNext = () => {
@@ -84,17 +83,14 @@ const SliderNavigationStepper = (props) => {
                 steps.findIndex((step, i) => !(i in completed))
                 : activeStep + 1;
         setActiveStep(newActiveStep);
-        console.log("-> test", document.querySelector('.slider-image'));
-        document.querySelector('#slider-image').src = steps[newActiveStep].target;
+        document.querySelector('#'+steps[newActiveStep].target).scrollIntoView({behavior: "smooth"});
     };
 
     const handleBack = () => {
         const newActiveStep = activeStep === 0 ? 0 : activeStep-1;
         setActiveStep(newActiveStep);
-        console.log("-> test", document.querySelector('.work-slider-wrapper img'));
-        document.querySelector('#slider-image').src = steps[newActiveStep].target;
+        document.querySelector('#'+steps[newActiveStep].target).scrollIntoView({behavior: "smooth"});
     };
-
 
     return (
         <Box sx={sxStyles.stepperContainer}>
