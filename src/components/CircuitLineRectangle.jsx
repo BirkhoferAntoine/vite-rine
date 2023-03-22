@@ -24,6 +24,7 @@ const CircuitLineRectangle = (props) => {
         middleContainer: {
             flexDirection: 'row',
             justifyContent: 'space-between',
+            width: '100%',
         }
     }
 

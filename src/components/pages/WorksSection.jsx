@@ -1,10 +1,14 @@
 import React from 'react';
 import {Box, Container, Paper, Typography} from "@mui/material";
 import SliderNavigationStepper from "../SliderNavigationStepper.jsx";
-import CircuitLineRectangle from "../CircuitLineRectangle.jsx";
 import SliderDemo from "../SliderDemo.jsx";
+import SwiperDemo from "../SwiperDemo.jsx";
 
 const WorksSection = () => {
+
+    const sxStyles = {
+
+    };
 
     const sliderSteps           = [
         {label: 'Frizlive', target: 'frizlive'},
@@ -70,31 +74,11 @@ const WorksSection = () => {
 
             <Container id={'friz-factory'} className={'work-container'}>
 
-                <Box className={'bg-design-container-center'}>
+                {/*<Box className={'bg-design-container-center'}>
                     <CircuitLineRectangle height={'66vh'} width={'66vw'} rotate={'0deg'}></CircuitLineRectangle>
-                </Box>
+                </Box>*/}
 
-                <Box sx={{width: '200vw', display:'flex', flexDirection:'row', justifyContent:'space-around'}} className={'bg-design-container-center'}>
-                    <Box className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
-                        <Box className={'work-slider'}>
-                            <Box className={'work-slider-wrapper filter-blur'}>
-
-                            </Box>
-                        </Box>
-                    </Box><Box className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
-                        <Box className={'work-slider'}>
-                            <Box className={'work-slider-wrapper filter-blur'}>
-
-                            </Box>
-                        </Box>
-                    </Box><Box className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
-                        <Box className={'work-slider'}>
-                            <Box className={'work-slider-wrapper filter-blur'}>
-
-                            </Box>
-                        </Box>
-                    </Box>
-                </Box>
+                <SwiperDemo/>
 
 
             </Container>

@@ -83,7 +83,7 @@ const HeroSection = () => {
                     <Typography sx={sxStyles.typoPower} className={'text-outline-red text-shadow'}>POWER</Typography>
                     <Typography sx={sxStyles.typoUp} className={'text-outline-dark text-shadow'}>UP</Typography>
                 </Box>
-                <Link sx={sxStyles.callToActionBtn} className={'box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
+                <Link className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
                     <Typography sx={{fontSize: '20pt', fontWeight: 'bold',}}>Contact me</Typography>
                 </Link>
             </Container>
