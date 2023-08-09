@@ -87,9 +87,9 @@ export const Navigation = () => {
                     <IconButton onClick={toggleDrawer} sx={sxStyles.menuIcon} edge={'start'}><MenuIcon/></IconButton>
                     <StyledLink to={'/'} width={'100%'}>
                         <Box className={'logo-container'}>
-                            {/*<Box className={'logo-image-box'}>
-                                <img src={'src/assets/image.png'} />
-                            </Box>*/}
+                            <Box className={'logo-image-box'}>
+                                <img src={'src/assets/abrkah_transparent_background_with_a_beautifull_logo_for_a_webs_13f86818-dc0e-4d82-8029-ea22dbcfe68f.png'} />
+                            </Box>
                             <Box className={'logo-title-box logo'}>
                                 <Typography sx={sxStyles.textName} variant={'h5'} color={'textPrimary'}>
                                     Antoine Birkhofer

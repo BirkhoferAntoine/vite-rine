@@ -1,13 +1,12 @@
 import * as THREE from 'three';
 import { useRef, useState, useMemo, useEffect } from 'react';
 import {Canvas, useFrame} from '@react-three/fiber';
-import {Sphere, Text, Torus, TrackballControls, Svg, OrbitControls} from '@react-three/drei';
+import {Text, TrackballControls, OrbitControls} from '@react-three/drei'; //  Sphere, Torus,
 
 const jost = 'src/assets/jost-all-500-normal.woff';
 const beth = 'src/assets/beth-ellen-latin-400-normal.woff';
-const reactIcon = 'src/assets/devicons-master/!SVG/react.svg';
 
-const skillList = [
+const skillList2 = [
     'React',
     'Symfony',
     'JavaScript',
@@ -24,6 +23,23 @@ const skillList = [
     'FFmpeg',
     'PHPStorm',
     'Git',
+    'MySQL',
+    'PostGreSQL'
+];
+
+
+const skillList = [
+    'JavaScript',
+    'Php',
+    'Tools',
+    'Database',
+    'Frameworks',
+    'HTML',
+    'CSS',
+    'Operating Systems',
+    'Design',
+    '3D',
+    'Audio/Video',
 ];
 
 const svgList = [
@@ -45,7 +61,7 @@ const svgList = [
     'src/assets/icons/next-js-seeklogo.com.svg',
 ];
 
-const closestCount = Math.ceil(Math.sqrt(svgList.length));
+const closestCount = Math.ceil(Math.sqrt(skillList.length));
 
 const randomWord = () => {
     return skillList[Math.floor(Math.random() * skillList.length)];
@@ -123,10 +139,10 @@ const Cloud = ({ count = 4, radius = 20 }) => {
 
         for (let i = 1; i < count + 1; i++)
             for (let j = 0; j < count; j++) {
-                if (svgList[skillIndex]) {
+                if (skillList[skillIndex]) {
                     temp.push([
                         new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)),
-                        svgList[skillIndex]
+                        skillList[skillIndex]
                     ]);
                     skillIndex++;
                 }
@@ -134,8 +150,8 @@ const Cloud = ({ count = 4, radius = 20 }) => {
 
         return temp
     }, [count, radius]);
-    return words.map(([pos, word], index) => <SvgIcon key={'svg-'+index} position={pos} src={word}/>)
-    //return words.map(([pos, word], index) => <Word key={index} position={pos} children={word} />)
+    //return words.map(([pos, word], index) => <SvgIcon key={'svg-'+index} position={pos} src={word}/>)
+    return words.map(([pos, word], index) => <Word key={index} position={pos} children={word} />)
 }
 
 /*
@@ -152,7 +168,7 @@ function Sphere({ radius = 1.5 }) {
 export default function OrbTextTwo() {
     return (
         <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }}>
-            <Cloud count={closestCount} radius={32} />
+            <Cloud count={closestCount} radius={16} />
             <TrackballControls />
         </Canvas>
     )

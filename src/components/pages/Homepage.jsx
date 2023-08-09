@@ -1,13 +1,7 @@
 import React, {Component} from "react";
-import {GsapTrainingComponent} from "../GsapTrainingComponent.jsx";
-import {Box, Button, Card, Container, Link, Paper, Typography} from "@mui/material";
+/*import {GsapTrainingComponent} from "../GsapTrainingComponent.jsx";*/
+import {Box} from "@mui/material";
 import CircuitLine from "../CircuitLine.jsx";
-import CircuitLineLosange from "../CircuitLineLosange.jsx";
-/*import OrbText from "./OrbText.jsx";
-import OrbTextTwo from "./OrbTextTwo.jsx";*/
-import CallToActionButton from "../CallToActionButton.jsx";
-import CircuitLineRectangle from "../CircuitLineRectangle.jsx";
-import SliderNavigationStepper from "../SliderNavigationStepper.jsx";
 import HeroSection from "./HeroSection.jsx";
 import AboutSection from "./AboutSection.jsx";
 import WorksSection from "./WorksSection.jsx";
@@ -26,7 +20,7 @@ export class Homepage extends Component {
             <>
                 <HeroSection/>
                 <Box className={'bg-design-container-center'}>
-                    <CircuitLine width={'96vh'} rotate={'90deg'} top={'27vh'} circleTip/>
+                    <CircuitLine width={'92vh'} rotate={'90deg'} top={'22vh'} circleTip/>
                 </Box>
 
                 <Box className={'section-separator backdrop-filter-blur'}></Box>
@@ -35,7 +29,7 @@ export class Homepage extends Component {
 
                 <Box className={'section-separator'}></Box>
 
-                <WorksSection/>
+                {/*<WorksSection/>*/}
 
                 <Box className={'bg-design-container-center'}>
                     <CircuitLine width={'75vh'} rotate={'90deg'} top={'35vh'} circleTip/>
@@ -50,6 +44,9 @@ export class Homepage extends Component {
                 <Box className={'section-separator'}></Box>
 
                 <ContactSection/>
+                <Box className={'section-separator'}></Box>
+
+                {/*<GsapTrainingComponent/>*/}
             </>
         );
     }

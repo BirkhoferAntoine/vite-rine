@@ -119,7 +119,7 @@ export const GsapTrainingComponent = () => {
             }).to(window,
             {
                 duration: 0.5,
-                scrollTo: '.gsapTrainingSection',
+                //scrollTo: '.gsapTrainingSection',
             }).to('.slidingSquare',
             {
                 backgroundColor: '#002',
