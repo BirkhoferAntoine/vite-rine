@@ -170,11 +170,11 @@ export const filterShadowAnimation = (element) => {
         element,
         {
             filter: 'drop-shadow(0 0 6px var(--color-primary))',
-            scale: 1,
+            //scale: 1,
         },
         {
             filter: 'drop-shadow(0 0 6rem var(--color-primary))',
-            scale: 1, //3
+            //scale: 1, //3
             ease: 'expo-out',
             duration: 4,
             yoyo: true,

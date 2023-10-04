@@ -109,6 +109,7 @@ export const Navigation = () => {
                 </Toolbar>
                 <Drawer anchor={'left'} variant={'temporary'}
                         onClose={toggleDrawer} onClick={toggleDrawer} open={drawerOpen}>
+                    <Stepper/>
                     <List sx={sxStyles.drawerList}>
                         {drawerItems.map(prop => (
                             <StyledLink to={prop.link} key={prop.text+'Link'}>
@@ -121,7 +122,7 @@ export const Navigation = () => {
                     </List>
                 </Drawer>
             </AppBar>
-            <Stepper/>
+
         </>
     );
 }

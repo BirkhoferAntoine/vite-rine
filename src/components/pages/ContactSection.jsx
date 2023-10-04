@@ -68,6 +68,9 @@ const ContactSection = () => {
 
                         </Box>
                         <Box class={'contact-mobile-body'}>
+                            <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
+                                Find more about my projects
+                            </Typography>
                             <Button>
                                 <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
                                     Contact me and PowerUp your business

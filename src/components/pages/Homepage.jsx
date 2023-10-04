@@ -27,14 +27,14 @@ export class Homepage extends Component {
 
                 <AboutSection/>
 
-                <Box className={'section-separator'}></Box>
+                {/*<Box className={'section-separator'}></Box>
 
-                {/*<WorksSection/>*/}
+                <WorksSection/>
 
                 <Box className={'bg-design-container-center'}>
                     <CircuitLine width={'75vh'} rotate={'90deg'} top={'35vh'} circleTip/>
-                </Box>
-                <Box className={'section-separator'}></Box>
+                </Box>*/}
+                <Box className={'section-separator backdrop-filter-blur'}></Box>
 
                 <SkillsSection/>
 

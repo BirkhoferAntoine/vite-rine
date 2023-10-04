@@ -20,7 +20,7 @@ const AboutSection = () => {
 
     const text = [
         'Hi, my name is Antoine I am a creative Web Developer',
-        'I like to help companies reach new heights in interactive and dynamic fields',
+        'I help companies reach new heights in interactive and dynamic fields',
         'I can help build a solid back-end as well',
         'Feel free to contact me for any propositions',
     ];
@@ -64,6 +64,14 @@ const AboutSection = () => {
     }, []);
 
     useEffect(() => {
+        slightFlyingMovementAnimation('.floating', 2);
+    }, []);
+
+    useEffect(() => {
+        filterShadowAnimation('.circuit-line-losange-container');
+    }, []);
+
+    useEffect(() => {
         paperFadeIn(bgPaperRef.current, textBoxRef.current);
     }, []);
 
@@ -80,11 +88,11 @@ const AboutSection = () => {
             toggleActions: 'play pause resume restart',//'pause',
             onEnter:        () => {
                 startInterval();
-                anim = slightFlyingMovementAnimation('.floating', 2);
+                //anim = slightFlyingMovementAnimation('.floating', 2); filterShadowAnimation('.circuit-line-losange-container');
                 /*scaleAnimation(smallBoxRef.current, 2);*/
-                filterShadowAnimation('.circuit-line-losange-container');
+
             },
-            onEnterBack:    () => {
+            /*onEnterBack:    () => {
                 startInterval();
                 anim = slightFlyingMovementAnimation('.floating', 2);
             },
@@ -92,7 +100,7 @@ const AboutSection = () => {
                 setAboutTextIndex(0);
                 stopInterval();
                 anim.kill();
-            },
+            },*/
         });
 
         return () => {
