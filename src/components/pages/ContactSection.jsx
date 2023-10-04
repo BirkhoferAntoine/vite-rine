@@ -1,5 +1,5 @@
 import React, {useRef, useEffect} from 'react';
-import {Button, Card, Container, Paper, Typography} from "@mui/material";
+import {Box, Button, Card, Container, Paper, Typography} from "@mui/material";
 import CircuitLineLosange from "../CircuitLineLosange.jsx";
 import {hide, scaleAnimation, slideAnimation} from "../GSAPFunctions.jsx";
 import gsap from 'gsap';
@@ -19,13 +19,22 @@ const ContactSection = () => {
         },
         contactTypo: {
             color: 'var(--color-primary)',
-            fontFamily: 'Beth Ellen',
-            fontSize: '2rem',
+            //fontFamily: 'Beth Ellen',
+            fontSize: '1rem',
             lineHeight: 1,
             fontWeight: '400',
 
-            WebkitTextStrokeWidth: '2px',
-            WebkitTextStrokeColor: 'var(--bg-color-default)',
+            //WebkitTextStrokeWidth: '2px',
+            //WebkitTextStrokeColor: 'var(--bg-color-default)',
+        },
+        mobileNav: {
+
+        },
+        mobileBody: {
+
+        },
+        mobileFooter: {
+
         },
     };
 
@@ -51,15 +60,27 @@ const ContactSection = () => {
     return (
         <section id={'contact-section'}>
             {/*<Typography variant={'h1'}>Contact</Typography>*/}
-            <Container sx={{position:'relative', zIndex: 9999999}} className={'contact-container'}>
+            <Container sx={{position:'relative'}} className={'contact-container'}>
 
                 <Paper className={'contact-paper'}>
                     <Card className={'contact-box'}>
-                        <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
-                            Contact me
-                        </Typography>
-                        <CircuitLineLosange ref={losangeRef} addClassName={'floating'} width={'55vh'} rotate={'45deg'} maxPad={'42px'} maxBorder={'24px'}/>
-                        <Button sx={sxStyles.contactRedBtn} variant={'contained'} className={'contact-btn'} color={'warning'}></Button>
+                        <Box class={'contact-mobile-nav'}>
+
+                        </Box>
+                        <Box class={'contact-mobile-body'}>
+                            <Button>
+                                <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
+                                    Contact me and PowerUp your business
+                                </Typography>
+                            </Button>
+                        </Box>
+                        <Box class={'contact-mobile-footer'}>
+
+                        </Box>
+
+
+                        {/*<CircuitLineLosange ref={losangeRef} addClassName={'floating'} width={'55vh'} rotate={'45deg'} maxPad={'42px'} maxBorder={'24px'}/>
+                        <Button sx={sxStyles.contactRedBtn} variant={'contained'} className={'contact-btn'} color={'warning'}></Button>*/}
                     </Card>
                 </Paper>
             </Container>

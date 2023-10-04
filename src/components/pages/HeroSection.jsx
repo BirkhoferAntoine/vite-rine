@@ -9,7 +9,8 @@ const HeroSection = () => {
         callToActionBtn: {
             position: 'relative',
             zIndex: 9999,
-            background: 'linear-gradient(45deg,  var(--color-secondary) 30%,var(--color-primary) 90%)',
+            background: 'linear-gradient(var(--color-secondary) 30%,var(--color-primary) 90%)',
+            //background: 'linear-gradient(45deg,  var(--color-secondary) 30%,var(--color-primary) 90%)',
             borderRadius: 5,
             /*border: '2px solid var(--color-primary)',*/
             color: 'white',//'#FCD81C',
@@ -116,7 +117,7 @@ const HeroSection = () => {
                 ease: 'none',
             },
 
-        ).fromTo(callToActionRef.current,
+        )/*.fromTo(callToActionRef.current,
             {
                 scrollTrigger: {
                     trigger: '#hero-section',
@@ -130,7 +131,7 @@ const HeroSection = () => {
                 filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
                 ease: 'back',
                 duration: 2,
-                /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
+                /!*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*!/
             },
             {
                 scrollTrigger: {
@@ -144,13 +145,13 @@ const HeroSection = () => {
                 opacity: 1,
                 filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
                 ease: 'back',
-                /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
+                /!*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*!/
                 delay: 0.3,
                 duration: 2,
                 yoyo: true,
                 repeat: -1,
             },
-        )/*.fromTo(callToActionRef.current,
+        )*//*.fromTo(callToActionRef.current,
             {
                 filter: "drop-shadow(0 0 160px var(--color-primary)) drop-shadow(0 0 20px var(--color-secondary)) ",
                 ease: 'none',
@@ -185,7 +186,7 @@ const HeroSection = () => {
                     <Typography ref={typoUpRef} sx={sxStyles.typoUp} className={'text-outline-dark text-shadow animated-typo-4 '}>UP</Typography>
                 </Box>
                 <Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
-                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Contact me</Typography>
+                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
                 </Link>
             </Container>
 

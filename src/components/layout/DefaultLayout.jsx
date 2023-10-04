@@ -14,7 +14,7 @@ export const DefaultLayout = () => {
             <Navigation/>
             <Offset/>
             {/*<LightbulbLayout/>*/}
-            <HighlightGeometry/>
+            {/*<HighlightGeometry/>*/}
             <main>
                 <Outlet/>
             </main>

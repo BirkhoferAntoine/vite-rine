@@ -19,7 +19,7 @@ gsap.registerPlugin(ScrollTrigger);
 const AboutSection = () => {
 
     const text = [
-        'Hi, my name is Antoine i am a creative Web Developer',
+        'Hi, my name is Antoine I am a creative Web Developer',
         'I like to help companies reach new heights in interactive and dynamic fields',
         'I can help build a solid back-end as well',
         'Feel free to contact me for any propositions',
@@ -122,8 +122,8 @@ const AboutSection = () => {
                 <Box ref={picBoxRef} mt={1} className={'about-picture-box floating shadow-highlight backdrop-filter-blur'}>
                     <img className={'filter-highlight'} src={'src/assets/profil-noBg.png'} />
                     <Box className={'about-picture-box-highlight about-picture-box-highlight-losange filter-highlight shadow-highlight'}></Box>
-                    <Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle filter-highlight shadow-highlight'}></Box>
-                    <Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle2 filter-highlight shadow-highlight'}></Box>
+                    {/*<Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle filter-highlight shadow-highlight'}></Box>*/}
+                    {/*<Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle2 filter-highlight shadow-highlight'}></Box>*/}
                 </Box>
                 <Box ref={textBoxRef} className={'about-text-container floating text-container shadow-highlight'}>
                     <Typography ref={textRef} sx={{fontSize:'1.8rem'}} className={'about-text typography-highlight'}>
