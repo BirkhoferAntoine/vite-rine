@@ -118,10 +118,10 @@ const AboutSection = () => {
 
 
     return (
-        <section id={'about-section'}>
+        <section id={'about-section'} className={'about-perspective'}>
             {/*<Typography variant={'h1'}>About me</Typography>*/}
             <Paper ref={bgPaperRef} className={'bg-design-container-center'}>
-                <CircuitLineLosange ref={losangeRef} addClassName={'floating'} width={'55vh'} rotate={'45deg'} maxPad={'42px'} maxBorder={'24px'}>
+                <CircuitLineLosange ref={losangeRef} addClassName={'floating about-background-losange'} width={'55vh'} maxPad={'42px'} maxBorder={'24px'} >
                     {/*<CircuitLineLosange ref={smallBoxRef} width={'55vh'} rotate={'45deg'} maxPad={'2px'} maxBorder={'2px'}/>*/}
                 </CircuitLineLosange>
             </Paper>

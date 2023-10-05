@@ -9,8 +9,8 @@ const CircuitLineLosange = forwardRef((props, ref) => {
 
     const sxStyles = {
         container: {
-            transform: {xs: `scale(0.6) rotate(${rotate})`, md: `scale(0.7) rotate(${rotate})`, lg: `scale(1) rotate(${rotate})`},
-            //rotate,
+            //transform: {xs: `scale(0.6) rotate(${rotate})`, md: `scale(0.7) rotate(${rotate})`, lg: `scale(1) rotate(${rotate})`},
+            rotate,
             top,
             left,
             padding: maxPad,
