@@ -64,10 +64,10 @@ const ContactSection = () => {
 
                 <Paper className={'contact-paper'}>
                     <Card className={'contact-box'}>
-                        <Box class={'contact-mobile-nav'}>
+                        <Box className={'contact-mobile-nav'}>
 
                         </Box>
-                        <Box class={'contact-mobile-body'}>
+                        <Box className={'contact-mobile-body'}>
                             <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
                                 Find more about my projects
                             </Typography>
@@ -77,7 +77,7 @@ const ContactSection = () => {
                                 </Typography>
                             </Button>
                         </Box>
-                        <Box class={'contact-mobile-footer'}>
+                        <Box className={'contact-mobile-footer'}>
 
                         </Box>
 

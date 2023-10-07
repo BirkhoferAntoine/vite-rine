@@ -36,6 +36,12 @@ const HeroSection = () => {
             alignItems: 'center',
             filter: 'drop-shadow(0px 0px 15px var(--color-primary)',
         },
+        powerUpBox : {
+            display: "flex",
+            justifyContent: 'center',
+            flexDirection: {xs: 'column', md: 'row'},
+            alignItems: {xs: 'center', md: 'flex-end'},
+        },
         typoDesign: {
             color: '#EBEAE3',
             fontFamily: 'Julius Sans One',
@@ -60,7 +66,7 @@ const HeroSection = () => {
         typoPower: {
             color: '#DDDDDD',
             fontFamily: 'Ibarra Real Nova',
-            fontSize: '6em',
+            fontSize: {xs: '5em', md: '6em'},
             lineHeight: 1,
             fontWeight: '600',
 
@@ -180,7 +186,7 @@ const HeroSection = () => {
 
                 <FastEffectString delay={1000} text={'Design'} extraClass={'animated-typo-1 animated-typo'} sxStyles={sxStyles.typoDesign}/>
                 <FastEffectString delay={2000} text={'Develop'} extraClass={'animated-typo-2 animated-typo'} sxStyles={sxStyles.typoDevelop}/>
-                <Box className={'power-up-box'} mb={9} sx={{display:"flex", justifyContent:'center', flexDirection:'row', alignItems:'flex-end'}}>
+                <Box className={'power-up-box'} mb={9} sx={sxStyles.powerUpBox}>
                     <FastEffectString delay={2700} text={'POWER'} extraClass={'animated-typo-3 animated-typo'} duration={300} sxStyles={sxStyles.typoPower}/>
                     {/*<FastEffectString delay={3300} text={'UP'} extraClass={'animated-typo-4 animated-typo'} duration={100} sxStyles={sxStyles.typoUp}/>*/}
                     <Typography ref={typoUpRef} sx={sxStyles.typoUp} className={'text-outline-dark text-shadow animated-typo-4 '}>UP</Typography>

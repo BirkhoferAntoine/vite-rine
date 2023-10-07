@@ -11,7 +11,7 @@ const SocialMediaBox = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: theme.spacing(2),
+            /*padding: theme.spacing(2),*/
             borderRadius: theme.spacing(2),
             maxWidth: '400px',
             margin: '0 auto',

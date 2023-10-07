@@ -27,7 +27,7 @@ export const Navigation = () => {
     const theme = useTheme();
     const sxStyles = {
         menuIcon: {
-            marginRight: 2,
+            marginRight: {xs:1, md:2},
         },
         drawerList: {
             width: '200px',
@@ -48,9 +48,10 @@ export const Navigation = () => {
             backgroundColor: 'transparent',
         },
         textName: {
-            fontFamily: 'Beth Ellen',
+            fontFamily: 'Ibarra real novel',
             fontSize: '2.3em',
             filter: 'drop-shadow(0px 0px 15px #FCD81C)',
+            marginBottom: '-0.5em',
         },
         textJob: {
             fontFamily: 'Jost',
@@ -85,8 +86,8 @@ export const Navigation = () => {
             <AppBar position={'fixed'} sx={sxStyles.header}>
                 <Toolbar sx={sxStyles.toolbar}>
                     <IconButton onClick={toggleDrawer} sx={sxStyles.menuIcon} edge={'start'}><MenuIcon/></IconButton>
-                    <StyledLink to={'/'} width={'100%'}>
-                        <Box className={'logo-container'}>
+                    <Box sx={{width: '100%', maxWidth: '100vw', display: 'flex', flexDirection: {xs: 'column', md: 'row'}, alignItems: 'center', position: {xs:'fixed', md:'relative'}, ml:{xs:-1, lg:0}}} >
+                        <Box className={'logo-container'} sx={{mt:{xs:4, md:0}}}>
                             <Box className={'logo-image-box'}>
                                 <img src={'src/assets/abrkah_transparent_background_with_a_beautifull_logo_for_a_webs_13f86818-dc0e-4d82-8029-ea22dbcfe68f.png'} />
                             </Box>
@@ -99,13 +100,16 @@ export const Navigation = () => {
                                 </Typography>
                             </Box>
                         </Box>
-                    </StyledLink>
-                    <Box flexGrow={1} />
-                    <SocialMediaBox/>
-                    <Box sx={{ml: '4em', mr:'4em', display:'flex', flexDirection:'row', width:'60px', alignItems:'center', justifyContent:'space-between'}}>
-                        <LocationOnSharpIcon/>
-                        <Typography className={'text-outline-yellow filter-highlight'}>Paris</Typography>
+                        <Box flexGrow={1} sx={{display: {xs: 'none', md: 'block'}}}  />
+                        <SocialMediaBox/>
+                        <Box sx={{ml: '4em', mr:'4em', display: {xs:'none', md:'flex'}, flexDirection:'row', width:'60px', alignItems:'center', justifyContent:'space-between'}}>
+                            <LocationOnSharpIcon/>
+                            <Typography className={'text-outline-yellow filter-highlight'}>Paris</Typography>
+                        </Box>
                     </Box>
+
+
+
                 </Toolbar>
                 <Drawer anchor={'left'} variant={'temporary'}
                         onClose={toggleDrawer} onClick={toggleDrawer} open={drawerOpen}>

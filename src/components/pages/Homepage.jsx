@@ -27,6 +27,11 @@ export class Homepage extends Component {
 
                 <AboutSection/>
 
+                <Box className={'bg-design-container-center'}>
+                    <CircuitLine width={'110vh'} rotate={'90deg'} top={'15vh'} circleTip/>
+                </Box>
+                <Box className={'section-separator backdrop-filter-blur'}></Box>
+
                 {/*<Box className={'section-separator'}></Box>
 
                 <WorksSection/>
@@ -34,7 +39,6 @@ export class Homepage extends Component {
                 <Box className={'bg-design-container-center'}>
                     <CircuitLine width={'75vh'} rotate={'90deg'} top={'35vh'} circleTip/>
                 </Box>*/}
-                <Box className={'section-separator backdrop-filter-blur'}></Box>
 
                 <SkillsSection/>
 

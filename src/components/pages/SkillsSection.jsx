@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Box, Container, Paper, Typography} from "@mui/material";
 import OrbTextThree from "../OrbTextThree.jsx";
-import {alternateTextAnimation, filterShadowAnimation} from "../GSAPFunctions.jsx";
+import {alternateTextAnimation, filterShadowAnimation, paperFadeIn} from "../GSAPFunctions.jsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -9,6 +9,97 @@ gsap.registerPlugin(ScrollTrigger);
 const text = [
     'Click on each of my skills to learn more'
 ];
+
+const skillListObject = {
+    'Front-End': [
+        'JavaScript ES6+ Syntax',
+        'Dynamic animations with GSAP',
+        '3D with Three.js',
+        'Augmented reality with AR.js',
+        'Handmade sliders and swipers',
+        'Interactivity with canvas and fiber.js',
+        'Asynchronous (fetch/axios & promises) handling',
+        'Dynamic data and error handling',
+        'Custom Maps with leaflet or mapbox',
+        'DOM manipulations',
+        'Object Oriented Programming',
+        'JQuery',
+    ],
+    'React': [
+        'Implementation within a Symfony or Laravel application',
+        'Next.js framework',
+        'Hooks and custom hooks',
+        'Material Design UI & react @mui/material',
+        'Theme handling',
+        'Context',
+        'Custom Form validation and filtering',
+        '3D with react-three-fiber',
+    ],
+    'Back-End': [
+        'Images and multimedia handling',
+        'Security and validation',
+        'Custom form validations and filtering',
+        'Object Oriented Programming',
+        'MVC structure',
+        'Secure User handling',
+        'PHP 8 or Node.js',
+        'PHP Framework: Symfony',
+        'MERN Stack',
+    ],
+    'Tools': [
+        'Docker',
+        'Git',
+        'PHPStorm & WebStorm',
+        'Jira',
+        'Toggl Track',
+        'Redmine Ticketing system',
+        'Notion',
+        'Moon Modeler',
+        'Postman',
+    ],
+    'Database': [
+        'MySQL',
+        'PostgreSQL',
+        'PDO',
+        'MangoDB',
+    ],
+    'Frameworks': [
+        'React.js',
+        'Next.js',
+        'Symfony',
+        'Material Design UI & react @mui/material',
+    ],
+    'Operating Systems': [
+        'Windows',
+        'Linux',
+        'MacOSX',
+    ],
+    'Design': [
+        'Figma',
+        'Photoshop',
+        'AdobeXD',
+        'Krita',
+    ],
+    'Multimedia': [
+        'Audio Recording/Mixing/PostProduction with Cubase or Presonus Studio One',
+        'Sound Design with Omnisphere',
+        'Dynamic rendering of Audio/Video files from the server with FFMPEG',
+    ],
+    'CSS': [
+        'Flexbox',
+        'Display and Positions',
+        'Transforms',
+        'MediaQueries',
+        'Responsive Design',
+        'Shapes',
+        'Animations',
+    ],
+    'HTML': [
+        'Semantic tags and best practices',
+        'Form validations',
+        'Accessibility and SEO basics'
+    ],
+};
 
 const skillList = [
     'JavaScript',
@@ -115,6 +206,11 @@ const SkillsSection = () => {
     const [aboutText, setAboutText]             = useState(text[aboutTextIndex]);
     const textBoxRef    = useRef(null);
     const textRef       = useRef(null);
+    const bgPaperRef    = useRef(null);
+
+    const handleOrbTextClick = (word) => {
+        setAboutText(skillListObject[word])
+    }
 
     useEffect(() => {
         alternateTextAnimation(textRef.current);
@@ -148,14 +244,18 @@ const SkillsSection = () => {
     }, []);
 
 
+    useEffect(() => {
+        paperFadeIn(bgPaperRef.current, bgPaperRef.current);
+    }, []);
+
     return (
         <section id={'skill-section'}>
             {/*<Typography variant={'h1'}>Skills</Typography>*/}
-            <Paper className={'bg-design-container-center'} sx={{width: '100%', height:'70vh', display: 'flex', justifyContent:'center', alignItems:'center'}}>
+            <Paper ref={bgPaperRef} className={'bg-design-container-center'} sx={{width: '100%', height:'70vh', display: 'flex', justifyContent:'center', alignItems:'center'}}>
                     <Paper elevation={1} className={'paper-circle shadow-highlight'}>
                         <Box className={'inner-circle shadow-highlight'}></Box>
                     </Paper>
-                <OrbTextThree/>
+                <OrbTextThree skillList={Object.keys(skillListObject)} handleOrbTextClick={handleOrbTextClick}/>
             </Paper>
             <Container className={'about-container'} sx={{justifyContent: 'flex-end'}}>
                 <Box ref={textBoxRef} className={'about-text-container floating text-container shadow-highlight'}>

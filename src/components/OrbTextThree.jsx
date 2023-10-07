@@ -3,8 +3,85 @@ import { useRef, useState, useMemo, useEffect } from 'react';
 import {Canvas, useFrame} from '@react-three/fiber';
 import {Text, TrackballControls, OrbitControls} from '@react-three/drei'; //  Sphere, Torus,
 
+
 const jost = 'src/assets/jost-all-500-normal.woff';
 const beth = 'src/assets/beth-ellen-latin-400-normal.woff';
+
+const skillListObject = {
+    'Front-End': [
+        'JavaScript ES6+',
+        'React.JS',
+        'GSAP Animations',
+        'Three.JS',
+        'AR.JS',
+        'Fabric.JS',
+        'JQuery',
+        'Context',
+        'MaterialUI @ React',
+        'HTML',
+        'CSS',
+        'SCSS',
+    ],
+    'Back-End': [
+        'PHP8',
+        'Symfony',
+        'POO/OOP',
+        'MERN Stack',
+        'Node.js',
+    ],
+    'Tools': [
+        'PHPStorm',
+        'Jira',
+        'Notion',
+        'Toggl Track',
+        'GIT',
+        'Moon Modeler',
+        'Postman',
+    ],
+    'Database': [
+        'MySQL',
+        'PostgreSQL',
+        'PDO',
+        'MangoDB',
+    ],
+    'Frameworks': [
+        'Next.JS',
+        'Symfony',
+    ],
+    'Operating Systems': [
+        'Windows',
+        'Linux',
+        'MacOSX',
+    ],
+    'Design': [
+        'Figma',
+        'Photoshop',
+        'AdobeXD',
+        'Krita',
+    ],
+    'Multimedia': [
+        'Cubase / Nuendo',
+        'Presonus Studio one',
+        'Omnisphere',
+        'FFMPEG',
+    ],
+};
+
+const skillListArray = Object.keys(skillListObject);
+
+
+/*const skillList = [
+    'Front-End',
+    'Back-End',
+    'Tools',
+    'Database',
+    'Frameworks',
+    'HTML',
+    'CSS',
+    'OS',
+    'Design',
+    'Multimedia',
+];
 
 const skillList2 = [
     'React',
@@ -25,22 +102,9 @@ const skillList2 = [
     'Git',
     'MySQL',
     'PostGreSQL'
-];
+];*/
 
 
-const skillList = [
-    'JavaScript',
-    'Php',
-    'Tools',
-    'Database',
-    'Frameworks',
-    'HTML',
-    'CSS',
-    'Operating Systems',
-    'Design',
-    '3D',
-    'Audio/Video',
-];
 
 const svgList = [
     'src/assets/icons/react.svg',
@@ -60,12 +124,6 @@ const svgList = [
     'src/assets/icons/ffmpeg-seeklogo.com.svg',
     'src/assets/icons/next-js-seeklogo.com.svg',
 ];
-
-const closestCount = Math.ceil(Math.sqrt(skillList.length));
-
-const randomWord = () => {
-    return skillList[Math.floor(Math.random() * skillList.length)];
-}
 
 const SvgIcon = ({ src, children, ...props }) => {
     const ref = useRef();
@@ -101,7 +159,7 @@ const SvgIcon = ({ src, children, ...props }) => {
     }
 };
 
-const Word = ({ children, ...props }) => {
+const Word = ({ children, handleOrbTextClick, ...props }) => {
     const ref                           = useRef();
     const [hovered, setHovered]         = useState(false);
 
@@ -110,6 +168,13 @@ const Word = ({ children, ...props }) => {
 
     const over  = (e) => (e.stopPropagation(), setHovered(true));
     const out   = () => setHovered(false);
+
+    const handleWordClick = (e) => {
+        handleOrbTextClick(children)
+        console.log("=>(OrbTextThree.jsx:117) children", children);
+        console.log("=>(OrbTextThree.jsx:117) ref", ref);
+
+    }
 
     // Change the mouse cursor on hover
     useEffect(() => {
@@ -124,11 +189,13 @@ const Word = ({ children, ...props }) => {
         ref.current.material.color.lerp(color.set(hovered ? '#E53D00' : '#FCD81C'), 0.1);
     });
 
-    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => console.log('clicked')} {...props} {...fontProps} children={children} />
+    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={handleWordClick} {...props} {...fontProps} children={children} />
 }
 
-const Cloud = ({ count = 4, radius = 20 }) => {
+const Cloud = ({ count = 4, radius = 20, skillList, handleOrbTextClick}) => {
     // Create a count x count random words with spherical distribution
+
+    console.log("=>(OrbTextThree.jsx:204) skillList", skillList);
 
     let skillIndex = 0;
     const words = useMemo(() => {
@@ -151,7 +218,9 @@ const Cloud = ({ count = 4, radius = 20 }) => {
         return temp
     }, [count, radius]);
     //return words.map(([pos, word], index) => <SvgIcon key={'svg-'+index} position={pos} src={word}/>)
-    return words.map(([pos, word], index) => <Word key={index} position={pos} children={word} />)
+    return words.map(([pos, word], index) => {
+        return <Word key={'orb-word-'+index} position={pos} handleOrbTextClick={handleOrbTextClick} children={word}/>
+    })
 }
 
 /*
@@ -164,11 +233,19 @@ function Sphere({ radius = 1.5 }) {
     return null;
 }
 */
+export default function OrbTextThree(props) {
 
-export default function OrbTextTwo() {
+console.log("=>(OrbTextThree.jsx:242) props", props);
+    const closestCount = Math.ceil(Math.sqrt(props.skillList.length));
+
+    const randomWord = () => {
+        return skillListArray[Math.floor(Math.random() * props.skillList.length)];
+    }
+
+
     return (
         <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }}>
-            <Cloud count={closestCount} radius={16} />
+            <Cloud count={closestCount} radius={16} skillList={props.skillList} handleOrbTextClick={props.handleOrbTextClick}/>
             <TrackballControls />
         </Canvas>
     )

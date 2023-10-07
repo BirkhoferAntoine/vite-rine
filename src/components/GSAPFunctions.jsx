@@ -82,7 +82,7 @@ export const slideInFromWithReverseY = (element, trigger = element, direction = 
         toggleActions: 'play reverse restart restart',//'pause',
         onEnter:        () => { slideAnimation(element, x, y); },
         onEnterBack:    () => { slideAnimation(element, x, -y); },
-        onLeave:        () => { hide(element); },
+        /*onLeave:        () => { hide(element); },*/
     });
 }
 
