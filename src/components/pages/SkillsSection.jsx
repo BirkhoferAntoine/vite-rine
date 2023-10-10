@@ -93,6 +93,7 @@ const skillListObject = {
         'Responsive Design',
         'Shapes',
         'Animations',
+        'Grid',
     ],
     'HTML': [
         'Semantic tags and best practices',
@@ -209,13 +210,14 @@ const SkillsSection = () => {
     const bgPaperRef    = useRef(null);
 
     const handleOrbTextClick = (word) => {
-        setAboutText(skillListObject[word])
+        alternateTextAnimation(textRef.current);
+        setAboutText('- '+skillListObject[word].join('\n- '))
     }
 
     useEffect(() => {
         alternateTextAnimation(textRef.current);
         setAboutText(text[aboutTextIndex]);
-    }, [aboutTextIndex]);
+    }, []);
 
     useEffect(() => {
         const scrollTrigger = ScrollTrigger.create({
@@ -257,9 +259,9 @@ const SkillsSection = () => {
                     </Paper>
                 <OrbTextThree skillList={Object.keys(skillListObject)} handleOrbTextClick={handleOrbTextClick}/>
             </Paper>
-            <Container className={'about-container'} sx={{justifyContent: 'flex-end'}}>
+            <Container className={'about-container'} sx={{justifyContent: 'flex-end', maxWidth:{md: '90vw'}}}>
                 <Box ref={textBoxRef} className={'about-text-container floating text-container shadow-highlight'}>
-                    <Typography ref={textRef} sx={{fontSize:'1.8rem'}} className={'about-text typography-highlight'}>
+                    <Typography ref={textRef} sx={{fontSize:'1.8rem', whiteSpace: 'pre-wrap', width:'100%'}} className={'about-text typography-highlight'}>
                         {aboutText}
                     </Typography>
                 </Box>

@@ -123,7 +123,7 @@ const HeroSection = () => {
                 ease: 'none',
             },
 
-        )/*.fromTo(callToActionRef.current,
+        ).fromTo(callToActionRef.current,
             {
                 scrollTrigger: {
                     trigger: '#hero-section',
@@ -137,7 +137,7 @@ const HeroSection = () => {
                 filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
                 ease: 'back',
                 duration: 2,
-                /!*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*!/
+                /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
             },
             {
                 scrollTrigger: {
@@ -151,13 +151,13 @@ const HeroSection = () => {
                 opacity: 1,
                 filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
                 ease: 'back',
-                /!*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*!/
+                /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
                 delay: 0.3,
                 duration: 2,
                 yoyo: true,
                 repeat: -1,
             },
-        )*//*.fromTo(callToActionRef.current,
+        )/*.fromTo(callToActionRef.current,
             {
                 filter: "drop-shadow(0 0 160px var(--color-primary)) drop-shadow(0 0 20px var(--color-secondary)) ",
                 ease: 'none',
