@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { useRef, useState, useMemo, useEffect } from 'react';
+import { useRef, useState, useMemo, useEffect, forwardRef } from 'react';
 import {Canvas, useFrame} from '@react-three/fiber';
 import {Text, TrackballControls, OrbitControls} from '@react-three/drei'; //  Sphere, Torus,
 
@@ -233,7 +233,7 @@ function Sphere({ radius = 1.5 }) {
     return null;
 }
 */
-export default function OrbTextThree(props) {
+export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 
 console.log("=>(OrbTextThree.jsx:242) props", props);
     const closestCount = Math.ceil(Math.sqrt(props.skillList.length));
@@ -244,12 +244,12 @@ console.log("=>(OrbTextThree.jsx:242) props", props);
 
 
     return (
-        <Canvas dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }}>
+        <Canvas ref={ref} dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }}>
             <Cloud count={closestCount} radius={16} skillList={props.skillList} handleOrbTextClick={props.handleOrbTextClick}/>
             <TrackballControls />
         </Canvas>
     )
-}
+})
 
 /*
 *

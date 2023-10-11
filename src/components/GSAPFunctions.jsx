@@ -54,12 +54,12 @@ export const slideInFrom = (element, trigger = element, direction = 'left', dela
             autoAlpha: 1,
             x: 0,
             y: 0,
+            duration: duration || 1,
+            delay: delay || 1,
             scrollTrigger: {
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                duration: duration || 1,
-                delay: delay || 1,
                 markers: true,
                 toggleActions: 'play reverse restart reverse',//'pause',
             }
@@ -86,20 +86,19 @@ export const slideInFromWithReverseY = (element, trigger = element, direction = 
     });
 }
 
-export const alternateTextAnimation = (element) => {
+export const alternateTextAnimation = (element, delay = 0, duration = 1.5) => {
     gsap.fromTo(element,
         {
             opacity: 0,
         },
         {
             opacity: 1,
-            duration: 1.5,
+            duration: duration,
+            delay: delay,
             ease: 'slow',
         }
     );
 }
-
-
 export const fadeIn = (element, trigger = element, delay = 1, duration = 1) => {
 
     gsap.fromTo(
@@ -109,14 +108,15 @@ export const fadeIn = (element, trigger = element, delay = 1, duration = 1) => {
         },
         {
             opacity: 1,
+            duration: duration || 1,
+            delay: delay || 1,
+            ease: 'slow',
             scrollTrigger: {
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                duration: duration || 1,
-                delay: delay || 1,
                 markers: true,
-                toggleActions: 'play reverse restart reverse',//'pause',
+                toggleActions: 'play none none none',//'pause',
             },
         }
     );
@@ -215,12 +215,43 @@ export const paperFadeIn = (element, trigger = element, delay = 1, duration = 1)
             borderWidth: '1px 0px',
             borderColor: '#FCD81C',
             borderStyle: 'solid',
+            duration: duration || 1,
+            delay: delay || 1,
             scrollTrigger: {
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                duration: duration || 1,
-                delay: delay || 1,
+                markers: true,
+                toggleActions: 'play reverse restart reverse',//'pause',
+            },
+        }
+    );
+
+}
+
+export const paperBorderFadeIn = (element, trigger = element, delay = 1, duration = 1) => {
+
+    gsap.fromTo(
+        element,
+        {
+            background: 'none',
+            border: 'none',
+        },
+        {
+            backgroundColor: '#100E02',
+            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))',
+            /*border: '1px 0px 1px 0px solid #FCD81C',*/
+            borderWidth: '1px 0px',
+            borderColor: '#FCD81C',
+            borderStyle: 'solid',
+            borderRadius: '50%',
+            ease: 'expo-in',
+            duration: duration || 1,
+            delay: delay || 1,
+            scrollTrigger: {
+                trigger,
+                start: 'top center',
+                end: "bottom center",
                 markers: true,
                 toggleActions: 'play reverse restart reverse',//'pause',
             },

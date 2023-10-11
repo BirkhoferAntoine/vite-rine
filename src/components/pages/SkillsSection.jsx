@@ -1,14 +1,17 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {Box, Container, Paper, Typography} from "@mui/material";
-import OrbTextThree from "../OrbTextThree.jsx";
-import {alternateTextAnimation, filterShadowAnimation, paperFadeIn} from "../GSAPFunctions.jsx";
+import {OrbTextThree} from "../OrbTextThree.jsx";
+import {
+    alternateTextAnimation,
+    filterShadowAnimation,
+    paperFadeIn,
+    paperBorderFadeIn,
+    fadeIn
+} from "../GSAPFunctions.jsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-const text = [
-    'Click on each of my skills to learn more'
-];
 
 const skillListObject = {
     'Front-End': [
@@ -16,7 +19,7 @@ const skillListObject = {
         'Dynamic animations with GSAP',
         '3D with Three.js',
         'Augmented reality with AR.js',
-        'Handmade sliders and swipers',
+        'Homemade sliders and swipers',
         'Interactivity with canvas and fiber.js',
         'Asynchronous (fetch/axios & promises) handling',
         'Dynamic data and error handling',
@@ -102,124 +105,23 @@ const skillListObject = {
     ],
 };
 
-const skillList = [
-    'JavaScript',
-    'Php',
-    'Tools',
-    'Database',
-    'Frameworks',
-    'HTML',
-    'CSS',
-    'Operating Systems',
-    'Design',
-    '3D',
-    'Audio/Video',
-    'React.js',
-    'Symfony',
-];
-
-const javascript = [
-    'ES6+ Syntax',
-    'Frameworks: React.js and Next.js',
-    'Dynamic animations with GSAP',
-    '3D with Three.js',
-    'Augmented reality with AR.js',
-    'Handmade sliders and swipers',
-    'Interactivity with canvas and fiber.js',
-    'Asynchronous (fetch/axios & promises) handling',
-    'Dynamic data and error handling',
-    'Custom Maps with leaflet or mapbox',
-    'DOM manipulations',
-    'Object Oriented Programming',
-    'JQuery',
-];
-
-
-const tools = [
-    'Docker',
-    'Git',
-    'PHPStorm & WebStorm',
-    'Jira',
-    'Toggl Track',
-    'Redmine',
-    'Notion',
-];
-
-const frameworks = [
-    'React.js',
-    'Next.js',
-    'Symfony',
-    'Laravel',
-    'Material Design UI & react @mui/material',
-]
-
-const react = [
-    'Implementation within a Symfony or Laravel application',
-    'Next.js framework',
-    'Hooks and custom hooks',
-    'Material Design UI & react @mui/material',
-    'Theme handling',
-    'Context',
-    'Custom Form validation and filtering',
-    '3D with react-three-fiber',
-];
-
-const php = [
-    'Images and audio handling',
-    'Security and validation',
-    'Custom form validations and filtering',
-    'Object Oriented Programming',
-    'MVC structure',
-    'Secure User handling'
-];
-
-const ffmpeg = [
-    'server-side rendering',
-];
-
-const css = [
-    'Flexbox',
-    'Display and Positions',
-    'Transforms',
-    'MediaQueries',
-    'Responsive Design',
-    'Shapes',
-    'Animations',
-
-];
-
-const html = [
-    'Semantic tags and best practices',
-    'Form validations',
-    'Accessibility and SEO basics'
-];
-
-const design = [
-    'Figma',
-    'Photoshop',
-    'AdobeXD'
-
-];
 
 const SkillsSection = () => {
 
-    const [aboutTextIndex, setAboutTextIndex]   = useState(0);
-    const [aboutText, setAboutText]             = useState(text[aboutTextIndex]);
-    const textBoxRef    = useRef(null);
-    const textRef       = useRef(null);
-    const bgPaperRef    = useRef(null);
+    const [aboutText, setAboutText]  = useState('Click on each of my skills to learn more');
+    const textBoxRef        = useRef(null);
+    const textRef           = useRef(null);
+    const bgPaperRef        = useRef(null);
+    const roundPaperRef     = useRef(null);
+    const orbRef            = useRef(null);
 
     const handleOrbTextClick = (word) => {
         alternateTextAnimation(textRef.current);
         setAboutText('- '+skillListObject[word].join('\n- '))
     }
 
-    useEffect(() => {
-        alternateTextAnimation(textRef.current);
-        setAboutText(text[aboutTextIndex]);
-    }, []);
 
-    useEffect(() => {
+    /*useEffect(() => {
         const scrollTrigger = ScrollTrigger.create({
             trigger: '#skill-section',
             start: 'top',
@@ -243,25 +145,37 @@ const SkillsSection = () => {
         return () => {
             scrollTrigger.kill();
         };
-    }, []);
+    }, []);*/
 
 
     useEffect(() => {
         paperFadeIn(bgPaperRef.current, bgPaperRef.current);
     }, []);
 
+    useEffect(() => {
+        paperBorderFadeIn(roundPaperRef.current, bgPaperRef.current, 1.5, 2);
+    }, []);
+
+    useEffect(() => {
+        fadeIn(orbRef.current, bgPaperRef.current, 2, 1);
+    }, []);
+
+    useEffect(() => {
+        fadeIn(textBoxRef.current, bgPaperRef.current, 2.5, 1);
+    }, []);
+
     return (
         <section id={'skill-section'}>
             {/*<Typography variant={'h1'}>Skills</Typography>*/}
             <Paper ref={bgPaperRef} className={'bg-design-container-center'} sx={{width: '100%', height:'70vh', display: 'flex', justifyContent:'center', alignItems:'center'}}>
-                    <Paper elevation={1} className={'paper-circle shadow-highlight'}>
+                    <Paper ref={roundPaperRef} elevation={1} className={'paper-circle shadow-highlight'}>
                         <Box className={'inner-circle shadow-highlight'}></Box>
                     </Paper>
-                <OrbTextThree skillList={Object.keys(skillListObject)} handleOrbTextClick={handleOrbTextClick}/>
+                <OrbTextThree ref={orbRef} skillList={Object.keys(skillListObject)} handleOrbTextClick={handleOrbTextClick}/>
             </Paper>
-            <Container className={'about-container'} sx={{justifyContent: 'flex-end', maxWidth:{md: '90vw'}}}>
-                <Box ref={textBoxRef} className={'about-text-container floating text-container shadow-highlight'}>
-                    <Typography ref={textRef} sx={{fontSize:'1.8rem', whiteSpace: 'pre-wrap', width:'100%'}} className={'about-text typography-highlight'}>
+            <Container className={'skill-container'} sx={{justifyContent: 'flex-end', maxWidth:{md: '100vw'}}}>
+                <Box ref={textBoxRef} className={'skill-text-container'}>
+                    <Typography ref={textRef} sx={{fontSize:'1.5rem', whiteSpace: 'pre-wrap', width:'100%'}} className={'about-text typography-highlight'}>
                         {aboutText}
                     </Typography>
                 </Box>

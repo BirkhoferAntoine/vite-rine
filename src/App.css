@@ -651,6 +651,13 @@ section {
   padding-bottom: 15vh;
 }
 
+.skill-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+  max-width: 100vw;
+}
+
 .paper-circle {
   position: absolute;
   display: flex;
@@ -658,7 +665,8 @@ section {
   align-items: center;
   height: 50vh;
   width: 50vh;
-  border-radius: 50% !important;
+  /*border: var(--color-primary) 1px solid;
+  border-radius: 50% !important;*/
   box-shadow: 0 0 20px 10px rgba(0,0,0,0.2);
   background: var(--bg-yellow-radial) !important;
 }
@@ -670,6 +678,20 @@ section {
   border-radius: 50%;
   background-color: var(--color-primary);
 }
+
+
+.skill-text-container {
+  display: inline-flex;
+  text-align: left;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  width: calc(50vw - 25vh - 5vw - 3vw);
+  z-index: 54;
+  margin-right: 4vw;
+}
+
+/* CONTACT SECTION */
 
 .contact-section {
   padding: 15vh;
