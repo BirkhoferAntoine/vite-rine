@@ -677,6 +677,8 @@ section {
   width: 9%;
   border-radius: 50%;
   background-color: var(--color-primary);
+  transform: translateZ(8px);
+
 }
 
 
@@ -743,9 +745,12 @@ section {
   transform: scale(1) rotate(45deg);
 }
 
-/*.perspective {
+.perspective {
+  transform-style: preserve-3d;
   perspective: 1000px;
 }
+
+/*
 
 .about-background-losange {
   transform-style: preserve-3d;

@@ -168,7 +168,7 @@ const SkillsSection = () => {
         <section id={'skill-section'}>
             {/*<Typography variant={'h1'}>Skills</Typography>*/}
             <Paper ref={bgPaperRef} className={'bg-design-container-center'} sx={{width: '100%', height:'70vh', display: 'flex', justifyContent:'center', alignItems:'center'}}>
-                    <Paper ref={roundPaperRef} elevation={1} className={'paper-circle shadow-highlight'}>
+                    <Paper ref={roundPaperRef} elevation={1} className={'paper-circle shadow-highlight perspective'}>
                         <Box className={'inner-circle shadow-highlight'}></Box>
                     </Paper>
                 <OrbTextThree ref={orbRef} skillList={Object.keys(skillListObject)} handleOrbTextClick={handleOrbTextClick}/>
