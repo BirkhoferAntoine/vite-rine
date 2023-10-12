@@ -118,7 +118,7 @@ const AboutSection = () => {
 
 
     return (
-        <section id={'about-section'} className={'perspective'}>
+        <section id={'about-section'} className={''}>
             {/*<Typography variant={'h1'}>About me</Typography>*/}
             <Paper ref={bgPaperRef} className={'bg-design-container-center'}>
                 <CircuitLineLosange ref={losangeRef} addClassName={'floating about-background-losange'} width={'50vh'} maxPad={'32px'} maxBorder={'24px'} >

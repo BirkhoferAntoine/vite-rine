@@ -1,163 +1,12 @@
 import * as THREE from 'three';
-import { useRef, useState, useMemo, useEffect, forwardRef } from 'react';
+import { useRef, useState, useMemo, useEffect, forwardRef, useContext } from 'react';
+import SkillsContext from '../context/SkillsContext.jsx';
 import {Canvas, useFrame} from '@react-three/fiber';
 import {Text, TrackballControls, OrbitControls} from '@react-three/drei'; //  Sphere, Torus,
 
 
 const jost = 'src/assets/jost-all-500-normal.woff';
 const beth = 'src/assets/beth-ellen-latin-400-normal.woff';
-
-const skillListObject = {
-    'Front-End': [
-        'JavaScript ES6+',
-        'React.JS',
-        'GSAP Animations',
-        'Three.JS',
-        'AR.JS',
-        'Fabric.JS',
-        'JQuery',
-        'Context',
-        'MaterialUI @ React',
-        'HTML',
-        'CSS',
-        'SCSS',
-    ],
-    'Back-End': [
-        'PHP8',
-        'Symfony',
-        'POO/OOP',
-        'MERN Stack',
-        'Node.js',
-    ],
-    'Tools': [
-        'PHPStorm',
-        'Jira',
-        'Notion',
-        'Toggl Track',
-        'GIT',
-        'Moon Modeler',
-        'Postman',
-    ],
-    'Database': [
-        'MySQL',
-        'PostgreSQL',
-        'PDO',
-        'MangoDB',
-    ],
-    'Frameworks': [
-        'Next.JS',
-        'Symfony',
-    ],
-    'Operating Systems': [
-        'Windows',
-        'Linux',
-        'MacOSX',
-    ],
-    'Design': [
-        'Figma',
-        'Photoshop',
-        'AdobeXD',
-        'Krita',
-    ],
-    'Multimedia': [
-        'Cubase / Nuendo',
-        'Presonus Studio one',
-        'Omnisphere',
-        'FFMPEG',
-    ],
-};
-
-const skillListArray = Object.keys(skillListObject);
-
-
-/*const skillList = [
-    'Front-End',
-    'Back-End',
-    'Tools',
-    'Database',
-    'Frameworks',
-    'HTML',
-    'CSS',
-    'OS',
-    'Design',
-    'Multimedia',
-];
-
-const skillList2 = [
-    'React',
-    'Symfony',
-    'JavaScript',
-    'Php',
-    'GSAP',
-    'HTML',
-    'CSS',
-    'Linux',
-    'Laravel',
-    'THREE.js',
-    'Next.js',
-    'Fabric.js',
-    'Figma',
-    'FFmpeg',
-    'PHPStorm',
-    'Git',
-    'MySQL',
-    'PostGreSQL'
-];*/
-
-
-
-const svgList = [
-    'src/assets/icons/react.svg',
-    'src/assets/icons/symfony.svg',
-    'src/assets/icons/devicons-master/!SVG/javascript_1.svg',//'src/assets/icons/javascript_icon_130900.svg',
-    'src/assets/icons/devicons-master/!SVG/php.svg',
-    'src/assets/icons/devicons-master/!SVG/html5.svg',
-    'src/assets/icons/file_type_css_icon_130661.svg',
-    'src/assets/icons/devicons-master/!SVG/linux.svg',
-    'src/assets/icons/devicons-master/!SVG/laravel.svg',
-    'src/assets/icons/Three.js_Icon.svg',
-    'src/assets/icons/devicons-master/!SVG/git.svg',
-    'src/assets/icons/devicons-master/!SVG/mysql.svg',
-    'src/assets/icons/devicons-master/!SVG/postgresql.svg',
-    'src/assets/icons/figma.svg',
-    'src/assets/icons/phpstorm-seeklogo.com.svg',
-    'src/assets/icons/ffmpeg-seeklogo.com.svg',
-    'src/assets/icons/next-js-seeklogo.com.svg',
-];
-
-const SvgIcon = ({ src, children, ...props }) => {
-    const ref = useRef();
-
-    console.log("-> ");
-    const [hovered, setHovered] = useState(false);
-
-    /*const color = new THREE.Color();
-    const fontProps = {};
-
-    const over = (e) => (e.stopPropagation(), setHovered(true));
-    const out = () => setHovered(false);
-
-    // Change the mouse cursor on hover
-    useEffect(() => {
-        if (hovered) document.body.style.cursor = 'pointer';
-        return () => (document.body.style.cursor = 'auto');
-    }, [hovered]);
-    // Tie component to the render-loop
-    useFrame(({ camera }) => {
-        // Make text face the camera
-        ref.current.quaternion.copy(camera.quaternion);
-        // Animate font color
-        ref.current.material.color.lerp(color.set(hovered ? '#E53D00' : '#FCD81C'), 0.1);
-    });*/
-
-    const image = new Image();
-    image.src = src;
-
-    if (image.height) {
-        const ratio = 16/image.height;
-        return <Svg src={src} scale={ratio} fillMaterial={{color:'#FCD81C'}} ref={ref} /*onPointerOver={over} onPointerOut={out}*/ onClick={() => console.log('clicked')} {...props} children={children} />
-    }
-};
 
 const Word = ({ children, handleOrbTextClick, ...props }) => {
     const ref                           = useRef();
@@ -173,6 +22,14 @@ const Word = ({ children, handleOrbTextClick, ...props }) => {
         handleOrbTextClick(children)
         console.log("=>(OrbTextThree.jsx:117) children", children);
         console.log("=>(OrbTextThree.jsx:117) ref", ref);
+        // Trigger the collapse animation
+        /*animateCollapse(() => {
+            // After the collapse animation, replace the words with a new array
+            const newWordsArray = getNewWordsArray(); // Implement this function
+            setWordsArray(newWordsArray); // You'll need to maintain state or props for words
+            // Trigger the expand animation
+            animateExpand();
+        });*/
 
     }
 
@@ -223,23 +80,31 @@ const Cloud = ({ count = 4, radius = 20, skillList, handleOrbTextClick}) => {
     })
 }
 
-/*
-function Sphere({ radius = 1.5 }) {
-    const { scene, camera } = useThree();
-    const geometry  = new THREE.SphereGeometry(radius, 50, 50);
-    const material  = new THREE.MeshBasicMaterial({ color: '#FCD81C', wireframe: true });
-    const sphere    = new THREE.Mesh(geometry, material);
-    scene.add(sphere);
-    return null;
-}
-*/
 export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 
-console.log("=>(OrbTextThree.jsx:242) props", props);
-    const closestCount = Math.ceil(Math.sqrt(props.skillList.length));
 
-    const randomWord = () => {
-        return skillListArray[Math.floor(Math.random() * props.skillList.length)];
+    const [wordsArray, setWordsArray]   = useContext(SkillsContext);
+    const [aboutText, setAboutText]     = useContext(SkillsContext);
+
+    const closestCount = Math.ceil(Math.sqrt(wordsArray.length));
+    const animateCollapse = (callback) => {
+        // Implement your collapse animation here using Tween or GSAP
+        // Once the animation is complete, call the callback
+        // This callback will replace the words and trigger the expand animation
+    };
+
+    const animateExpand = () => {
+        // Implement your expand animation here
+    };
+
+    const switchCloud = () => {
+        // Generate a new array of words based on your requirements
+        let newWordsArray = [];
+        return newWordsArray;
+    };
+
+    const randomWord = (wordArray) => {
+        return wordArray[Math.floor(Math.random() * props.skillList.length)];
     }
 
 
@@ -288,3 +153,70 @@ console.log("=>(OrbTextThree.jsx:242) props", props);
 <Cloud count={closestCount} radius={16} />
 <TrackballControls />
 </Canvas>*/
+
+
+
+/*
+function Sphere({ radius = 1.5 }) {
+    const { scene, camera } = useThree();
+    const geometry  = new THREE.SphereGeometry(radius, 50, 50);
+    const material  = new THREE.MeshBasicMaterial({ color: '#FCD81C', wireframe: true });
+    const sphere    = new THREE.Mesh(geometry, material);
+    scene.add(sphere);
+    return null;
+}
+*/
+
+const SvgIcon = ({ src, children, ...props }) => {
+    const ref = useRef();
+
+    console.log("-> ");
+    const [hovered, setHovered] = useState(false);
+
+    /*const color = new THREE.Color();
+    const fontProps = {};
+
+    const over = (e) => (e.stopPropagation(), setHovered(true));
+    const out = () => setHovered(false);
+
+    // Change the mouse cursor on hover
+    useEffect(() => {
+        if (hovered) document.body.style.cursor = 'pointer';
+        return () => (document.body.style.cursor = 'auto');
+    }, [hovered]);
+    // Tie component to the render-loop
+    useFrame(({ camera }) => {
+        // Make text face the camera
+        ref.current.quaternion.copy(camera.quaternion);
+        // Animate font color
+        ref.current.material.color.lerp(color.set(hovered ? '#E53D00' : '#FCD81C'), 0.1);
+    });*/
+
+    const image = new Image();
+    image.src = src;
+
+    if (image.height) {
+        const ratio = 16/image.height;
+        return <Svg src={src} scale={ratio} fillMaterial={{color:'#FCD81C'}} ref={ref} /*onPointerOver={over} onPointerOut={out}*/ onClick={() => console.log('clicked')} {...props} children={children} />
+    }
+};
+
+
+const svgList = [
+    'src/assets/icons/react.svg',
+    'src/assets/icons/symfony.svg',
+    'src/assets/icons/devicons-master/!SVG/javascript_1.svg',//'src/assets/icons/javascript_icon_130900.svg',
+    'src/assets/icons/devicons-master/!SVG/php.svg',
+    'src/assets/icons/devicons-master/!SVG/html5.svg',
+    'src/assets/icons/file_type_css_icon_130661.svg',
+    'src/assets/icons/devicons-master/!SVG/linux.svg',
+    'src/assets/icons/devicons-master/!SVG/laravel.svg',
+    'src/assets/icons/Three.js_Icon.svg',
+    'src/assets/icons/devicons-master/!SVG/git.svg',
+    'src/assets/icons/devicons-master/!SVG/mysql.svg',
+    'src/assets/icons/devicons-master/!SVG/postgresql.svg',
+    'src/assets/icons/figma.svg',
+    'src/assets/icons/phpstorm-seeklogo.com.svg',
+    'src/assets/icons/ffmpeg-seeklogo.com.svg',
+    'src/assets/icons/next-js-seeklogo.com.svg',
+];

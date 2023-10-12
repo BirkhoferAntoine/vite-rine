@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useContext} from 'react';
 import {Box, Container, Paper, Typography} from "@mui/material";
 import {OrbTextThree} from "../OrbTextThree.jsx";
 import {
@@ -8,6 +8,7 @@ import {
     paperBorderFadeIn,
     fadeIn
 } from "../GSAPFunctions.jsx";
+import { SkillsContext } from "../../context/skills.context.jsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -107,8 +108,8 @@ const skillListObject = {
 
 
 const SkillsSection = () => {
-
-    const [aboutText, setAboutText]  = useState('Click on each of my skills to learn more');
+    const [wordsArray, setWordsArray]   = useContext(SkillsContext);
+    const [aboutText, setAboutText]     = useContext(SkillsContext);
     const textBoxRef        = useRef(null);
     const textRef           = useRef(null);
     const bgPaperRef        = useRef(null);

@@ -7,7 +7,7 @@ import AboutSection from "./AboutSection.jsx";
 import WorksSection from "./WorksSection.jsx";
 import SkillsSection from "./SkillsSection.jsx";
 import ContactSection from "./ContactSection.jsx";
-
+import { SkillsProviderWrapper } from '../../context/skills.context.jsx';
 
 export class Homepage extends Component {
     constructor(props) {
@@ -39,8 +39,10 @@ export class Homepage extends Component {
                 <Box className={'bg-design-container-center'}>
                     <CircuitLine width={'75vh'} rotate={'90deg'} top={'35vh'} circleTip/>
                 </Box>*/}
+                <SkillsProviderWrapper>
+                    <SkillsSection/>
+                </SkillsProviderWrapper>
 
-                <SkillsSection/>
 
                 <Box className={'bg-design-container-center'}>
                     <CircuitLine width={'90vh'} rotate={'90deg'} top={'30vh'} circleTip/>
