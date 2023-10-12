@@ -236,12 +236,14 @@ export const paperBorderFadeIn = (element, trigger = element, delay = 1, duratio
         {
             background: 'none',
             border: 'none',
+            transform: 'rotate(180deg)',
         },
         {
+            rotate: '0deg',
             backgroundColor: '#100E02',
             backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))',
             /*border: '1px 0px 1px 0px solid #FCD81C',*/
-            borderWidth: '1px 0px',
+            borderWidth: '2px 1px',
             borderColor: '#FCD81C',
             borderStyle: 'solid',
             borderRadius: '50%',

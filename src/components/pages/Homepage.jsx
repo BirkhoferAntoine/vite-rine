@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-/*import {GsapTrainingComponent} from "../GsapTrainingComponent.jsx";*/
 import {Box} from "@mui/material";
-import CircuitLine from "../CircuitLine.jsx";
+import CircuitLine from "../background/CircuitLine.jsx";
 import HeroSection from "./HeroSection.jsx";
 import AboutSection from "./AboutSection.jsx";
 import WorksSection from "./WorksSection.jsx";
@@ -45,7 +44,7 @@ export class Homepage extends Component {
 
 
                 <Box className={'bg-design-container-center'}>
-                    <CircuitLine width={'90vh'} rotate={'90deg'} top={'30vh'} circleTip/>
+                    <CircuitLine width={'90vh'} rotate={'90deg'} top={'45vh'} circleTip/>
                 </Box>
                 <Box className={'section-separator'}></Box>
 

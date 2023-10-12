@@ -1,13 +1,13 @@
 import React, {useEffect, useRef, useState, useContext} from 'react';
 import {Box, Container, Paper, Typography} from "@mui/material";
-import {OrbTextThree} from "../OrbTextThree.jsx";
+import {OrbTextThree} from "../orb/OrbTextThree.jsx";
 import {
     alternateTextAnimation,
     filterShadowAnimation,
     paperFadeIn,
     paperBorderFadeIn,
     fadeIn
-} from "../GSAPFunctions.jsx";
+} from "../common/GSAPFunctions.jsx";
 import { SkillsContext } from "../../context/skills.context.jsx";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -108,8 +108,11 @@ const skillListObject = {
 
 
 const SkillsSection = () => {
-    const [wordsArray, setWordsArray]   = useContext(SkillsContext);
-    const [aboutText, setAboutText]     = useContext(SkillsContext);
+
+    console.log("=>(SkillsSection.jsx:113) SkillsContext", SkillsContext);
+
+    const {wordsArray, setWordsArray}   = useContext(SkillsContext);
+    const {aboutText, setAboutText}     = useContext(SkillsContext);
     const textBoxRef        = useRef(null);
     const textRef           = useRef(null);
     const bgPaperRef        = useRef(null);
@@ -172,7 +175,7 @@ const SkillsSection = () => {
                     <Paper ref={roundPaperRef} elevation={1} className={'paper-circle shadow-highlight perspective'}>
                         <Box className={'inner-circle shadow-highlight'}></Box>
                     </Paper>
-                <OrbTextThree ref={orbRef} skillList={Object.keys(skillListObject)} handleOrbTextClick={handleOrbTextClick}/>
+                <OrbTextThree ref={orbRef} handleOrbTextClick={handleOrbTextClick}/>
             </Paper>
             <Container className={'skill-container'} sx={{justifyContent: 'flex-end', maxWidth:{md: '100vw'}}}>
                 <Box ref={textBoxRef} className={'skill-text-container'}>

@@ -1,6 +1,6 @@
 import {Box, Container, Link, Typography} from "@mui/material";
 import React, {useEffect, useRef} from "react";
-import FastEffectString from "../FastEffectString.jsx";
+import FastEffectString from "../common/FastEffectString.jsx";
 import gsap from 'gsap';
 
 const HeroSection = () => {

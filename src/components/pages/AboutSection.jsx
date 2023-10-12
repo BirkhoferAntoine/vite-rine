@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState, forwardRef} from 'react';
 import {Box, Container, Paper, Typography} from "@mui/material";
-import CircuitLineLosange from "../CircuitLineLosange.jsx";
-import CircuitLine from "../CircuitLine.jsx";
+import CircuitLineLosange from "../background/CircuitLineLosange.jsx";
+import CircuitLine from "../background/CircuitLine.jsx";
 import gsap from 'gsap';
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {
@@ -12,7 +12,7 @@ import {
     slideAnimation,
     hide,
     slightFlyingMovementAnimation, filterShadowAnimation, scaleAnimation
-} from '../GSAPFunctions.jsx';
+} from '../common/GSAPFunctions.jsx';
 /*import {ScrollToPlugin} from "gsap/ScrollToPlugin";*/
 gsap.registerPlugin(ScrollTrigger);
 
