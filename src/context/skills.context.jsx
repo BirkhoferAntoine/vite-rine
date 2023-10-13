@@ -1,10 +1,11 @@
-import { createContext, useState } from 'react';
+import {createContext, useMemo, useState} from 'react';
 
 
 const SkillsContext        = createContext();
 function SkillsProviderWrapper({ children }) {
 
-  const skillListObject = {
+  const skillListObject = useMemo(() => {
+    return {
     'Front-End': [
       'JavaScript ES6+ Syntax',
       'Dynamic animations with GSAP',
@@ -95,6 +96,7 @@ function SkillsProviderWrapper({ children }) {
       'Accessibility and SEO basics'
     ],
   };
+}, []);
 
   const [wordsArray, setWordsArray]   = useState(Object.keys(skillListObject));
   const [aboutText, setAboutText]      = useState('Click on each of my skills to learn more');

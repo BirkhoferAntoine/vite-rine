@@ -324,3 +324,43 @@ export const slideInTop = (element, delay, duration) => {
         }
     );
 }
+
+export const animateScale = (element, scale, delay = 1, duration = 1) => {
+    console.log("=>(GSAPFunctions.jsx:330) element", element);
+    gsap.to(element.current.style.scale, {
+        x: scale,
+        y: scale,
+        z: scale,
+        duration: duration,
+        delay: delay,
+    });
+};
+
+
+export const alternateOrbScaleAnimation = (element, delay = 0, stepDuration = 1) => {
+    console.log("=>(GSAPFunctions.jsx:342) element.current.scale", element.current.style.scale);
+    animateScale(element, 0.1, delay, stepDuration);
+    animateScale(element, 1, stepDuration, stepDuration);
+}
+
+
+export const animateCollapse = (element, delay = 0, duration = 1) => {
+    /*useFrame(() => {
+        // Define the animation
+        gsap.to(cloudRef.current.scale, {
+            x: 0.2, // Scale to 20% of the original size
+            y: 0.2,
+            z: 0.2,
+            duration: 2, // Animation duration in seconds
+        });
+    });*/
+
+
+
+    animateScale(element, 0.1, delay, duration);
+
+
+    // Implement your collapse animation here using Tween or GSAP
+    // Once the animation is complete, call the callback
+    // This callback will replace the words and trigger the expand animation
+};

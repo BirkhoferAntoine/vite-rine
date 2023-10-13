@@ -1,12 +1,17 @@
-import {useMemo} from "react";
+import {useMemo, useState, useEffect} from "react";
 import * as THREE from "three";
 import Word from "./Word.jsx";
 
-export const Cloud = ({ count = 4, radius = 20, skillList, handleOrbTextClick}) => {
+export const Cloud = ({skillList, handleOrbTextClick, handleOrbScaleAnimation}) => {
+    const [radius, setRadius] = useState(16);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        setCount(Math.ceil(Math.sqrt(skillList.length)));
+        count > 9 ? setRadius(20) : setRadius(16);
+    }, [skillList]);
+
     // Create a count x count random words with spherical distribution
-
-    console.log("=>(OrbTextThree.jsx:204) skillList", skillList);
-
     let skillIndex = 0;
     const words = useMemo(() => {
         const temp      = []
@@ -26,9 +31,13 @@ export const Cloud = ({ count = 4, radius = 20, skillList, handleOrbTextClick}) 
             }
 
         return temp
-    }, [count, radius]);
+    }, [count, radius, skillList]);
     //return words.map(([pos, word], index) => <SvgIcon key={'svg-'+index} position={pos} src={word}/>)
     return words.map(([pos, word], index) => {
-        return <Word key={'orb-word-'+index} position={pos} handleOrbTextClick={handleOrbTextClick} children={word}/>
+        return <Word key={'orb-word-'+index}
+                     position={pos}
+                     handleOrbTextClick={handleOrbTextClick}
+                     handleOrbScaleAnimation={handleOrbScaleAnimation}
+                     children={word}/>
     })
 }

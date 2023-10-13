@@ -5,29 +5,12 @@ import {Canvas, useFrame} from '@react-three/fiber';
 import {Text, TrackballControls, OrbitControls} from '@react-three/drei';
 import {Cloud} from "./Cloud.jsx"; //  Sphere, Torus,
 
-
 export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 
     const skillListObject = useContext(SkillsContext);
     const {wordsArray, setWordsArray}   = useContext(SkillsContext);
     const {aboutText, setAboutText}     = useContext(SkillsContext);
-
-    const closestCount = Math.ceil(Math.sqrt(wordsArray.length));
-    const animateCollapse = (callback) => {
-        // Implement your collapse animation here using Tween or GSAP
-        // Once the animation is complete, call the callback
-        // This callback will replace the words and trigger the expand animation
-    };
-
-    const animateExpand = () => {
-        // Implement your expand animation here
-    };
-
-    const switchCloud = () => {
-        // Generate a new array of words based on your requirements
-        let newWordsArray = [];
-        return newWordsArray;
-    };
+    const cloudRef = useRef();
 
     const randomWord = (wordArray) => {
         return wordArray[Math.floor(Math.random() * props.skillList.length)];
@@ -36,7 +19,7 @@ export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 
     return (
         <Canvas ref={ref} dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }}>
-            <Cloud count={closestCount} radius={16} skillList={wordsArray} handleOrbTextClick={props.handleOrbTextClick}/>
+            <Cloud ref={cloudRef} skillList={wordsArray} handleOrbTextClick={props.handleOrbTextClick} handleOrbScaleAnimation={props.handleOrbScaleAnimation} />
             <TrackballControls />
         </Canvas>
     )
