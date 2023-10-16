@@ -38,7 +38,7 @@ const Word = ({ children, handleOrbTextClick, handleOrbScaleAnimation, ...props 
         // Make text face the camera
         ref.current.quaternion.copy(camera.quaternion);
         // Animate font color
-        ref.current.material.color.lerp(color.set(hovered ? '#E53D00' : children === 'Back' ? '#FF9F00' : '#FCD81C'), 0.1);
+        ref.current.material.color.lerp(color.set(hovered ? '#E53D00' : children === '../Back' ? '#FF9F00' : '#FCD81C'), 0.1);
     });
 
     return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={handleWordClick} {...props} {...fontProps} children={children} />

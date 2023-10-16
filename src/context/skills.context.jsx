@@ -98,23 +98,13 @@ function SkillsProviderWrapper({ children }) {
   };
 }, []);
 
-  const [wordsArray, setWordsArray]   = useState(Object.keys(skillListObject));
-  const [aboutText, setAboutText]      = useState('Click on each of my skills to learn more');
-  const someFunction = () => {
-    // Do something with state
-  };
+  const [skillsArray, setSkillsArray]      = useState(Object.keys(skillListObject));
 
   return (
-    <SkillsContext.Provider value={{ skillListObject, wordsArray, setWordsArray, aboutText, setAboutText, someFunction }}>
+    <SkillsContext.Provider value={{ skillListObject, skillsArray, setSkillsArray}}>
       {children}
     </SkillsContext.Provider>
   );
 }
 
 export { SkillsProviderWrapper, SkillsContext };
-
-/*const sharedValue = useMemo(() => {
-    return {
-      // Your shared value properties or functions
-    };
-  }, []); // The empty dependency array ensures it's only created once*/

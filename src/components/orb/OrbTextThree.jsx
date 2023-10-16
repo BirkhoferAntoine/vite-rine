@@ -8,9 +8,7 @@ import {Cloud} from "./Cloud.jsx"; //  Sphere, Torus,
 export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 
     const skillListObject = useContext(SkillsContext);
-    const {wordsArray, setWordsArray}   = useContext(SkillsContext);
-    const {aboutText, setAboutText}     = useContext(SkillsContext);
-    const cloudRef = useRef();
+    const {skillsArray, setSkillsArray}       = useContext(SkillsContext);
 
     const randomWord = (wordArray) => {
         return wordArray[Math.floor(Math.random() * props.skillList.length)];
@@ -19,7 +17,7 @@ export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 
     return (
         <Canvas ref={ref} dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }}>
-            <Cloud ref={cloudRef} skillList={wordsArray} handleOrbTextClick={props.handleOrbTextClick} handleOrbScaleAnimation={props.handleOrbScaleAnimation} />
+            <Cloud skillList={skillsArray} handleOrbTextClick={props.handleOrbTextClick} handleOrbScaleAnimation={props.handleOrbScaleAnimation} />
             <TrackballControls />
         </Canvas>
     )

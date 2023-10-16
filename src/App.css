@@ -18,7 +18,7 @@
 .text-outline-yellow:hover {
   filter: drop-shadow(0 0 20rem var(--color-primary));
   text-shadow: var(--bg-color-default) 0 0 2rem;
-  transition: all 0.3s ease-out;
+  transition: drop-shadow 0.3s ease-out;
 }
 
 .circuit-line:hover,
@@ -683,14 +683,14 @@ section {
 
 
 .skill-text-container {
-  display: inline-flex;
+  /*display: inline-flex;
   text-align: left;
   align-items: center;
   justify-content: center;
   height: 60vh;
   width: calc(50vw - 25vh - 5vw - 3vw);
   z-index: 54;
-  margin-right: 4vw;
+  margin-right: 4vw;*/
 }
 
 /* CONTACT SECTION */
