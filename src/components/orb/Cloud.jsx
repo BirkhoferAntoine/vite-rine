@@ -2,7 +2,7 @@ import {useMemo, useState, useEffect} from "react";
 import * as THREE from "three";
 import Word from "./Word.jsx";
 
-export const Cloud = ({skillList, handleOrbTextClick, handleOrbScaleAnimation}) => {
+export const Cloud = ({skillList, handleOrbTextClick, }) => {
     const [radius, setRadius] = useState(16);
     const [count, setCount] = useState(0);
 
@@ -37,7 +37,6 @@ export const Cloud = ({skillList, handleOrbTextClick, handleOrbScaleAnimation}) 
         return <Word key={'orb-word-'+index}
                      position={pos}
                      handleOrbTextClick={handleOrbTextClick}
-                     handleOrbScaleAnimation={handleOrbScaleAnimation}
                      children={word}/>
     })
 }

@@ -90,7 +90,7 @@ const HeroSection = () => {
     const typoUpRef         = useRef(null);
     const callToActionRef   = useRef(null);
 
-    const onLoad = () => {
+    useEffect(() => {
         const timeline = gsap.timeline({})
             .fromTo('.animated-typo',
                 {
@@ -110,7 +110,7 @@ const HeroSection = () => {
                     ease: 'elastic',
                     y: 600,
                 },
-            {
+                {
                     opacity: 1,
                     filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px #fff)",
                     ease: 'none',
@@ -118,46 +118,46 @@ const HeroSection = () => {
                     delay: 0.9,
                 },
             ).to(typoUpRef.current,
-            {
-                filter: "drop-shadow(0 0 6px var(--color-primary))",
-                ease: 'none',
-            },
+                {
+                    filter: "drop-shadow(0 0 6px var(--color-primary))",
+                    ease: 'none',
+                },
 
-        ).fromTo(callToActionRef.current,
-            {
-                scrollTrigger: {
-                    trigger: '#hero-section',
-                    start: 'top center',
-                    end: "bottom center",
-                    delay: 1,
-                    markers: true,
-                    toggleActions: 'restart pause reverse pause',//'pause',
+            ).fromTo(callToActionRef.current,
+                {
+                    scrollTrigger: {
+                        trigger: '#hero-section',
+                        start: 'top center',
+                        end: "bottom center",
+                        delay: 1,
+                        markers: true,
+                        toggleActions: 'restart pause reverse pause',//'pause',
+                    },
+                    opacity: 0,
+                    filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
+                    ease: 'back',
+                    duration: 2,
+                    /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
                 },
-                opacity: 0,
-                filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
-                ease: 'back',
-                duration: 2,
-                /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
-            },
-            {
-                scrollTrigger: {
-                    trigger: '#hero-section',
-                    start: 'top center',
-                    end: "bottom center",
-                    delay: 1,
-                    markers: true,
-                    toggleActions: 'play pause play resume',//'pause',
+                {
+                    scrollTrigger: {
+                        trigger: '#hero-section',
+                        start: 'top center',
+                        end: "bottom center",
+                        delay: 1,
+                        markers: true,
+                        toggleActions: 'play pause play resume',//'pause',
+                    },
+                    opacity: 1,
+                    filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
+                    ease: 'back',
+                    /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
+                    delay: 0.3,
+                    duration: 2,
+                    yoyo: true,
+                    repeat: -1,
                 },
-                opacity: 1,
-                filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
-                ease: 'back',
-                /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
-                delay: 0.3,
-                duration: 2,
-                yoyo: true,
-                repeat: -1,
-            },
-        )/*.fromTo(callToActionRef.current,
+            )/*.fromTo(callToActionRef.current,
             {
                 filter: "drop-shadow(0 0 160px var(--color-primary)) drop-shadow(0 0 20px var(--color-secondary)) ",
                 ease: 'none',
@@ -174,10 +174,6 @@ const HeroSection = () => {
                 repeat: -1,
             },
         )*/;
-    }
-
-    useEffect(() => {
-        onLoad();
     }, []);
 
     return (

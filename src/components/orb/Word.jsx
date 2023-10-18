@@ -8,7 +8,7 @@ import {alternateOrbScaleAnimation} from "../common/GSAPFunctions.jsx";
 
 const jost = 'src/assets/jost-all-500-normal.woff';
 const beth = 'src/assets/beth-ellen-latin-400-normal.woff';
-const Word = ({ children, handleOrbTextClick, handleOrbScaleAnimation, ...props }) => {
+const Word = ({ children, handleOrbTextClick, ...props }) => {
     const ref                           = useRef();
     const [hovered, setHovered]         = useState(false);
 
@@ -23,7 +23,6 @@ const Word = ({ children, handleOrbTextClick, handleOrbScaleAnimation, ...props 
 
     const handleWordClick = (e) => {
         handleOrbTextClick(children);
-        handleOrbScaleAnimation();
         console.log("=>(OrbTextThree.jsx:117) children", children);
         console.log("=>(OrbTextThree.jsx:117) ref", ref);
     }

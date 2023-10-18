@@ -658,6 +658,15 @@ section {
   max-width: 100vw;
 }
 
+.skills-canvas-container {
+  width: 100%;
+  height: 100%;
+}
+
+.orb-canvas-container div canvas {
+  position: relative;
+}
+
 .paper-circle {
   position: absolute;
   display: flex;

@@ -327,20 +327,49 @@ export const slideInTop = (element, delay, duration) => {
 
 export const animateScale = (element, scale, delay = 1, duration = 1) => {
     console.log("=>(GSAPFunctions.jsx:330) element", element);
-    gsap.to(element.current.style.scale, {
+
+    /*gsap.to(element.current.style.scale, {
         x: scale,
         y: scale,
         z: scale,
         duration: duration,
         delay: delay,
-    });
+    });*/
 };
 
 
 export const alternateOrbScaleAnimation = (element, delay = 0, stepDuration = 1) => {
-    console.log("=>(GSAPFunctions.jsx:342) element.current.scale", element.current.style.scale);
-    animateScale(element, 0.1, delay, stepDuration);
-    animateScale(element, 1, stepDuration, stepDuration);
+
+    const canvasWidth = element.offsetWidth;
+    const canvasHeight = element.offsetHeight;
+
+    const initialWidth = element.style.width;
+    const initialHeight = element.style.height;
+
+    const initialX = '0%';
+    const initialY = '0%';
+
+    gsap.fromTo(element.style,
+        {
+            width: '0%',
+            height: '0%',
+            left: '50%',
+            top: '50%',
+            transformOrigin: 'center center', // Set the transform origin to the center
+            duration: stepDuration,
+            delay: delay,
+            ease: 'power2.inOut',
+        },
+        {
+            width: initialWidth,
+            height: initialHeight,
+            left: initialX,
+            top: initialY,
+            transformOrigin: 'center center', // Set the transform origin to the center
+            duration: stepDuration,
+            delay: delay,
+            ease: 'power2.inOut',
+        });
 }
 
 

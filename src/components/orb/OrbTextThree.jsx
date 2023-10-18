@@ -16,8 +16,8 @@ export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 
 
     return (
-        <Canvas ref={ref} dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }}>
-            <Cloud skillList={skillsArray} handleOrbTextClick={props.handleOrbTextClick} handleOrbScaleAnimation={props.handleOrbScaleAnimation} />
+        <Canvas ref={ref} dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }} className={'orb-canvas-container'}>
+            <Cloud skillList={skillsArray} handleOrbTextClick={props.handleOrbTextClick} />
             <TrackballControls />
         </Canvas>
     )
