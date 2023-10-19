@@ -1,70 +1,54 @@
-import React, {useRef, useEffect} from 'react';
-import {Box, Button, Card, Container, Paper, Typography} from "@mui/material";
+import React, { useRef, useEffect } from "react";
+import { Box, Button, Card, Container, Paper, Typography } from "@mui/material";
 import CircuitLineLosange from "../background/CircuitLineLosange.jsx";
-import {hide, scaleAnimation, slideAnimation} from "../common/GSAPFunctions.jsx";
-import gsap from 'gsap';
-import {ScrollTrigger} from "gsap/ScrollTrigger";
+import {
+  hide,
+  scaleAnimation,
+  slideAnimation,
+} from "../common/GSAPFunctions.jsx";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import SmartphoneMockup from "../common/smartphonemockup/SmartphoneMockup.jsx";
 
-gsap.registerPlugin({ScrollTrigger});
+gsap.registerPlugin({ ScrollTrigger });
 
 const ContactSection = () => {
+  const sxStyles = {
+    contactBtn: {},
+    contactRedBtn: {
+      padding: "5rem",
+      borderRadius: "50%",
+    },
+    contactTypo: {
+      color: "var(--color-primary)",
+      //fontFamily: 'Beth Ellen',
+      fontSize: "1rem",
+      lineHeight: 1,
+      fontWeight: "400",
 
-    const sxStyles = {
-        contactBtn: {
+      //WebkitTextStrokeWidth: '2px',
+      //WebkitTextStrokeColor: 'var(--bg-color-default)',
+    },
+    mobileNav: {},
+    mobileBody: {},
+    mobileFooter: {},
+  };
 
-        },
-        contactRedBtn: {
-            padding: '5rem',
-            borderRadius: '50%',
-        },
-        contactTypo: {
-            color: 'var(--color-primary)',
-            //fontFamily: 'Beth Ellen',
-            fontSize: '1rem',
-            lineHeight: 1,
-            fontWeight: '400',
 
-            //WebkitTextStrokeWidth: '2px',
-            //WebkitTextStrokeColor: 'var(--bg-color-default)',
-        },
-        mobileNav: {
+  return (
+    <section id={"contact-section"}>
+      {/*<Typography variant={'h1'}>Contact</Typography>*/}
+      <Container sx={{ position: "relative" }} className={"contact-container"}>
+          <SmartphoneMockup />
+      </Container>
+    </section>
+  );
+};
 
-        },
-        mobileBody: {
+export default ContactSection;
 
-        },
-        mobileFooter: {
-
-        },
-    };
-
-    const losangeRef = useRef(null);
-
-    /*useEffect(() => {
-        ScrollTrigger.create({
-            trigger: losangeRef.current,
-            start: 'top center',
-            end: "bottom center",
-            duration: 4,
-            delay: 2,
-            markers: true,
-            scrub: 1,
-            toggleActions: 'play reverse restart restart',//'pause',
-            onEnter:        () => { scaleAnimation(losangeRef.current);},
-            onEnterBack:    () => { scaleAnimation(losangeRef.current); },
-            onLeave:        () => { hide(losangeRef.current); },
-        });
-
-    }, []);*/
-
-    return (
-        <section id={'contact-section'}>
-            {/*<Typography variant={'h1'}>Contact</Typography>*/}
-            <Container sx={{position:'relative'}} className={'contact-container'}>
-
-                <Paper className={'contact-paper'}>
-                    <Card className={'contact-box'}>
-                        <Box className={'contact-mobile-nav'}>
+{
+  /*<Box className={'contact-mobile-nav'}>
 
                         </Box>
                         <Box className={'contact-mobile-body'}>
@@ -79,16 +63,26 @@ const ContactSection = () => {
                         </Box>
                         <Box className={'contact-mobile-footer'}>
 
-                        </Box>
+                        </Box>*/
+}
 
+{
+  /*<CircuitLineLosange ref={losangeRef} addClassName={'floating'} width={'55vh'} rotate={'45deg'} maxPad={'42px'} maxBorder={'24px'}/>
+                        <Button sx={sxStyles.contactRedBtn} variant={'contained'} className={'contact-btn'} color={'warning'}></Button>*/
+}
+/*useEffect(() => {
+      ScrollTrigger.create({
+          trigger: losangeRef.current,
+          start: 'top center',
+          end: "bottom center",
+          duration: 4,
+          delay: 2,
+          markers: true,
+          scrub: 1,
+          toggleActions: 'play reverse restart restart',//'pause',
+          onEnter:        () => { scaleAnimation(losangeRef.current);},
+          onEnterBack:    () => { scaleAnimation(losangeRef.current); },
+          onLeave:        () => { hide(losangeRef.current); },
+      });
 
-                        {/*<CircuitLineLosange ref={losangeRef} addClassName={'floating'} width={'55vh'} rotate={'45deg'} maxPad={'42px'} maxBorder={'24px'}/>
-                        <Button sx={sxStyles.contactRedBtn} variant={'contained'} className={'contact-btn'} color={'warning'}></Button>*/}
-                    </Card>
-                </Paper>
-            </Container>
-        </section>
-    );
-};
-
-export default ContactSection;
+  }, []);*/

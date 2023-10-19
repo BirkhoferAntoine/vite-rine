@@ -1,0 +1,79 @@
+.smartphone {
+    width: 300px;
+    height: 650px;  /* Adjusted for the bottom bar */
+    border-radius: 36px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.smartphone-notch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: grey;
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+}
+
+
+.smartphone-ui-top-bar, .smartphone-ui-bottom-bar {
+    width: 100%;
+    height: 26px;
+    background-color: #000;
+    position: relative;
+}
+
+.smartphone-screen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.smartphone-navbar, .smartphone-footer {
+    width: 100%;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.smartphone-content {
+    flex-grow: 1;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    margin: 10px;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.smartphone-ui-bottom-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: baseline;
+}
+
+.smartphone-ui-button {
+    width: 6px;
+    height: 6px;
+    background-color: #999;
+}
+
