@@ -7,11 +7,68 @@ import { CustomEase } from 'gsap/CustomEase';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack, CustomEase);
 /*ScrollTrigger.defaults({
     toggleActions: 'restart pause reverse pause',
-    markers: true,
+    markers: devMode,
 });*/
+
+
+const devMode = true;
 
 export const hide = (element) => {
     gsap.set(element, {autoAlpha: 0});
+}
+
+export const animateCTAButton = (element, trigger) => {
+    gsap.fromTo(element,
+        {
+            scrollTrigger: {
+                trigger: trigger,
+                start: 'top center',
+                end: "bottom center",
+                delay: 1,
+                markers: devMode,
+                toggleActions: 'restart pause reverse pause',//'pause',
+            },
+            opacity: 0,
+            filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
+            ease: 'back',
+            duration: 2,
+            /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
+        },
+        {
+            /*scrollTrigger: {
+                trigger: trigger,
+                start: 'top center',
+                end: "bottom center",
+                delay: 1,
+                markers: devMode,
+                toggleActions: 'play pause play resume',//'pause',
+            },*/
+            opacity: 1,
+            filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
+            ease: 'back',
+            /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
+            delay: 0.3,
+            duration: 2,
+            yoyo: true,
+            repeat: -1,
+        },
+    )/*.fromTo(callToActionRef.current,
+            {
+                filter: "drop-shadow(0 0 160px var(--color-primary)) drop-shadow(0 0 20px var(--color-secondary)) ",
+                ease: 'none',
+                duration: 4,
+                /!*delay: -1,*!/
+            },
+            {
+                filter: "drop-shadow(0 0 20px var(--color-primary)) drop-shadow(0 0 60px var(--color-secondary)) ",
+                /!*delay: -1,*!/
+                yoyo: true,
+                ease: 'none',
+                yoyoEase: 'none',
+                duration: 4,
+                repeat: -1,
+            },
+        )*/;
 }
 
 export const slideAnimation = (element, x, y) => {
@@ -60,7 +117,7 @@ export const slideInFrom = (element, trigger = element, direction = 'left', dela
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: true,
+                markers: devMode,
                 toggleActions: 'play reverse restart reverse',//'pause',
             }
         }
@@ -77,7 +134,7 @@ export const slideInFromWithReverseY = (element, trigger = element, direction = 
         end: "bottom center",
         duration: duration || 1,
         delay: delay || 1,
-        markers: true,
+        markers: devMode,
         scrub: 1,
         toggleActions: 'play reverse restart restart',//'pause',
         onEnter:        () => { slideAnimation(element, x, y); },
@@ -115,7 +172,7 @@ export const fadeIn = (element, trigger = element, delay = 1, duration = 1) => {
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: true,
+                markers: devMode,
                 toggleActions: 'play none none none',//'pause',
             },
         }
@@ -221,7 +278,7 @@ export const paperFadeIn = (element, trigger = element, delay = 1, duration = 1)
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: true,
+                markers: devMode,
                 toggleActions: 'play reverse restart reverse',//'pause',
             },
         }
@@ -254,7 +311,7 @@ export const paperBorderFadeIn = (element, trigger = element, delay = 1, duratio
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: true,
+                markers: devMode,
                 toggleActions: 'play reverse restart reverse',//'pause',
             },
         }
@@ -302,7 +359,7 @@ export const slideInTop = (element, delay, duration) => {
                 end: "bottom center", //end: () => '+=' + document.querySelector(element).offsetWidth,
                 duration: duration || 1,
                 delay: delay || 1,
-                markers: true,
+                markers: devMode,
                 scrub: 1,
                 // toggleActions: 'restart pause reverse pause', // resume
                 onUpdate: (self) => {

@@ -2,28 +2,11 @@ import {Box, Container, Link, Typography} from "@mui/material";
 import React, {useEffect, useRef} from "react";
 import FastEffectString from "../common/FastEffectString.jsx";
 import gsap from 'gsap';
+import CallToActionButton from "../common/CallToActionButtonV2.jsx";
 
 const HeroSection = () => {
 
     const sxStyles = {
-        callToActionBtn: {
-            position: 'relative',
-            zIndex: 9999,
-            background: 'linear-gradient(var(--color-secondary) 30%,var(--color-primary) 90%)',
-            //background: 'linear-gradient(45deg,  var(--color-secondary) 30%,var(--color-primary) 90%)',
-            borderRadius: 5,
-            /*border: '2px solid var(--color-primary)',*/
-            color: 'white',//'#FCD81C',
-            height: 48,
-            width: 360,
-            padding: '0 30px',
-            boxShadow: '0 2px 4px 2px var(--bg-color-default)',
-            display: 'inline-flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-
-            opacity: 0,
-        },
         heroSection: {
             height: 'calc(100vh - var(--header-margin))'
         },
@@ -140,14 +123,14 @@ const HeroSection = () => {
                     /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
                 },
                 {
-                    scrollTrigger: {
+                    /*scrollTrigger: {
                         trigger: '#hero-section',
                         start: 'top center',
                         end: "bottom center",
                         delay: 1,
                         markers: true,
                         toggleActions: 'play pause play resume',//'pause',
-                    },
+                    },*/
                     opacity: 1,
                     filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
                     ease: 'back',
@@ -187,9 +170,12 @@ const HeroSection = () => {
                     {/*<FastEffectString delay={3300} text={'UP'} extraClass={'animated-typo-4 animated-typo'} duration={100} sxStyles={sxStyles.typoUp}/>*/}
                     <Typography ref={typoUpRef} sx={sxStyles.typoUp} className={'text-outline-dark text-shadow animated-typo-4 '}>UP</Typography>
                 </Box>
-                <Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
+                {/*<Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
                     <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
-                </Link>
+                </Link>*/}
+                <CallToActionButton ref={callToActionRef} className={'call-to-action-btn box-highlight'}>
+                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
+                </CallToActionButton>
             </Container>
 
 

@@ -98,7 +98,8 @@ function SkillsProviderWrapper({ children }) {
   };
 }, []);
 
-  const [skillsArray, setSkillsArray]      = useState(Object.keys(skillListObject));
+  const [orbInit, setOrbInit]                   = useState(false);
+  const [skillsArray, setSkillsArray]      = useState(['Hey there, I am interactive', ' ', 'Click here to start']);
 
   return (
     <SkillsContext.Provider value={{ skillListObject, skillsArray, setSkillsArray}}>

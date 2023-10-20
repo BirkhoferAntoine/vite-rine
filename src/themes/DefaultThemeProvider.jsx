@@ -98,7 +98,7 @@ const theme = createTheme({
     },
     mixins: {
         toolbar: {
-            minHeight: 64,
+            minHeight: 100,
             '@media(minWidth:600px)': { minHeight: 120},
         }
     },

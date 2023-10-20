@@ -30,11 +30,11 @@ const SocialMediaBox = () => {
             <IconButton aria-label="github" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
                 <SiGithub />
             </IconButton>
-            <IconButton aria-label="gmail" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
-                <SiGmail />
-            </IconButton>
             <IconButton aria-label="skype" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
                 <SiSkype />
+            </IconButton>
+            <IconButton aria-label="gmail" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
+                <SiGmail />
             </IconButton>
         </Box>
     );

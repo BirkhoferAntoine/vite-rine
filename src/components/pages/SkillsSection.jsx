@@ -17,7 +17,8 @@ import { TextList } from "../common/TextList.jsx";
 gsap.registerPlugin(ScrollTrigger);
 
 const SkillsSection = () => {
-  const { skillListObject } = useContext(SkillsContext);
+  const { orbInit, setOrbInit }         = useContext(SkillsContext);
+  const { skillListObject }             = useContext(SkillsContext);
   const { skillsArray, setSkillsArray } = useContext(SkillsContext);
   const [switchView, setSwitchView] = useState(
     window.innerWidth >= 1024 ? "both" : "Orb",
@@ -60,8 +61,10 @@ const SkillsSection = () => {
   };
 
   const handleSkillSelection = (skillName) => {
+    if(orbInit) setOrbInit(true);
+
     let newWordsArray;
-    if (skillName === "../Back") {
+    if (skillName === "../Back" || skillName === 'Click here to start' || skillName === 'Or here...') {
       newWordsArray = Object.keys(skillListObject);
     } else {
       newWordsArray = skillListObject[skillName]
@@ -85,14 +88,12 @@ const SkillsSection = () => {
 
   const handleSwitchViewButton = ({ target }) => {
     console.log(
-      "=>(SkillsSection.jsx:77) target.textContent",
       target.textContent,
     );
     setSwitchView(target.textContent);
   };
 
   useEffect(() => {
-    console.log("=>(SkillsSection.jsx:103) window", window);
     if (window.innerWidth >= 1024) {
       setSwitchView("both");
     } else {
@@ -101,7 +102,6 @@ const SkillsSection = () => {
   }, []);
 
   useEffect(() => {
-    console.log("=>(SkillsSection.jsx:91) switchView", switchView);
     if (switchView === "both") {
       roundPaperRef.current.style.display = "flex";
       textBoxRef.current.style.display = "flex";
@@ -219,7 +219,7 @@ const SkillsSection = () => {
             {skillsArray && (
               <TextList
                 ref={textRef}
-                textArray={skillsArray}
+                textArray={orbInit ? skillsArray : ['Or here...']}
                 onClick={handleBoxTextClick}
               />
             )}

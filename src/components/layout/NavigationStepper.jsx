@@ -34,14 +34,14 @@ const sxStyles = {
 const steps         = [
     {label: 'Home', target: 'root'},
     {label: 'About me', target: 'about-section'},
-    {label: 'Works', target: 'work-section'},
+    /*{label: 'Works', target: 'work-section'},*/
     {label: 'Skills', target: 'skill-section'},
     {label: 'Contact', target: 'contact-section'}
 ];
 const stepsLabel    = [
     'root',
     'about-section',
-    'work-section',
+    /*'work-section',*/
     'skill-section',
     'contact-section'
 ];
