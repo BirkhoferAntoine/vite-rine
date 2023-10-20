@@ -90,10 +90,10 @@ export const Navigation = () => {
             <AppBar position={'fixed'} sx={sxStyles.header}>
                 <Toolbar sx={sxStyles.toolbar}>
                     <IconButton onClick={toggleDrawer} sx={sxStyles.menuIcon} edge={'start'}><MenuIcon/></IconButton>
-                    <Box sx={{width: '100%', maxWidth: '100vw', display: {xs:'none', md:'flex'}, flexDirection: {xs: 'column', md: 'row'}, alignItems: 'center', position: {xs:'fixed', md:'relative'}, ml:{xs:-1, lg:0}}} >
+                    <Box sx={{width: '100%', maxWidth: '100vw', flexDirection: {xs: 'column', md: 'row'}, alignItems: 'center', position: {xs:'fixed', md:'relative'}, ml:{xs:-1, lg:0}}} >
                         <Logo image={false}/> {/*'src/assets/abrkah_transparent_background_with_a_beautifull_logo_for_a_webs_13f86818-dc0e-4d82-8029-ea22dbcfe68f.png'*/}
                         <Box flexGrow={1} sx={{display: {xs: 'none', md: 'block'}}}  />
-                        <SocialMediaBox/>
+                        <SocialMediaBox hideOnMobile={hideSocialOnMobile}/>
                         <Box sx={{ml: '4em', mr:'4em', display: {xs:'none', md:'flex'}, flexDirection:'row', width:'60px', alignItems:'center', justifyContent:'space-between'}}>
                             <LocationOnSharpIcon/>
                             <Typography className={'text-outline-yellow filter-highlight'}>Paris</Typography>

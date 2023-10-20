@@ -61,7 +61,7 @@ const SkillsSection = () => {
   };
 
   const handleSkillSelection = (skillName) => {
-    if(orbInit) setOrbInit(true);
+    if(!orbInit) setOrbInit(true);
 
     let newWordsArray;
     if (skillName === "../Back" || skillName === 'Click here to start' || skillName === 'Or here...') {

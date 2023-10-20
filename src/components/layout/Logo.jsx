@@ -17,7 +17,7 @@ const Logo = ({image}) => {
     }
 
     return (
-        <Box className={'logo-container'} sx={{mt: {xs: 4, md: 0}}}>
+        <Box className={'logo-container'}>
             {image &&
                 <Box className={'logo-image-box'}>
                     <img src={image}/>

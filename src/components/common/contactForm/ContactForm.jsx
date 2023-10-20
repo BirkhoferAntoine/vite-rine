@@ -1,10 +1,10 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { TextField, Button, Container, Typography } from '@mui/material';
+import './ContactForm.css';
 
 function ContactForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
-
     const onSubmit = async (data) => {
         try {
             const response = await fetch('/send-email', {
@@ -26,12 +26,13 @@ function ContactForm() {
     };
 
     return (
-        <Container component="main" maxWidth="xs">
-            <Typography variant="h5" align="center">Contact Me</Typography>
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+        <Container maxWidth="sm" className={'contact-form-container'}>
+            <Typography m={2} variant="h5" align="center">Contact Me</Typography>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate className={'contact-form'} >
                 <TextField
                     variant="outlined"
-                    margin="normal"
+                    size='small'
+                    margin="small"
                     required
                     fullWidth
                     id="name"
@@ -43,6 +44,7 @@ function ContactForm() {
                 />
                 <TextField
                     variant="outlined"
+                    size='small'
                     margin="normal"
                     required
                     fullWidth
@@ -57,10 +59,11 @@ function ContactForm() {
                 <TextField
                     variant="outlined"
                     margin="normal"
+                    size='normal'
                     required
                     fullWidth
                     multiline
-                    rows={4}
+                    rows={6}
                     id="message"
                     label="Message"
                     name="message"

@@ -18,7 +18,7 @@ const SmartphoneMockup = ({children, navbar, footer}) => {
         <Paper className="smartphone filter-highlight shadow-highlight" sx={{borderRadius:'1em'}}>
             <Box className="smartphone-screen">
                 <Box className="smartphone-ui-top-bar">
-                    <Typography>9:30</Typography>
+                    <Typography>9:36</Typography>
                     <Box className="smartphone-notch"></Box>
                     <Box className="smartphone-ui-status">
                         <SignalWifi4BarSharpIcon fontSize={'inherit'}/>

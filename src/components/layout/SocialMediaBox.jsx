@@ -2,13 +2,13 @@ import React from 'react';
 import {Box, IconButton, useTheme} from "@mui/material";
 import { SiGithub, SiWhatsapp, SiGmail, SiSkype } from "react-icons/si";
 
-const SocialMediaBox = () => {
+const SocialMediaBox = ({hideOnMobile}) => {
 
     const theme = useTheme();
 
     const sxStyles = {
         container: {
-            display: 'flex',
+            display: hideOnMobile ? {xs: 'none', md:'flex'} : 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             /*padding: theme.spacing(2),*/

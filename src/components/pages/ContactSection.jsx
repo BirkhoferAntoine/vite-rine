@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from "react";
+import React, {useRef, useEffect, useState} from "react";
 import {Box, Button, Card, Container, Paper, Typography} from "@mui/material";
 import CircuitLineLosange from "../background/CircuitLineLosange.jsx";
 import {
@@ -13,12 +13,14 @@ import SmartphoneMockup from "../common/smartphonemockup/SmartphoneMockup.jsx";
 import CallToActionButton from "../common/CallToActionButtonV2.jsx";
 import SocialMediaBox from "../layout/SocialMediaBox.jsx";
 import Logo from "../layout/Logo.jsx";
+import ContactForm from "../common/contactForm/ContactForm.jsx";
 
 gsap.registerPlugin({ScrollTrigger});
 
 const ContactSection = () => {
 
-    const callToActionRef = useRef(null);
+    const callToActionRef   = useRef(null);
+    const [showForm, setShowForm]       = useState(false);
 
     const sxStyles = {
         contactBtn: {},
@@ -41,6 +43,10 @@ const ContactSection = () => {
         mobileFooter: {},
     };
 
+    const handleCTABtnClick = () => {
+        setShowForm(true);
+    }
+
     useEffect(() => {
         animateCTAButton(callToActionRef.current, 'contact-container');
     }, []);
@@ -49,10 +55,19 @@ const ContactSection = () => {
         <section id={"contact-section"}>
             {/*<Typography variant={'h1'}>Contact</Typography>*/}
             <Container sx={{position: "relative"}} className={"contact-container"}>
-                <SmartphoneMockup navbar={<Logo/>} footer={<SocialMediaBox/>}>
-                    <Typography>Contact me to know more about my past and present projects !</Typography>
-                    <CallToActionButton ref={callToActionRef}>Contact me</CallToActionButton>
-                </SmartphoneMockup>
+                {!showForm ? (
+                    <SmartphoneMockup navbar={<Logo/>} footer={<SocialMediaBox/>}>
+                        {/*<Typography mb={4}>Contact me to know more about my past and present projects !</Typography>
+                        <CallToActionButton ref={callToActionRef} callback={handleCTABtnClick}>Contact me</CallToActionButton>*/}
+                        <Paper sx={{display: 'flex', justifyContent: 'space-evenly', height: '100%'}}>
+                            <ContactForm />
+                        </Paper>
+                    </SmartphoneMockup>
+                ) : (
+                    <Paper>
+                        <ContactForm />
+                    </Paper>
+                )}
             </Container>
         </section>
     );

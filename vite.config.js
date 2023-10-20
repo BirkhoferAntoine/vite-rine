@@ -11,5 +11,10 @@ export default defineConfig({
         use: [ 'style-loader', 'css-loader' ]
       }
     ]
+  },
+  server: {
+    proxy: {
+      '/send-email': 'http://localhost:3001'
+    }
   }
 })
