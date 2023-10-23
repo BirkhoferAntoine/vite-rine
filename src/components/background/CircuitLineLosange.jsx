@@ -5,8 +5,11 @@ const CircuitLineLosange = forwardRef((props, ref) => {
 
     const {rotate, top, left, width, maxPad, maxBorder, children, addClassName} = props;
 
+    const rWidth = { md: '33vh', lg: '55vh' };
+
     const sxStyles = {
         container: {
+            //transform: {xs: `scale(0.6) rotate(${rotate})`, md: `scale(0.7) rotate(${rotate})`, lg: `scale(1) rotate(${rotate})`},
             rotate,
             top,
             left,

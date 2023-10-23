@@ -21,13 +21,15 @@ import LocationOnSharpIcon from '@mui/icons-material/LocationOnSharp';
 import {Link} from "react-router-dom";
 import Stepper from "./NavigationStepper.jsx";
 import SocialMediaBox from "./SocialMediaBox.jsx";
+import Logo from "./Logo.jsx";
 
 export const Navigation = () => {
     //styles
     const theme = useTheme();
     const sxStyles = {
         menuIcon: {
-            marginRight: 2,
+            display: 'none',
+            marginRight: {xs:1, md:2},
         },
         drawerList: {
             width: '200px',
@@ -48,9 +50,10 @@ export const Navigation = () => {
             backgroundColor: 'transparent',
         },
         textName: {
-            fontFamily: 'Beth Ellen',
+            fontFamily: 'Ibarra real novel',
             fontSize: '2.3em',
             filter: 'drop-shadow(0px 0px 15px #FCD81C)',
+            marginBottom: '-0.5em',
         },
         textJob: {
             fontFamily: 'Jost',
@@ -80,35 +83,29 @@ export const Navigation = () => {
         },
     ]
 
+    const hideSocialOnMobile = true;
+
     return (
         <>
             <AppBar position={'fixed'} sx={sxStyles.header}>
                 <Toolbar sx={sxStyles.toolbar}>
                     <IconButton onClick={toggleDrawer} sx={sxStyles.menuIcon} edge={'start'}><MenuIcon/></IconButton>
-                    <StyledLink to={'/'} width={'100%'}>
-                        <Box className={'logo-container'}>
-                            <Box className={'logo-image-box'}>
-                                <img src={'src/assets/abrkah_transparent_background_with_a_beautifull_logo_for_a_webs_13f86818-dc0e-4d82-8029-ea22dbcfe68f.png'} />
-                            </Box>
-                            <Box className={'logo-title-box logo'}>
-                                <Typography sx={sxStyles.textName} variant={'h5'} color={'textPrimary'}>
-                                    Antoine Birkhofer
-                                </Typography>
-                                <Typography sx={sxStyles.textJob} variant={'h6'} color={'textPrimary'}>
-                                    Web Developer
-                                </Typography>
-                            </Box>
+                    <Box sx={{width: '100%', maxWidth: '100vw', flexDirection: {xs: 'column', md: 'row'}, alignItems: 'center', position: {xs:'fixed', md:'relative'}, ml:{xs:-1, lg:0}}} >
+                        <Logo image={false}/> {/*'src/assets/abrkah_transparent_background_with_a_beautifull_logo_for_a_webs_13f86818-dc0e-4d82-8029-ea22dbcfe68f.png'*/}
+                        <Box flexGrow={1} sx={{display: {xs: 'none', md: 'block'}}}  />
+                        <SocialMediaBox hideOnMobile={hideSocialOnMobile}/>
+                        <Box sx={{ml: '4em', mr:'4em', display: {xs:'none', md:'flex'}, flexDirection:'row', width:'60px', alignItems:'center', justifyContent:'space-between'}}>
+                            <LocationOnSharpIcon/>
+                            <Typography className={'text-outline-yellow filter-highlight'}>Paris</Typography>
                         </Box>
-                    </StyledLink>
-                    <Box flexGrow={1} />
-                    <SocialMediaBox/>
-                    <Box sx={{ml: '4em', mr:'4em', display:'flex', flexDirection:'row', width:'60px', alignItems:'center', justifyContent:'space-between'}}>
-                        <LocationOnSharpIcon/>
-                        <Typography className={'text-outline-yellow filter-highlight'}>Paris</Typography>
                     </Box>
+
+
+
                 </Toolbar>
                 <Drawer anchor={'left'} variant={'temporary'}
                         onClose={toggleDrawer} onClick={toggleDrawer} open={drawerOpen}>
+                    <Stepper/>
                     <List sx={sxStyles.drawerList}>
                         {drawerItems.map(prop => (
                             <StyledLink to={prop.link} key={prop.text+'Link'}>
@@ -121,7 +118,7 @@ export const Navigation = () => {
                     </List>
                 </Drawer>
             </AppBar>
-            <Stepper/>
+
         </>
     );
 }

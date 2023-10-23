@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState, forwardRef} from 'react';
 import {Box, Container, Paper, Typography} from "@mui/material";
-import CircuitLineLosange from "../CircuitLineLosange.jsx";
-import CircuitLine from "../CircuitLine.jsx";
+import CircuitLineLosange from "../background/CircuitLineLosange.jsx";
+import CircuitLine from "../background/CircuitLine.jsx";
 import gsap from 'gsap';
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {
@@ -12,15 +12,15 @@ import {
     slideAnimation,
     hide,
     slightFlyingMovementAnimation, filterShadowAnimation, scaleAnimation
-} from '../GSAPFunctions.jsx';
+} from '../common/GSAPFunctions.jsx';
 /*import {ScrollToPlugin} from "gsap/ScrollToPlugin";*/
 gsap.registerPlugin(ScrollTrigger);
 
 const AboutSection = () => {
 
     const text = [
-        'Hi, my name is Antoine i am a creative Web Developer',
-        'I like to help companies reach new heights in interactive and dynamic fields',
+        'Hi, my name is Antoine I am a creative Web Developer',
+        'I help companies reach new heights in interactive and dynamic fields',
         'I can help build a solid back-end as well',
         'Feel free to contact me for any propositions',
     ];
@@ -55,16 +55,24 @@ const AboutSection = () => {
         slideInFrom(picBoxRef.current, '#about-section', 'left');
     }, []);
 
-    useEffect(() => {
+    /*useEffect(() => {
         slideInFrom(textBoxRef.current, '#about-section', 'right');
-    }, []);
+    }, []);*/
 
     useEffect(() => {
         slideInFromWithReverseY(losangeRef.current, '#about-section', 'bottom');
     }, []);
 
     useEffect(() => {
-        paperFadeIn(bgPaperRef.current, textBoxRef.current);
+        slightFlyingMovementAnimation('.floating', 2);
+    }, []);
+
+    useEffect(() => {
+        filterShadowAnimation('.circuit-line-losange-container');
+    }, []);
+
+    useEffect(() => {
+        paperFadeIn(bgPaperRef.current, bgPaperRef.current);
     }, []);
 
     useEffect(() => {
@@ -80,11 +88,11 @@ const AboutSection = () => {
             toggleActions: 'play pause resume restart',//'pause',
             onEnter:        () => {
                 startInterval();
-                anim = slightFlyingMovementAnimation('.floating', 2);
+                //anim = slightFlyingMovementAnimation('.floating', 2); filterShadowAnimation('.circuit-line-losange-container');
                 /*scaleAnimation(smallBoxRef.current, 2);*/
-                filterShadowAnimation('.circuit-line-losange-container');
+
             },
-            onEnterBack:    () => {
+            /*onEnterBack:    () => {
                 startInterval();
                 anim = slightFlyingMovementAnimation('.floating', 2);
             },
@@ -92,7 +100,7 @@ const AboutSection = () => {
                 setAboutTextIndex(0);
                 stopInterval();
                 anim.kill();
-            },
+            },*/
         });
 
         return () => {
@@ -110,32 +118,36 @@ const AboutSection = () => {
 
 
     return (
-        <section id={'about-section'}>
+        <section id={'about-section'} className={''}>
             {/*<Typography variant={'h1'}>About me</Typography>*/}
             <Paper ref={bgPaperRef} className={'bg-design-container-center'}>
-                <CircuitLineLosange ref={losangeRef} addClassName={'floating'} width={'55vh'} rotate={'45deg'} maxPad={'42px'} maxBorder={'24px'}>
+                <CircuitLineLosange ref={losangeRef} addClassName={'floating about-background-losange'} width={'50vh'} maxPad={'32px'} maxBorder={'24px'} >
                     {/*<CircuitLineLosange ref={smallBoxRef} width={'55vh'} rotate={'45deg'} maxPad={'2px'} maxBorder={'2px'}/>*/}
+
+
+                        <Typography ref={textRef} sx={{fontSize:'1.5em', rotate: '-45deg', zIndex:9999}} className={'about-text typography-highlight'}>
+                            {aboutText}
+                        </Typography>
+
                 </CircuitLineLosange>
             </Paper>
-
             <Container className={'about-container'}>
-                <Box ref={picBoxRef} mt={1} className={'about-picture-box floating shadow-highlight backdrop-filter-blur'}>
+                <Box ref={picBoxRef} mt={1} sx={{height: {xs: '15vh', md: '20vh'}, width: {xs: '15vh', md: '20vh'}, mt: {xs: '10vh', md: '00vh'}, ml: {xs: '-50vw', md: '-50vw'}}} className={'about-picture-box floating shadow-highlight backdrop-filter-blur'}>
                     <img className={'filter-highlight'} src={'src/assets/profil-noBg.png'} />
                     <Box className={'about-picture-box-highlight about-picture-box-highlight-losange filter-highlight shadow-highlight'}></Box>
-                    <Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle filter-highlight shadow-highlight'}></Box>
-                    <Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle2 filter-highlight shadow-highlight'}></Box>
-                </Box>
-                <Box ref={textBoxRef} className={'about-text-container floating text-container shadow-highlight'}>
-                    <Typography ref={textRef} sx={{fontSize:'1.8rem'}} className={'about-text typography-highlight'}>
-                        {aboutText}
-                    </Typography>
+                    {/*<Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle filter-highlight shadow-highlight'}></Box>
+                    <Box className={'about-picture-box-highlight floating about-picture-box-highlight-circle2 filter-highlight shadow-highlight'}></Box>*/}
                 </Box>
             </Container>
 
-            <Box className={'bg-design-container-center'}>
+
+            {/*<Box className={'bg-design-container-center'}>
                 <CircuitLine width={'96vh'} rotate={'90deg'} top={'100vh'} circleTip/>
             </Box>
             <Box className={'section-separator backdrop-filter-blur'}></Box>
+
+            */}
+
 
         </section>
 

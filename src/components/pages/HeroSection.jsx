@@ -1,28 +1,12 @@
 import {Box, Container, Link, Typography} from "@mui/material";
 import React, {useEffect, useRef} from "react";
-import FastEffectString from "../FastEffectString.jsx";
+import FastEffectString from "../common/FastEffectString.jsx";
 import gsap from 'gsap';
+import CallToActionButton from "../common/CallToActionButtonV2.jsx";
 
 const HeroSection = () => {
 
     const sxStyles = {
-        callToActionBtn: {
-            position: 'relative',
-            zIndex: 9999,
-            background: 'linear-gradient(45deg,  var(--color-secondary) 30%,var(--color-primary) 90%)',
-            borderRadius: 5,
-            /*border: '2px solid var(--color-primary)',*/
-            color: 'white',//'#FCD81C',
-            height: 48,
-            width: 360,
-            padding: '0 30px',
-            boxShadow: '0 2px 4px 2px var(--bg-color-default)',
-            display: 'inline-flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-
-            opacity: 0,
-        },
         heroSection: {
             height: 'calc(100vh - var(--header-margin))'
         },
@@ -34,6 +18,12 @@ const HeroSection = () => {
             flexDirection: 'column',
             alignItems: 'center',
             filter: 'drop-shadow(0px 0px 15px var(--color-primary)',
+        },
+        powerUpBox : {
+            display: "flex",
+            justifyContent: 'center',
+            flexDirection: {xs: 'column', md: 'row'},
+            alignItems: {xs: 'center', md: 'flex-end'},
         },
         typoDesign: {
             color: '#EBEAE3',
@@ -59,7 +49,7 @@ const HeroSection = () => {
         typoPower: {
             color: '#DDDDDD',
             fontFamily: 'Ibarra Real Nova',
-            fontSize: '6em',
+            fontSize: {xs: '5em', md: '6em'},
             lineHeight: 1,
             fontWeight: '600',
 
@@ -83,7 +73,7 @@ const HeroSection = () => {
     const typoUpRef         = useRef(null);
     const callToActionRef   = useRef(null);
 
-    const onLoad = () => {
+    useEffect(() => {
         const timeline = gsap.timeline({})
             .fromTo('.animated-typo',
                 {
@@ -103,7 +93,7 @@ const HeroSection = () => {
                     ease: 'elastic',
                     y: 600,
                 },
-            {
+                {
                     opacity: 1,
                     filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px #fff)",
                     ease: 'none',
@@ -111,46 +101,46 @@ const HeroSection = () => {
                     delay: 0.9,
                 },
             ).to(typoUpRef.current,
-            {
-                filter: "drop-shadow(0 0 6px var(--color-primary))",
-                ease: 'none',
-            },
+                {
+                    filter: "drop-shadow(0 0 6px var(--color-primary))",
+                    ease: 'none',
+                },
 
-        ).fromTo(callToActionRef.current,
-            {
-                scrollTrigger: {
-                    trigger: '#hero-section',
-                    start: 'top center',
-                    end: "bottom center",
-                    delay: 1,
-                    markers: true,
-                    toggleActions: 'restart pause reverse pause',//'pause',
+            ).fromTo(callToActionRef.current,
+                {
+                    scrollTrigger: {
+                        trigger: '#hero-section',
+                        start: 'top center',
+                        end: "bottom center",
+                        delay: 1,
+                        markers: true,
+                        toggleActions: 'restart pause reverse pause',//'pause',
+                    },
+                    opacity: 0,
+                    filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
+                    ease: 'back',
+                    duration: 2,
+                    /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
                 },
-                opacity: 0,
-                filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
-                ease: 'back',
-                duration: 2,
-                /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
-            },
-            {
-                scrollTrigger: {
-                    trigger: '#hero-section',
-                    start: 'top center',
-                    end: "bottom center",
-                    delay: 1,
-                    markers: true,
-                    toggleActions: 'play pause play resume',//'pause',
+                {
+                    /*scrollTrigger: {
+                        trigger: '#hero-section',
+                        start: 'top center',
+                        end: "bottom center",
+                        delay: 1,
+                        markers: true,
+                        toggleActions: 'play pause play resume',//'pause',
+                    },*/
+                    opacity: 1,
+                    filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
+                    ease: 'back',
+                    /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
+                    delay: 0.3,
+                    duration: 2,
+                    yoyo: true,
+                    repeat: -1,
                 },
-                opacity: 1,
-                filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
-                ease: 'back',
-                /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
-                delay: 0.3,
-                duration: 2,
-                yoyo: true,
-                repeat: -1,
-            },
-        )/*.fromTo(callToActionRef.current,
+            )/*.fromTo(callToActionRef.current,
             {
                 filter: "drop-shadow(0 0 160px var(--color-primary)) drop-shadow(0 0 20px var(--color-secondary)) ",
                 ease: 'none',
@@ -167,10 +157,6 @@ const HeroSection = () => {
                 repeat: -1,
             },
         )*/;
-    }
-
-    useEffect(() => {
-        onLoad();
     }, []);
 
     return (
@@ -179,14 +165,17 @@ const HeroSection = () => {
 
                 <FastEffectString delay={1000} text={'Design'} extraClass={'animated-typo-1 animated-typo'} sxStyles={sxStyles.typoDesign}/>
                 <FastEffectString delay={2000} text={'Develop'} extraClass={'animated-typo-2 animated-typo'} sxStyles={sxStyles.typoDevelop}/>
-                <Box className={'power-up-box'} mb={9} sx={{display:"flex", justifyContent:'center', flexDirection:'row', alignItems:'flex-end'}}>
+                <Box className={'power-up-box'} mb={9} sx={sxStyles.powerUpBox}>
                     <FastEffectString delay={2700} text={'POWER'} extraClass={'animated-typo-3 animated-typo'} duration={300} sxStyles={sxStyles.typoPower}/>
                     {/*<FastEffectString delay={3300} text={'UP'} extraClass={'animated-typo-4 animated-typo'} duration={100} sxStyles={sxStyles.typoUp}/>*/}
                     <Typography ref={typoUpRef} sx={sxStyles.typoUp} className={'text-outline-dark text-shadow animated-typo-4 '}>UP</Typography>
                 </Box>
-                <Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
-                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Contact me</Typography>
-                </Link>
+                {/*<Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
+                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
+                </Link>*/}
+                <CallToActionButton ref={callToActionRef} className={'call-to-action-btn box-highlight'}>
+                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
+                </CallToActionButton>
             </Container>
 
 

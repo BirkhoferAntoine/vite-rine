@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Container, Paper, styled, Typography} from "@mui/material";
 import Grid from '@mui/material/Unstable_Grid2';
-import CircuitLineRectangle from "../CircuitLineRectangle.jsx";
+import CircuitLineRectangle from "../background/CircuitLineRectangle.jsx";
 const WorksSection = () => {
 
     const sxStyles = {
