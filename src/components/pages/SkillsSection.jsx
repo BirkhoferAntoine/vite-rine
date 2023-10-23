@@ -1,9 +1,8 @@
 import React, { useEffect, useRef, useState, useContext } from "react";
-import { Box, Button, Container, Paper, Typography } from "@mui/material";
+import { Box, Button, Container, Paper } from "@mui/material";
 import { OrbTextThree } from "../orb/OrbTextThree.jsx";
 import {
   alternateTextAnimation,
-  filterShadowAnimation,
   paperFadeIn,
   paperBorderFadeIn,
   fadeIn,
@@ -135,7 +134,7 @@ const SkillsSection = () => {
                 end: "bottom",
                 duration: 4,
                 delay: 1,
-                markers: true,
+                devMode,
                 scrub: 1,
                 toggleActions: 'play pause resume restart',//'pause',
                 onEnter:        () => {

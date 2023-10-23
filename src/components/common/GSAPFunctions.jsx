@@ -1,5 +1,5 @@
-import React from 'react';
-import {gsap, Power2, Elastic} from "gsap";
+
+import {gsap, Power2} from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
 import {ScrollToPlugin} from "gsap/ScrollToPlugin";
 import { EasePack } from 'gsap/EasePack'; //
@@ -7,11 +7,10 @@ import { CustomEase } from 'gsap/CustomEase';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack, CustomEase);
 /*ScrollTrigger.defaults({
     toggleActions: 'restart pause reverse pause',
-    markers: devMode,
+    devMode,
 });*/
 
-
-const devMode = true;
+const devMode = false;
 
 export const hide = (element) => {
     gsap.set(element, {autoAlpha: 0});
@@ -25,7 +24,7 @@ export const animateCTAButton = (element, trigger) => {
                 start: 'top center',
                 end: "bottom center",
                 delay: 1,
-                markers: devMode,
+                devMode,
                 toggleActions: 'restart pause reverse pause',//'pause',
             },
             opacity: 0,
@@ -40,7 +39,7 @@ export const animateCTAButton = (element, trigger) => {
                 start: 'top center',
                 end: "bottom center",
                 delay: 1,
-                markers: devMode,
+                devMode,
                 toggleActions: 'play pause play resume',//'pause',
             },*/
             opacity: 1,
@@ -117,7 +116,7 @@ export const slideInFrom = (element, trigger = element, direction = 'left', dela
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: devMode,
+                devMode,
                 toggleActions: 'play reverse restart reverse',//'pause',
             }
         }
@@ -134,7 +133,7 @@ export const slideInFromWithReverseY = (element, trigger = element, direction = 
         end: "bottom center",
         duration: duration || 1,
         delay: delay || 1,
-        markers: devMode,
+        devMode,
         scrub: 1,
         toggleActions: 'play reverse restart restart',//'pause',
         onEnter:        () => { slideAnimation(element, x, y); },
@@ -172,7 +171,7 @@ export const fadeIn = (element, trigger = element, delay = 1, duration = 1) => {
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: devMode,
+                devMode,
                 toggleActions: 'play none none none',//'pause',
             },
         }
@@ -278,7 +277,7 @@ export const paperFadeIn = (element, trigger = element, delay = 1, duration = 1)
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: devMode,
+                devMode,
                 toggleActions: 'play reverse restart reverse',//'pause',
             },
         }
@@ -311,7 +310,7 @@ export const paperBorderFadeIn = (element, trigger = element, delay = 1, duratio
                 trigger,
                 start: 'top center',
                 end: "bottom center",
-                markers: devMode,
+                devMode,
                 toggleActions: 'play reverse restart reverse',//'pause',
             },
         }
@@ -359,7 +358,7 @@ export const slideInTop = (element, delay, duration) => {
                 end: "bottom center", //end: () => '+=' + document.querySelector(element).offsetWidth,
                 duration: duration || 1,
                 delay: delay || 1,
-                markers: devMode,
+                devMode,
                 scrub: 1,
                 // toggleActions: 'restart pause reverse pause', // resume
                 onUpdate: (self) => {

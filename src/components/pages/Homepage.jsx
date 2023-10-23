@@ -49,7 +49,7 @@ export class Homepage extends Component {
                 <Box className={'section-separator'}></Box>
 
                 <ContactSection/>
-                <Box className={'section-separator'}></Box>
+                {/*<Box className={'section-separator last-separator'}></Box>*/}
 
                 {/*<GsapTrainingComponent/>*/}
             </>

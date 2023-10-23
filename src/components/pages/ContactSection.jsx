@@ -1,11 +1,7 @@
 import React, {useRef, useEffect, useState} from "react";
-import {Box, Button, Card, Container, Paper, Typography} from "@mui/material";
-import CircuitLineLosange from "../background/CircuitLineLosange.jsx";
+import {Container, Paper} from "@mui/material";
 import {
     animateCTAButton,
-    hide,
-    scaleAnimation,
-    slideAnimation,
 } from "../common/GSAPFunctions.jsx";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
@@ -74,43 +70,3 @@ const ContactSection = () => {
 };
 
 export default ContactSection;
-
-{
-    /*<Box className={'contact-mobile-nav'}>
-
-                          </Box>
-                          <Box className={'contact-mobile-body'}>
-                              <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
-                                  Find more about my projects
-                              </Typography>
-                              <Button>
-                                  <Typography sx={sxStyles.contactTypo} variant={'h4'} className={'contact-typography'}>
-                                      Contact me and PowerUp your business
-                                  </Typography>
-                              </Button>
-                          </Box>
-                          <Box className={'contact-mobile-footer'}>
-
-                          </Box>*/
-}
-
-{
-    /*<CircuitLineLosange ref={losangeRef} addClassName={'floating'} width={'55vh'} rotate={'45deg'} maxPad={'42px'} maxBorder={'24px'}/>
-                          <Button sx={sxStyles.contactRedBtn} variant={'contained'} className={'contact-btn'} color={'warning'}></Button>*/
-}
-/*useEffect(() => {
-      ScrollTrigger.create({
-          trigger: losangeRef.current,
-          start: 'top center',
-          end: "bottom center",
-          duration: 4,
-          delay: 2,
-          markers: true,
-          scrub: 1,
-          toggleActions: 'play reverse restart restart',//'pause',
-          onEnter:        () => { scaleAnimation(losangeRef.current);},
-          onEnterBack:    () => { scaleAnimation(losangeRef.current); },
-          onLeave:        () => { hide(losangeRef.current); },
-      });
-
-  }, []);*/

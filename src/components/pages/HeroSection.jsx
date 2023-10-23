@@ -1,8 +1,10 @@
-import {Box, Container, Link, Typography} from "@mui/material";
+import {Box, Container, Typography} from "@mui/material";
 import React, {useEffect, useRef} from "react";
 import FastEffectString from "../common/FastEffectString.jsx";
 import gsap from 'gsap';
 import CallToActionButton from "../common/CallToActionButtonV2.jsx";
+
+const devMode = false;
 
 const HeroSection = () => {
 
@@ -113,7 +115,7 @@ const HeroSection = () => {
                         start: 'top center',
                         end: "bottom center",
                         delay: 1,
-                        markers: true,
+                        devMode,
                         toggleActions: 'restart pause reverse pause',//'pause',
                     },
                     opacity: 0,
@@ -128,7 +130,7 @@ const HeroSection = () => {
                         start: 'top center',
                         end: "bottom center",
                         delay: 1,
-                        markers: true,
+                        devMode,
                         toggleActions: 'play pause play resume',//'pause',
                     },*/
                     opacity: 1,
@@ -159,6 +161,10 @@ const HeroSection = () => {
         )*/;
     }, []);
 
+    const handleCTAClick = () => {
+        document.querySelector('#contact-section').scrollIntoView('smooth');
+    }
+
     return (
         <section id={'hero-section'}>
             <Container sx={sxStyles.heroTextContainer}>
@@ -173,8 +179,8 @@ const HeroSection = () => {
                 {/*<Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
                     <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
                 </Link>*/}
-                <CallToActionButton ref={callToActionRef} className={'call-to-action-btn box-highlight'}>
-                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
+                <CallToActionButton ref={callToActionRef} callback={handleCTAClick} className={'call-to-action-btn box-highlight'}>
+                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Contact Me</Typography>
                 </CallToActionButton>
             </Container>
 
@@ -182,25 +188,5 @@ const HeroSection = () => {
         </section>
     );
 };
-
-{/*<Typography sx={sxStyles.typoDesign} className={'text-outline-red text-shadow'}>Design</Typography>
-                <Typography sx={sxStyles.typoDevelop} className={'text-outline-red text-shadow'}>Develop</Typography>
-                <Box className={'power-up-box'} mb={9} sx={{display:"flex", justifyContent:'center', flexDirection:'row', alignItems:'flex-end'}}>
-                    <Typography sx={sxStyles.typoPower} className={'text-outline-red text-shadow'}>POWER</Typography>
-                    <Typography sx={sxStyles.typoUp} className={'text-outline-dark text-shadow'}>UP</Typography>
-</Box>*/}
-
-{/*<Box className={'hero-footer-container'}>
-                        <Box sx={{ml: '4em', mr:'4em'}}>
-                            <LocationOnSharpIcon/>
-                            <Typography className={'text-outline-yellow filter-highlight'}>Paris - France</Typography>
-                        </Box>
-                        <Box sx={{ml: '4em', mr:'4em'}}>
-                            <EmailSharpIcon/>
-                            <Link href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
-                                <Typography className={'text-outline-yellow filter-highlight'}>Send me an email</Typography>
-                            </Link>
-                        </Box>
-                    </Box>*/}
 
 export default HeroSection;

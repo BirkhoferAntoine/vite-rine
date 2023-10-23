@@ -27,7 +27,7 @@ function ContactForm() {
 
     return (
         <Container maxWidth="sm" className={'contact-form-container'}>
-            <Typography m={2} variant="h5" align="center">Contact Me</Typography>
+            <Typography m={2} variant="h5" align="center">Contact me if you want to know more</Typography>
             <form onSubmit={handleSubmit(onSubmit)} noValidate className={'contact-form'} >
                 <TextField
                     variant="outlined"

@@ -1,5 +1,6 @@
 import React, {forwardRef} from 'react';
 import {Button, Typography} from "@mui/material";
+import {Link} from "react-router-dom";
 
 const sxStyles = {
     position: 'relative',
@@ -10,7 +11,15 @@ const sxStyles = {
     borderRadius: '50px',
 }
 
-export const CallToActionButton = forwardRef(function({callback, children}, ref) {
+export const CallToActionButton = forwardRef(function({callback, href, children}, ref) {
+
+    if (href) {
+        return (
+            <Link ref={ref} sx={sxStyles} to={href} variant={'contained'} className={'call-to-action-btn box-highlight'}>
+                <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>{children}</Typography>
+            </Link>
+        )
+    }
 
     return (
         <Button ref={ref} sx={sxStyles} onClick={callback} variant={'contained'} className={'call-to-action-btn box-highlight'}>

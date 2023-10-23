@@ -16,6 +16,8 @@ import {
 /*import {ScrollToPlugin} from "gsap/ScrollToPlugin";*/
 gsap.registerPlugin(ScrollTrigger);
 
+const devMode = false; //import.meta.env.MODE
+
 const AboutSection = () => {
 
     const text = [
@@ -83,7 +85,7 @@ const AboutSection = () => {
             end: "bottom center",
             duration: 4,
             delay: 1,
-            markers: true,
+            devMode,
             scrub: 1,
             toggleActions: 'play pause resume restart',//'pause',
             onEnter:        () => {

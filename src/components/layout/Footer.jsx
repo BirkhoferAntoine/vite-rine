@@ -5,6 +5,7 @@ import './DefaultLayout.css';
 
 const sxStyles = {
     position: {xs: 'fixed', md: 'relative'},
+    display: {xs: 'block', md:'none'},
 }
 
 const Footer = () => {
