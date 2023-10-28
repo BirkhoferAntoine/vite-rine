@@ -2,24 +2,36 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { TextField, Button, Container, Typography } from '@mui/material';
 import './ContactForm.css';
+import { initializeApp } from '@firebase/app';
+import { getFunctions } from '@firebase/functions';
+
+const firebaseConfig = {
+    // your firebase config here
+};
+
+const app = initializeApp(firebaseConfig);
+const functionsInstance = getFunctions(app);
 
 function ContactForm() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = async (data) => {
+        console.log("=>(ContactForm.jsx:13) data", data);
         try {
-            const response = await fetch('/send-email', {
+            const formData = {
+                name: 'John Doe',
+                message: 'Hello, Firebase!'
+            };
+
+            fetch('https://us-central1-viterine-3fbfd.cloudfunctions.net/sendEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data),
-            });
-
-            if (response.ok) {
-                console.log('Email sent successfully');
-            } else {
-                console.error('Error sending email');
-            }
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.text())
+                .then(data => console.log(data))
+                .catch((error) => console.error('Error:', error));
         } catch (error) {
             console.error('There was an error sending the email', error);
         }
