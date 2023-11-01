@@ -8,7 +8,7 @@ import {alternateOrbScaleAnimation} from "../common/GSAPFunctions.jsx";
 
 const jost = 'src/assets/jost-all-500-normal.woff';
 const beth = 'src/assets/beth-ellen-latin-400-normal.woff';
-const Word = ({ children, handleOrbTextClick, ...props }) => {
+const Word = ({ children, handleOrbTextClick = null, ...props }) => {
     const ref                           = useRef();
     const [hovered, setHovered]         = useState(false);
 
@@ -22,14 +22,14 @@ const Word = ({ children, handleOrbTextClick, ...props }) => {
     const out   = () => setHovered(false);
 
     const handleWordClick = (e) => {
-        handleOrbTextClick(children);
+        if (handleOrbTextClick) handleOrbTextClick(children);
         console.log("=>(OrbTextThree.jsx:117) children", children);
         console.log("=>(OrbTextThree.jsx:117) ref", ref);
     }
 
     // Change the mouse cursor on hover
     useEffect(() => {
-        if (hovered) document.body.style.cursor = 'pointer';
+        if (hovered && handleOrbTextClick) document.body.style.cursor = 'pointer';
         return () => (document.body.style.cursor = 'auto');
     }, [hovered]);
     // Tie component to the render-loop
@@ -40,7 +40,8 @@ const Word = ({ children, handleOrbTextClick, ...props }) => {
         ref.current.material.color.lerp(color.set(hovered ? '#E53D00' : (children === '../Back' || children === 'Click here to start') ? '#FF9F00' : '#FCD81C'), 0.1);
     });
 
-    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={handleWordClick} {...props} {...fontProps} children={children} />
+    return <Text ref={ref} {...(handleOrbTextClick && {onClick:handleWordClick})}
+                 onPointerOver={over} onPointerOut={out} {...props} {...fontProps} children={children} />
 }
 
 export default Word;

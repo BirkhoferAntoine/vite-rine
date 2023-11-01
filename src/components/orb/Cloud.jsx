@@ -5,6 +5,7 @@ import Word from "./Word.jsx";
 export const Cloud = ({skillList, handleOrbTextClick, }) => {
     const [radius, setRadius] = useState(16);
     const [count, setCount] = useState(0);
+    const noClick = skillList.includes('../Back');
 
     useEffect(() => {
         setCount(Math.ceil(Math.sqrt(skillList.length)));
@@ -35,8 +36,8 @@ export const Cloud = ({skillList, handleOrbTextClick, }) => {
     //return words.map(([pos, word], index) => <SvgIcon key={'svg-'+index} position={pos} src={word}/>)
     return words.map(([pos, word], index) => {
         return <Word key={'orb-word-'+index}
+                     {...(!noClick && {handleOrbTextClick:handleOrbTextClick})}
                      position={pos}
-                     handleOrbTextClick={handleOrbTextClick}
                      children={word}/>
     })
 }

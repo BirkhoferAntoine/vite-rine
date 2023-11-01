@@ -31,9 +31,13 @@ export const TextList = forwardRef(function TextList({textArray, onClick}, ref) 
                     {textArray.map((element, index) => {
                         return element !== '../Back' && (
                             <ListItem key={'text-box-list-item-'+index} disablePadding onClick={onClick}>
-                                <ListItemButton sx={{paddingTop: {md: 0}, paddingBottom: {md: 0}}}>
-                                    <ListItemText primary={element} />
-                                </ListItemButton>
+                                {textArray.includes('../Back')
+                                    ? <ListItemText primary={element} />
+                                    : <ListItemButton sx={{paddingTop: {md: 0}, paddingBottom: {md: 0}}}>
+                                        <ListItemText primary={element} />
+                                    </ListItemButton>
+                                }
+
                             </ListItem>
                         )
                     })}
