@@ -179,7 +179,7 @@ const HeroSection = () => {
                 {/*<Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
                     <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
                 </Link>*/}
-                <CallToActionButton ref={callToActionRef} callback={handleCTAClick} className={'call-to-action-btn box-highlight'}>
+                <CallToActionButton ref={callToActionRef} href={'mailto:birkhoferantoine@gmail.com'} className={'call-to-action-btn box-highlight'}>
                     <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Contact Me</Typography>
                 </CallToActionButton>
             </Container>

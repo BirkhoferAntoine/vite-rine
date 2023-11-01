@@ -1,5 +1,5 @@
 import React, {useRef, useEffect, useState} from "react";
-import {Container, Paper} from "@mui/material";
+import {Container, Paper, Typography} from "@mui/material";
 import {
     animateCTAButton,
 } from "../common/GSAPFunctions.jsx";
@@ -16,7 +16,7 @@ gsap.registerPlugin({ScrollTrigger});
 const ContactSection = () => {
 
     const callToActionRef   = useRef(null);
-    const [showForm, setShowForm]       = useState(false);
+    const [showForm, setShowForm]       = useState(true);
 
     const sxStyles = {
         contactBtn: {},
@@ -53,16 +53,17 @@ const ContactSection = () => {
             <Container sx={{position: "relative"}} className={"contact-container"}>
                 {!showForm ? (
                     <SmartphoneMockup navbar={<Logo/>} footer={<SocialMediaBox/>}>
-                        {/*<Typography mb={4}>Contact me to know more about my past and present projects !</Typography>
-                        <CallToActionButton ref={callToActionRef} callback={handleCTABtnClick}>Contact me</CallToActionButton>*/}
                         <Paper sx={{display: 'flex', justifyContent: 'space-evenly', height: '100%'}}>
                             <ContactForm />
                         </Paper>
                     </SmartphoneMockup>
                 ) : (
-                    <Paper>
-                        <ContactForm />
-                    </Paper>
+                    <SmartphoneMockup navbar={<Logo/>} footer={<SocialMediaBox/>}>
+                        <Paper sx={{display: 'flex', flexDirection:'column', justifyContent: 'space-evenly', height: '100%', width: '100%', alignItems: 'center'}}>
+                            <Typography mb={4}>Contact me to know more about my past and present projects !</Typography>
+                            <CallToActionButton ref={callToActionRef} href={'mailto:birkhoferantoine@gmail.com'}>Contact me</CallToActionButton>
+                        </Paper>
+                    </SmartphoneMockup>
                 )}
             </Container>
         </section>
