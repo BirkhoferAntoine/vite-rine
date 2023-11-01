@@ -36,7 +36,7 @@ export const Cloud = ({skillList, handleOrbTextClick, }) => {
     //return words.map(([pos, word], index) => <SvgIcon key={'svg-'+index} position={pos} src={word}/>)
     return words.map(([pos, word], index) => {
         return <Word key={'orb-word-'+index}
-                     {...(!noClick && {handleOrbTextClick:handleOrbTextClick})}
+                     {...((!noClick || word === '../Back') && {handleOrbTextClick:handleOrbTextClick})}
                      position={pos}
                      children={word}/>
     })
