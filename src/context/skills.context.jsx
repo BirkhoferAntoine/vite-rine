@@ -1,10 +1,8 @@
-import {createContext, useMemo, useState} from 'react';
-
+import React, { createContext, useMemo, useState } from 'react';
 
 const SkillsContext = createContext();
 
-function SkillsProviderWrapper({children}) {
-
+function SkillsProviderWrapper({ children }) {
     const skillListObject = useMemo(() => {
         return {
             'Front-End': [
@@ -21,7 +19,7 @@ function SkillsProviderWrapper({children}) {
                 'Object Oriented Programming',
                 'JQuery',
             ],
-            'React': [
+            React: [
                 'Implementation within a Symfony or Laravel application',
                 'Next.js framework',
                 'Hooks and custom hooks',
@@ -42,7 +40,7 @@ function SkillsProviderWrapper({children}) {
                 'PHP Framework: Symfony',
                 'MERN Stack',
             ],
-            'Tools': [
+            Tools: [
                 'Docker',
                 'Git',
                 'PHPStorm & WebStorm',
@@ -53,35 +51,21 @@ function SkillsProviderWrapper({children}) {
                 'Moon Modeler',
                 'Postman',
             ],
-            'Database': [
-                'MySQL',
-                'PostgreSQL',
-                'PDO',
-                'MangoDB',
-            ],
-            'Frameworks': [
+            Database: ['MySQL', 'PostgreSQL', 'PDO', 'MangoDB'],
+            Frameworks: [
                 'React.js',
                 'Next.js',
                 'Symfony',
                 'Material Design UI & react @mui/material',
             ],
-            'Operating Systems': [
-                'Windows',
-                'Linux',
-                'MacOSX',
-            ],
-            'Design': [
-                'Figma',
-                'Photoshop',
-                'AdobeXD',
-                'Krita',
-            ],
-            'Multimedia': [
+            'Operating Systems': ['Windows', 'Linux', 'MacOSX'],
+            Design: ['Figma', 'Photoshop', 'AdobeXD', 'Krita'],
+            Multimedia: [
                 'Audio Recording/Mixing/PostProduction with Cubase or Presonus Studio One',
                 'Sound Design with Omnisphere',
                 'Dynamic rendering of Audio/Video files from the server with FFMPEG',
             ],
-            'CSS': [
+            CSS: [
                 'Flexbox',
                 'Display and Positions',
                 'Transforms',
@@ -91,22 +75,35 @@ function SkillsProviderWrapper({children}) {
                 'Animations',
                 'Grid',
             ],
-            'HTML': [
+            HTML: [
                 'Semantic tags and best practices',
                 'Form validations',
-                'Accessibility and SEO basics'
+                'Accessibility and SEO basics',
             ],
         };
     }, []);
 
     const [orbInit, setOrbInit] = useState(false);
-    const [skillsArray, setSkillsArray] = useState(['Hey there, I am interactive', ' ', 'Click here to start']);
+    const [skillsArray, setSkillsArray] = useState([
+        'Hey there, I am interactive',
+        ' ',
+        'Click here to start',
+        'You can click and move me around',
+    ]);
 
     return (
-        <SkillsContext.Provider value={{orbInit, setOrbInit, skillListObject, skillsArray, setSkillsArray}}>
+        <SkillsContext.Provider
+            value={{
+                orbInit,
+                setOrbInit,
+                skillListObject,
+                skillsArray,
+                setSkillsArray,
+            }}
+        >
             {children}
         </SkillsContext.Provider>
     );
 }
 
-export {SkillsProviderWrapper, SkillsContext};
+export { SkillsProviderWrapper, SkillsContext };

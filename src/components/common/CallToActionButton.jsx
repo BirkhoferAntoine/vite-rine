@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button} from "@mui/material";
+import { Button } from '@mui/material';
 
 const sxStyles = {
     button: {
@@ -11,9 +11,8 @@ const sxStyles = {
         padding: '0 30px',
         boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     },
-}
-const CallToActionButton = ({callback, children}) => {
-
+};
+const CallToActionButton = ({ callback, children }) => {
     return (
         <Button sx={sxStyles.button} onClick={callback} variant={'contained'}>
             {children}

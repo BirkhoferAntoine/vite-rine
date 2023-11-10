@@ -31,7 +31,7 @@ const sxStyles = {
     },
     stepLabel: {
         flexDirection: 'row-reverse',
-        width:'100%',
+        width: '100%',
     },
     stepperNavigationContainer: {
         display: 'flex',
@@ -45,14 +45,13 @@ const sxStyles = {
         height: '2.5em',
         ml: '-2em',
     },
-}
+};
 
 const SliderNavigationStepper = (props) => {
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [completed, setCompleted] = React.useState({});
 
-    const [activeStep, setActiveStep]   = React.useState(0);
-    const [completed, setCompleted]     = React.useState({});
-
-    const {steps}      = props;
+    const { steps } = props;
 
     const totalSteps = () => {
         return steps.length;
@@ -72,7 +71,9 @@ const SliderNavigationStepper = (props) => {
 
     const handleStep = (step, target) => () => {
         setActiveStep(step);
-        document.querySelector('#'+target).scrollIntoView({behavior: "smooth"});
+        document
+            .querySelector('#' + target)
+            .scrollIntoView({ behavior: 'smooth' });
     };
 
     const handleNext = () => {
@@ -80,40 +81,61 @@ const SliderNavigationStepper = (props) => {
             isLastStep() && !allStepsCompleted()
                 ? // It's the last step, but not all steps have been completed,
                   // find the first step that has been completed
-                steps.findIndex((step, i) => !(i in completed))
+                  steps.findIndex((step, i) => !(i in completed))
                 : activeStep + 1;
         setActiveStep(newActiveStep);
-        document.querySelector('#'+steps[newActiveStep].target).scrollIntoView({behavior: "smooth"});
+        document
+            .querySelector('#' + steps[newActiveStep].target)
+            .scrollIntoView({ behavior: 'smooth' });
     };
 
     const handleBack = () => {
-        const newActiveStep = activeStep === 0 ? 0 : activeStep-1;
+        const newActiveStep = activeStep === 0 ? 0 : activeStep - 1;
         setActiveStep(newActiveStep);
-        document.querySelector('#'+steps[newActiveStep].target).scrollIntoView({behavior: "smooth"});
+        document
+            .querySelector('#' + steps[newActiveStep].target)
+            .scrollIntoView({ behavior: 'smooth' });
     };
 
     return (
         <Box sx={sxStyles.stepperContainer}>
             <Box className={'work-brand-logo-container filter-highlight'}>
-                <img className={'brand-logo'} src={'src/assets/2022Logo-FRIZZZY.png'} alt={'frizzzy'}/>
+                <img
+                    className={'brand-logo'}
+                    src={'src/assets/2022Logo-FRIZZZY.png'}
+                    alt={'frizzzy'}
+                />
             </Box>
-            <Box sx={sxStyles.stepperNavigationContainer} className={'work-slider-stepper'}>
-                <Stepper orientation={'vertical'} nonLinear activeStep={activeStep}>
+            <Box
+                sx={sxStyles.stepperNavigationContainer}
+                className={'work-slider-stepper'}
+            >
+                <Stepper
+                    orientation={'vertical'}
+                    nonLinear
+                    activeStep={activeStep}
+                >
                     {steps.map((step, index) => (
-                        <Step key={'step-'+step.label} completed={completed[index]}>
+                        <Step
+                            key={'step-' + step.label}
+                            completed={completed[index]}
+                        >
                             <StepButton
                                 className={'stepper-btn'}
                                 color="inherit"
-                                onClick={handleStep(index, step.target)}>
-                                <StepLabel icon={<OfflineBoltSharpIcon/>}
-                                           sx={sxStyles.stepLabel}>
+                                onClick={handleStep(index, step.target)}
+                            >
+                                <StepLabel
+                                    icon={<OfflineBoltSharpIcon />}
+                                    sx={sxStyles.stepLabel}
+                                >
                                     {step.label}
                                 </StepLabel>
                             </StepButton>
                         </Step>
                     ))}
                 </Stepper>
-                <Box/>
+                <Box />
                 <Box sx={sxStyles.stepperPrevNextContainer}>
                     <Box sx={{ display: 'flex', flexDirection: 'row' }}>
                         <Button
@@ -123,13 +145,15 @@ const SliderNavigationStepper = (props) => {
                             onClick={handleBack}
                             sx={{ mr: 1 }}
                         >
-                            <NavigateBeforeSharpIcon/>
+                            <NavigateBeforeSharpIcon />
                         </Button>
                         <Box sx={{ flex: '1 1 auto' }} />
                         <Button
                             className={'stepper-btn'}
-                            onClick={handleNext} sx={{ mr: 1 }}>
-                            <NavigateNextSharpIcon/>
+                            onClick={handleNext}
+                            sx={{ mr: 1 }}
+                        >
+                            <NavigateNextSharpIcon />
                         </Button>
                     </Box>
                 </Box>
@@ -138,8 +162,4 @@ const SliderNavigationStepper = (props) => {
     );
 };
 
-
 export default SliderNavigationStepper;
-
-
-

@@ -1,7 +1,6 @@
-
-import {gsap, Power2} from "gsap";
-import {ScrollTrigger} from "gsap/ScrollTrigger";
-import {ScrollToPlugin} from "gsap/ScrollToPlugin";
+import { gsap, Power2 } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { EasePack } from 'gsap/EasePack'; //
 import { CustomEase } from 'gsap/CustomEase';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack, CustomEase);
@@ -13,22 +12,23 @@ gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, EasePack, CustomEase);
 const devMode = false;
 
 export const hide = (element) => {
-    gsap.set(element, {autoAlpha: 0});
-}
+    gsap.set(element, { autoAlpha: 0 });
+};
 
 export const animateCTAButton = (element, trigger) => {
-    gsap.fromTo(element,
+    gsap.fromTo(
+        element,
         {
             scrollTrigger: {
                 trigger: trigger,
                 start: 'top center',
-                end: "bottom center",
+                end: 'bottom center',
                 delay: 1,
                 devMode,
-                toggleActions: 'restart pause reverse pause',//'pause',
+                toggleActions: 'restart pause reverse pause', //'pause',
             },
             opacity: 0,
-            filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
+            filter: 'drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))',
             ease: 'back',
             duration: 2,
             /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
@@ -43,15 +43,15 @@ export const animateCTAButton = (element, trigger) => {
                 toggleActions: 'play pause play resume',//'pause',
             },*/
             opacity: 1,
-            filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
+            filter: 'drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))',
             ease: 'back',
             /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
             delay: 0.3,
             duration: 2,
             yoyo: true,
             repeat: -1,
-        },
-    )/*.fromTo(callToActionRef.current,
+        }
+    ) /*.fromTo(callToActionRef.current,
             {
                 filter: "drop-shadow(0 0 160px var(--color-primary)) drop-shadow(0 0 20px var(--color-secondary)) ",
                 ease: 'none',
@@ -68,7 +68,7 @@ export const animateCTAButton = (element, trigger) => {
                 repeat: -1,
             },
         )*/;
-}
+};
 
 export const slideAnimation = (element, x, y) => {
     gsap.fromTo(
@@ -84,20 +84,25 @@ export const slideAnimation = (element, x, y) => {
             y: 0,
         }
     );
-}
+};
 
 export const assignDirection = (direction) => {
-    const sign  = (direction === 'left' || direction === 'top') ? (- 1) : 1;
+    const sign = direction === 'left' || direction === 'top' ? -1 : 1;
     return {
-        x: (direction === 'left' || direction === 'right') ? (200*sign) : 0,
-        y:(direction === 'top' || direction === 'bottom') ? (200*sign) : 0
+        x: direction === 'left' || direction === 'right' ? 200 * sign : 0,
+        y: direction === 'top' || direction === 'bottom' ? 200 * sign : 0,
     };
-}
+};
 
-export const slideInFrom = (element, trigger = element, direction = 'left', delay = 1, duration = 1) => {
-
+export const slideInFrom = (
+    element,
+    trigger = element,
+    direction = 'left',
+    delay = 1,
+    duration = 1
+) => {
     hide(element);
-    const {x, y} = assignDirection(direction);
+    const { x, y } = assignDirection(direction);
 
     gsap.fromTo(
         element,
@@ -115,35 +120,46 @@ export const slideInFrom = (element, trigger = element, direction = 'left', dela
             scrollTrigger: {
                 trigger,
                 start: 'top center',
-                end: "bottom center",
+                end: 'bottom center',
                 devMode,
-                toggleActions: 'play reverse restart reverse',//'pause',
-            }
+                toggleActions: 'play reverse restart reverse', //'pause',
+            },
         }
     );
-}
+};
 
-export const slideInFromWithReverseY = (element, trigger = element, direction = 'up', delay = 1, duration = 1) => {
-    const {x, y} = assignDirection(direction);
+export const slideInFromWithReverseY = (
+    element,
+    trigger = element,
+    direction = 'up',
+    delay = 1,
+    duration = 1
+) => {
+    const { x, y } = assignDirection(direction);
 
     hide(element);
     ScrollTrigger.create({
         trigger: trigger,
         start: 'top center',
-        end: "bottom center",
+        end: 'bottom center',
         duration: duration || 1,
         delay: delay || 1,
         devMode,
         scrub: 1,
-        toggleActions: 'play reverse restart restart',//'pause',
-        onEnter:        () => { slideAnimation(element, x, y); },
-        onEnterBack:    () => { slideAnimation(element, x, -y); },
+        toggleActions: 'play reverse restart restart', //'pause',
+        onEnter: () => {
+            slideAnimation(element, x, y);
+        },
+        onEnterBack: () => {
+            slideAnimation(element, x, -y);
+        },
         /*onLeave:        () => { hide(element); },*/
     });
-}
+};
 
 export const alternateTextAnimation = (element, delay = 0, duration = 1.5) => {
-    gsap.fromTo(element,
+    gsap.fromTo(
+        element,
         {
             opacity: 0,
         },
@@ -154,9 +170,8 @@ export const alternateTextAnimation = (element, delay = 0, duration = 1.5) => {
             ease: 'slow',
         }
     );
-}
+};
 export const fadeIn = (element, trigger = element, delay = 1, duration = 1) => {
-
     gsap.fromTo(
         element,
         {
@@ -170,17 +185,15 @@ export const fadeIn = (element, trigger = element, delay = 1, duration = 1) => {
             scrollTrigger: {
                 trigger,
                 start: 'top center',
-                end: "bottom center",
+                end: 'bottom center',
                 devMode,
-                toggleActions: 'play none none none',//'pause',
+                toggleActions: 'play none none none', //'pause',
             },
         }
     );
-
-}
+};
 
 export const slightFlyingMovementAnimation = (element, delay = 1) => {
-
     const anim = gsap.fromTo(
         element,
         {
@@ -192,15 +205,15 @@ export const slightFlyingMovementAnimation = (element, delay = 1) => {
             ease: Power2.easeInOut,
             duration: 2,
             yoyo: true,
-            repeat:-1,
+            repeat: -1,
             yoyoEase: Power2.easeInOut,
             stagger: 0.33,
             delay: 0.6,
             scrollTrigger: {
                 onLeave: () => {
                     anim.kill();
-                }
-            }
+                },
+            },
         }
     );
     return anim;
@@ -218,10 +231,9 @@ export const slightFlyingMovementAnimation = (element, delay = 1) => {
             },
         }
     )*/
-}
+};
 
 export const filterShadowAnimation = (element) => {
-
     gsap.fromTo(
         element,
         {
@@ -234,30 +246,29 @@ export const filterShadowAnimation = (element) => {
             ease: 'expo-out',
             duration: 4,
             yoyo: true,
-            repeat:-1,
+            repeat: -1,
             yoyoEase: 'expo-in',
             stagger: 0.1,
             delay: 0.6,
         }
     );
-}
+};
 
 export const scaleAnimation = (element, delay = 1) => {
+    gsap.to(element, {
+        duration: 4,
+        delay: delay,
+        scale: 50,
+        ease: 'power1.out',
+    });
+};
 
-
-    gsap.to(
-        element,
-        {
-            duration: 4,
-            delay: delay,
-            scale: 50,
-            ease: "power1.out",
-        }
-    )
-}
-
-export const paperFadeIn = (element, trigger = element, delay = 1, duration = 1) => {
-
+export const paperFadeIn = (
+    element,
+    trigger = element,
+    delay = 1,
+    duration = 1
+) => {
     gsap.fromTo(
         element,
         {
@@ -266,7 +277,8 @@ export const paperFadeIn = (element, trigger = element, delay = 1, duration = 1)
         },
         {
             backgroundColor: '#100E02',
-            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))',
+            backgroundImage:
+                'linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))',
             /*border: '1px 0px 1px 0px solid #FCD81C',*/
             borderWidth: '1px 0px',
             borderColor: '#FCD81C',
@@ -276,17 +288,20 @@ export const paperFadeIn = (element, trigger = element, delay = 1, duration = 1)
             scrollTrigger: {
                 trigger,
                 start: 'top center',
-                end: "bottom center",
+                end: 'bottom center',
                 devMode,
-                toggleActions: 'play reverse restart reverse',//'pause',
+                toggleActions: 'play reverse restart reverse', //'pause',
             },
         }
     );
+};
 
-}
-
-export const paperBorderFadeIn = (element, trigger = element, delay = 1, duration = 1) => {
-
+export const paperBorderFadeIn = (
+    element,
+    trigger = element,
+    delay = 1,
+    duration = 1
+) => {
     gsap.fromTo(
         element,
         {
@@ -297,7 +312,8 @@ export const paperBorderFadeIn = (element, trigger = element, delay = 1, duratio
         {
             rotate: '0deg',
             backgroundColor: '#100E02',
-            backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))',
+            backgroundImage:
+                'linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05))',
             /*border: '1px 0px 1px 0px solid #FCD81C',*/
             borderWidth: '2px 1px',
             borderColor: '#FCD81C',
@@ -309,17 +325,15 @@ export const paperBorderFadeIn = (element, trigger = element, delay = 1, duratio
             scrollTrigger: {
                 trigger,
                 start: 'top center',
-                end: "bottom center",
+                end: 'bottom center',
                 devMode,
-                toggleActions: 'play reverse restart reverse',//'pause',
+                toggleActions: 'play reverse restart reverse', //'pause',
             },
         }
     );
-
-}
+};
 
 export const slideInLeft = (element, delay, duration) => {
-
     gsap.fromTo(
         element,
         {
@@ -328,21 +342,19 @@ export const slideInLeft = (element, delay, duration) => {
         },
         {
             opacity: 1,
-            x:0,
+            x: 0,
             scrollTrigger: {
                 trigger: element,
                 start: 'top center',
-                end: "bottom center",
+                end: 'bottom center',
                 duration: duration || 1,
                 delay: delay || 1,
             },
         }
     );
-
-}
+};
 
 export const slideInTop = (element, delay, duration) => {
-
     gsap.fromTo(
         element,
         {
@@ -355,7 +367,7 @@ export const slideInTop = (element, delay, duration) => {
             scrollTrigger: {
                 trigger: element,
                 start: 'top center',
-                end: "bottom center", //end: () => '+=' + document.querySelector(element).offsetWidth,
+                end: 'bottom center', //end: () => '+=' + document.querySelector(element).offsetWidth,
                 duration: duration || 1,
                 delay: delay || 1,
                 devMode,
@@ -365,8 +377,8 @@ export const slideInTop = (element, delay, duration) => {
                     //console.log("-> self.toFixed(3", self.progress.toFixed(3));
                 },
                 onEnter: (self) => {
-                    console.log("-> self", self);
-                },/*
+                    console.log('-> self', self);
+                } /*
                         onLeave: (self) => {
                             console.log("-> self", self);
                         },
@@ -375,27 +387,17 @@ export const slideInTop = (element, delay, duration) => {
                         },
                         onLeaveBack: (self) => {
                             console.log("-> self", self);
-                        }*/
+                        }*/,
             },
         }
     );
-}
-
-export const animateScale = (element, scale, delay = 1, duration = 1) => {
-    console.log("=>(GSAPFunctions.jsx:330) element", element);
-
-    /*gsap.to(element.current.style.scale, {
-        x: scale,
-        y: scale,
-        z: scale,
-        duration: duration,
-        delay: delay,
-    });*/
 };
 
-
-export const alternateOrbScaleAnimation = (element, delay = 0, stepDuration = 1) => {
-
+export const alternateOrbScaleAnimation = (
+    element,
+    delay = 0,
+    stepDuration = 1
+) => {
     const canvasWidth = element.offsetWidth;
     const canvasHeight = element.offsetHeight;
 
@@ -405,7 +407,8 @@ export const alternateOrbScaleAnimation = (element, delay = 0, stepDuration = 1)
     const initialX = '0%';
     const initialY = '0%';
 
-    gsap.fromTo(element.style,
+    gsap.fromTo(
+        element.style,
         {
             width: '0%',
             height: '0%',
@@ -425,12 +428,26 @@ export const alternateOrbScaleAnimation = (element, delay = 0, stepDuration = 1)
             duration: stepDuration,
             delay: delay,
             ease: 'power2.inOut',
-        });
-}
+        }
+    );
+};
 
+/*
+
+export const animateScale = (element, scale, delay = 1, duration = 1) => {
+    console.log('=>(GSAPFunctions.jsx:330) element', element);
+
+    /!*gsap.to(element.current.style.scale, {
+        x: scale,
+        y: scale,
+        z: scale,
+        duration: duration,
+        delay: delay,
+    });*!/
+};
 
 export const animateCollapse = (element, delay = 0, duration = 1) => {
-    /*useFrame(() => {
+    /!*useFrame(() => {
         // Define the animation
         gsap.to(cloudRef.current.scale, {
             x: 0.2, // Scale to 20% of the original size
@@ -438,14 +455,11 @@ export const animateCollapse = (element, delay = 0, duration = 1) => {
             z: 0.2,
             duration: 2, // Animation duration in seconds
         });
-    });*/
-
-
+    });*!/
 
     animateScale(element, 0.1, delay, duration);
-
 
     // Implement your collapse animation here using Tween or GSAP
     // Once the animation is complete, call the callback
     // This callback will replace the words and trigger the expand animation
-};
+};*/

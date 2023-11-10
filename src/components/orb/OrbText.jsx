@@ -9,16 +9,24 @@ const OrbText = () => {
     useEffect(() => {
         const container = containerRef.current;
 
-        const scene     = new THREE.Scene();
-        const camera    = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer  = new THREE.WebGLRenderer({ antialias: true });
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth / window.innerHeight,
+            0.1,
+            1000
+        );
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
 
-        const radius    = 200;
-        const geometry  = new THREE.SphereGeometry(radius, 50, 50);
-        const material  = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
-        const sphere    = new THREE.Mesh(geometry, material);
+        const radius = 200;
+        const geometry = new THREE.SphereGeometry(radius, 50, 50);
+        const material = new THREE.MeshBasicMaterial({
+            color: 0xffffff,
+            wireframe: true,
+        });
+        const sphere = new THREE.Mesh(geometry, material);
         scene.add(sphere);
         const light = new THREE.AmbientLight(0xffffff, 1);
         scene.add(light);
@@ -33,15 +41,17 @@ const OrbText = () => {
                 bevelEnabled: true,
                 bevelThickness: 1,
                 bevelSize: 0.5,
-                bevelSegments: 3
+                bevelSegments: 3,
             });
 
-            console.log("-> font", font);
+            console.log('-> font', font);
 
             if (textGeometry.vertices !== undefined) {
                 // access textGeometry.vertices here
-                const textMaterial  = new THREE.MeshStandardMaterial({ color: 0xffffff });
-                const textMesh      = new THREE.Mesh(textGeometry, textMaterial);
+                const textMaterial = new THREE.MeshStandardMaterial({
+                    color: 0xffffff,
+                });
+                const textMesh = new THREE.Mesh(textGeometry, textMaterial);
 
                 // Distribute text in sphere
                 for (let i = 0, l = textGeometry.vertices.length; i < l; i++) {
@@ -57,15 +67,21 @@ const OrbText = () => {
 
                 scene.add(textMesh);
             } else {
-                console.log("-> textGeometry", textGeometry);
+                console.log('-> textGeometry', textGeometry);
                 textGeometry.computeBoundingBox();
 
-                const centerOffset = - 0.5 * ( textGeometry.boundingBox.max.x - textGeometry.boundingBox.min.x );
+                const centerOffset =
+                    -0.5 *
+                    (textGeometry.boundingBox.max.x -
+                        textGeometry.boundingBox.min.x);
                 const materials = [
-                    new THREE.MeshPhongMaterial( { color: 0xffffff, flatShading: true } ), // front
-                    new THREE.MeshPhongMaterial( { color: 0xffffff } ) // side
+                    new THREE.MeshPhongMaterial({
+                        color: 0xffffff,
+                        flatShading: true,
+                    }), // front
+                    new THREE.MeshPhongMaterial({ color: 0xffffff }), // side
                 ];
-                const textMesh1 = new THREE.Mesh( textGeometry, materials );
+                const textMesh1 = new THREE.Mesh(textGeometry, materials);
                 const hover = 30;
                 textMesh1.position.x = centerOffset;
                 textMesh1.position.y = hover;
@@ -102,7 +118,6 @@ const OrbText = () => {
                 });*/
             }
         });
-
 
         camera.position.z = 500;
 

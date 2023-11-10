@@ -1,12 +1,18 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {Typography} from "@mui/material";
+import React, { useEffect, useRef, useState } from 'react';
+import { Typography } from '@mui/material';
 
-
-const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 const charactersLength = characters.length;
 
-const FastEffectString = ({ text, delay = false, duration = 1000, sxStyles, extraClass = '' }) => {
-    const [animatedText, setAnimatedText]       = useState('');
+const FastEffectString = ({
+    text,
+    delay = false,
+    duration = 1000,
+    sxStyles,
+    extraClass = '',
+}) => {
+    const [animatedText, setAnimatedText] = useState('');
     const intervalRef = useRef(null);
 
     const startAnimation = () => {
@@ -14,7 +20,9 @@ const FastEffectString = ({ text, delay = false, duration = 1000, sxStyles, extr
         intervalRef.current = setInterval(() => {
             let newAnimatedText = '';
             for (const element of text) {
-                newAnimatedText += characters.charAt(Math.floor(Math.random() * charactersLength));
+                newAnimatedText += characters.charAt(
+                    Math.floor(Math.random() * charactersLength)
+                );
             }
             setAnimatedText(newAnimatedText);
         }, 50);
@@ -24,10 +32,12 @@ const FastEffectString = ({ text, delay = false, duration = 1000, sxStyles, extr
         setAnimatedText(text);
     };
     useEffect(() => {
-        const timer = delay ? setTimeout(() => {
-            startAnimation();
-            setTimeout(endAnimation, duration);
-        }, delay) : setTimeout(endAnimation, duration);
+        const timer = delay
+            ? setTimeout(() => {
+                  startAnimation();
+                  setTimeout(endAnimation, duration);
+              }, delay)
+            : setTimeout(endAnimation, duration);
 
         startAnimation();
 
@@ -35,15 +45,19 @@ const FastEffectString = ({ text, delay = false, duration = 1000, sxStyles, extr
             clearInterval(intervalRef.current);
             clearTimeout(timer);
         };
-    }, [text, delay, duration]);
+    }, [text, delay, duration, startAnimation, endAnimation]);
 
     return (
-        <Typography sx={sxStyles} className={'text-outline-red text-shadow ' + extraClass}>{animatedText}</Typography>
+        <Typography
+            sx={sxStyles}
+            className={'text-outline-red text-shadow ' + extraClass}
+        >
+            {animatedText}
+        </Typography>
     );
 };
 
 export default FastEffectString;
-
 
 /*useEffect(() => {
         setTimeout(() => {

@@ -1,9 +1,8 @@
 import React from 'react';
-import {Box} from "@mui/material";
+import { Box } from '@mui/material';
 
 const CircuitLineRectangle = (props) => {
-
-    const {rotate, top, left, width, height, addClassName} = props;
+    const { rotate, top, left, width, height, addClassName } = props;
 
     const sxStyles = {
         container: {
@@ -25,17 +24,39 @@ const CircuitLineRectangle = (props) => {
             flexDirection: 'row',
             justifyContent: 'space-between',
             width: '100%',
-        }
-    }
+        },
+    };
 
     return (
-        <Box sx={sxStyles.container} className={'circuit-line-rectangle-container'}>
-            <Box sx={sxStyles.horizontalLine} className={'circuit-line shadow-highlight backdrop-filter-blur'}></Box>
-            <Box sx={sxStyles.middleContainer} className={'circuit-line-rectangle-container'}>
-                <Box sx={sxStyles.verticalLine} className={'circuit-line-vertical shadow-highlight backdrop-filter-blur'}></Box>
-                <Box sx={sxStyles.verticalLine} className={'circuit-line-vertical shadow-highlight backdrop-filter-blur'}></Box>
+        <Box
+            sx={sxStyles.container}
+            className={'circuit-line-rectangle-container'}
+        >
+            <Box
+                sx={sxStyles.horizontalLine}
+                className={'circuit-line shadow-highlight backdrop-filter-blur'}
+            ></Box>
+            <Box
+                sx={sxStyles.middleContainer}
+                className={'circuit-line-rectangle-container'}
+            >
+                <Box
+                    sx={sxStyles.verticalLine}
+                    className={
+                        'circuit-line-vertical shadow-highlight backdrop-filter-blur'
+                    }
+                ></Box>
+                <Box
+                    sx={sxStyles.verticalLine}
+                    className={
+                        'circuit-line-vertical shadow-highlight backdrop-filter-blur'
+                    }
+                ></Box>
             </Box>
-            <Box sx={sxStyles.horizontalLine} className={'circuit-line shadow-highlight backdrop-filter-blur'}></Box>
+            <Box
+                sx={sxStyles.horizontalLine}
+                className={'circuit-line shadow-highlight backdrop-filter-blur'}
+            ></Box>
         </Box>
     );
 };

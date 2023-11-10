@@ -1,33 +1,33 @@
-import * as THREE from 'three';
-import { useRef, useState, useMemo, useEffect, forwardRef, useContext } from 'react';
-import {SkillsContext} from '../../context/skills.context.jsx';
-import {Canvas, useFrame} from '@react-three/fiber';
-import {Text, TrackballControls, OrbitControls} from '@react-three/drei';
-import {Cloud} from "./Cloud.jsx"; //  Sphere, Torus,
+import React from 'react';
+import { forwardRef, useContext } from 'react';
+import { SkillsContext } from '../../context/skills.context.jsx';
+import { Canvas } from '@react-three/fiber';
+import { TrackballControls } from '@react-three/drei';
+import { Cloud } from './Cloud.jsx'; //  Sphere, Torus,
 
 export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
-
     const skillListObject = useContext(SkillsContext);
-    const {skillsArray, setSkillsArray}       = useContext(SkillsContext);
+    const { skillsArray, setSkillsArray } = useContext(SkillsContext);
 
     const randomWord = (wordArray) => {
         return wordArray[Math.floor(Math.random() * props.skillList.length)];
-    }
-
+    };
 
     return (
-        <Canvas ref={ref} dpr={[1, 2]} camera={{ position: [0, 0, 36], fov: 90 }} className={'orb-canvas-container'}>
-            <Cloud skillList={skillsArray} handleOrbTextClick={props.handleOrbTextClick} />
+        <Canvas
+            ref={ref}
+            dpr={[1, 2]}
+            camera={{ position: [0, 0, 36], fov: 90 }}
+            className={'orb-canvas-container'}
+        >
+            <Cloud
+                skillList={skillsArray}
+                handleOrbTextClick={props.handleOrbTextClick}
+            />
             <TrackballControls />
         </Canvas>
-    )
-})
-
-
-
-
-
-
+    );
+});
 
 /*
 *
@@ -67,8 +67,6 @@ export const OrbTextThree = forwardRef(function OrbTextThree(props, ref) {
 <TrackballControls />
 </Canvas>*/
 
-
-
 /*
 function Sphere({ radius = 1.5 }) {
     const { scene, camera } = useThree();
@@ -80,13 +78,13 @@ function Sphere({ radius = 1.5 }) {
 }
 */
 
-const SvgIcon = ({ src, children, ...props }) => {
+/*const SvgIcon = ({ src, children, ...props }) => {
     const ref = useRef();
 
-    console.log("-> ");
+    console.log('-> ');
     const [hovered, setHovered] = useState(false);
 
-    /*const color = new THREE.Color();
+    const color = new THREE.Color();
     const fontProps = {};
 
     const over = (e) => (e.stopPropagation(), setHovered(true));
@@ -103,22 +101,33 @@ const SvgIcon = ({ src, children, ...props }) => {
         ref.current.quaternion.copy(camera.quaternion);
         // Animate font color
         ref.current.material.color.lerp(color.set(hovered ? '#E53D00' : '#FCD81C'), 0.1);
-    });*/
+    });
 
     const image = new Image();
     image.src = src;
 
     if (image.height) {
-        const ratio = 16/image.height;
-        return <Svg src={src} scale={ratio} fillMaterial={{color:'#FCD81C'}} ref={ref} /*onPointerOver={over} onPointerOut={out}*/ onClick={() => console.log('clicked')} {...props} children={children} />
+        const ratio = 16 / image.height;
+        return (
+            <Svg
+                src={src}
+                scale={ratio}
+                fillMaterial={{ color: '#FCD81C' }}
+                ref={ref}
+                /!*onPointerOver={over} onPointerOut={out}*!/ onClick={() =>
+                    console.log('clicked')
+                }
+                {...props}
+                children={children}
+            />
+        );
     }
 };
-
 
 const svgList = [
     'src/assets/icons/react.svg',
     'src/assets/icons/symfony.svg',
-    'src/assets/icons/devicons-master/!SVG/javascript_1.svg',//'src/assets/icons/javascript_icon_130900.svg',
+    'src/assets/icons/devicons-master/!SVG/javascript_1.svg', //'src/assets/icons/javascript_icon_130900.svg',
     'src/assets/icons/devicons-master/!SVG/php.svg',
     'src/assets/icons/devicons-master/!SVG/html5.svg',
     'src/assets/icons/file_type_css_icon_130661.svg',
@@ -132,4 +141,4 @@ const svgList = [
     'src/assets/icons/phpstorm-seeklogo.com.svg',
     'src/assets/icons/ffmpeg-seeklogo.com.svg',
     'src/assets/icons/next-js-seeklogo.com.svg',
-];
+];*/

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Box} from "@mui/material";
+import React, { Component } from 'react';
+import { Box } from '@mui/material';
 import gsap from 'gsap';
 
 class SwiperDemo extends Component {
@@ -33,7 +33,6 @@ class SwiperDemo extends Component {
     }
 
     render() {
-
         const sxStyles = {
             swiper: {
                 width: '200vw',
@@ -43,7 +42,7 @@ class SwiperDemo extends Component {
             },
             wrapper: {
                 background: 'none',
-            }
+            },
         };
 
         const factoryImages = [
@@ -52,14 +51,29 @@ class SwiperDemo extends Component {
             'src/assets/pexels-antoni-shkraba-7507067-removebg-preview.png',
         ];
 
-
         return (
-            <Box sx={sxStyles.swiper} className={'bg-design-container-center'} ref={this.slidesRef}>
+            <Box
+                sx={sxStyles.swiper}
+                className={'bg-design-container-center'}
+                ref={this.slidesRef}
+            >
                 {factoryImages.map((element, index) => (
-                    <Box key={'swiper-container-'+index} className={'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'}>
+                    <Box
+                        key={'swiper-container-' + index}
+                        className={
+                            'work-slider-container filter-highlight shadow-highlight backdrop-filter-blur'
+                        }
+                    >
                         <Box className={'work-slider'}>
-                            <Box sx={sxStyles.wrapper} className={'work-slider-wrapper filter-blur'}>
-                                <img className={'slider-image'} src={element} key={'swiper-image-'+index}/>
+                            <Box
+                                sx={sxStyles.wrapper}
+                                className={'work-slider-wrapper filter-blur'}
+                            >
+                                <img
+                                    className={'slider-image'}
+                                    src={element}
+                                    key={'swiper-image-' + index}
+                                />
                             </Box>
                         </Box>
                     </Box>

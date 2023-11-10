@@ -1,9 +1,8 @@
 import React from 'react';
-import {Box} from "@mui/material";
+import { Box } from '@mui/material';
 
 const CircuitLine = (props) => {
-
-    let {rotate, top, width, left, circleTip} = props;
+    let { rotate, top, width, left, circleTip } = props;
 
     const sxStyles = {
         container: {
@@ -15,16 +14,27 @@ const CircuitLine = (props) => {
         line: {
             width,
         },
-        circle: {
-
-        }
-    }
+        circle: {},
+    };
 
     return (
         <Box sx={sxStyles.container} className={'circuit-line-container'}>
-            <Box className={'circuit-circle shadow-highlight backdrop-filter-blur'}></Box>
-            <Box sx={sxStyles.line} className={'circuit-line shadow-highlight backdrop-filter-blur'}></Box>
-            {(circleTip && <Box className={'circuit-circle shadow-highlight backdrop-filter-blur'}></Box>)}
+            <Box
+                className={
+                    'circuit-circle shadow-highlight backdrop-filter-blur'
+                }
+            ></Box>
+            <Box
+                sx={sxStyles.line}
+                className={'circuit-line shadow-highlight backdrop-filter-blur'}
+            ></Box>
+            {circleTip && (
+                <Box
+                    className={
+                        'circuit-circle shadow-highlight backdrop-filter-blur'
+                    }
+                ></Box>
+            )}
         </Box>
     );
 };

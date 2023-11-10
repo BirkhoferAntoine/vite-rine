@@ -1,16 +1,15 @@
-import {Box, Container, Typography} from "@mui/material";
-import React, {useEffect, useRef} from "react";
-import FastEffectString from "../common/FastEffectString.jsx";
+import { Box, Container, Typography } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+import FastEffectString from '../common/FastEffectString.jsx';
 import gsap from 'gsap';
-import CallToActionButton from "../common/CallToActionButtonV2.jsx";
+import CallToActionButton from '../common/CallToActionButtonV2.jsx';
 
 const devMode = false;
 
 const HeroSection = () => {
-
     const sxStyles = {
         heroSection: {
-            height: 'calc(100vh - var(--header-margin))'
+            height: 'calc(100vh - var(--header-margin))',
         },
         heroTextContainer: {
             width: '70vw',
@@ -21,11 +20,11 @@ const HeroSection = () => {
             alignItems: 'center',
             filter: 'drop-shadow(0px 0px 15px var(--color-primary)',
         },
-        powerUpBox : {
-            display: "flex",
+        powerUpBox: {
+            display: 'flex',
             justifyContent: 'center',
-            flexDirection: {xs: 'column', md: 'row'},
-            alignItems: {xs: 'center', md: 'flex-end'},
+            flexDirection: { xs: 'column', md: 'row' },
+            alignItems: { xs: 'center', md: 'flex-end' },
         },
         typoDesign: {
             color: '#EBEAE3',
@@ -51,7 +50,7 @@ const HeroSection = () => {
         typoPower: {
             color: '#DDDDDD',
             fontFamily: 'Ibarra Real Nova',
-            fontSize: {xs: '5em', md: '6em'},
+            fontSize: { xs: '5em', md: '6em' },
             lineHeight: 1,
             fontWeight: '600',
 
@@ -72,54 +71,58 @@ const HeroSection = () => {
         },
     };
 
-    const typoUpRef         = useRef(null);
-    const callToActionRef   = useRef(null);
+    const typoUpRef = useRef(null);
+    const callToActionRef = useRef(null);
 
     useEffect(() => {
-        const timeline = gsap.timeline({})
-            .fromTo('.animated-typo',
+        const timeline = gsap
+            .timeline({})
+            .fromTo(
+                '.animated-typo',
                 {
                     opacity: 0,
                     x: -200,
                 },
                 {
                     opacity: 1,
-                    x:0,
+                    x: 0,
                     stagger: 0.33,
                     delay: 0.6,
-                },
-            ).fromTo(typoUpRef.current,
+                }
+            )
+            .fromTo(
+                typoUpRef.current,
                 {
                     opacity: 0,
-                    filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px #fff)",
+                    filter: 'drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px #fff)',
                     ease: 'elastic',
                     y: 600,
                 },
                 {
                     opacity: 1,
-                    filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px #fff)",
+                    filter: 'drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px #fff)',
                     ease: 'none',
                     y: 0,
                     delay: 0.9,
-                },
-            ).to(typoUpRef.current,
-                {
-                    filter: "drop-shadow(0 0 6px var(--color-primary))",
-                    ease: 'none',
-                },
-
-            ).fromTo(callToActionRef.current,
+                }
+            )
+            .to(typoUpRef.current, {
+                filter: 'drop-shadow(0 0 6px var(--color-primary))',
+                ease: 'none',
+            })
+            .fromTo(
+                callToActionRef.current,
                 {
                     scrollTrigger: {
                         trigger: '#hero-section',
                         start: 'top center',
-                        end: "bottom center",
+                        end: 'bottom center',
                         delay: 1,
                         devMode,
-                        toggleActions: 'restart pause reverse pause',//'pause',
+                        toggleActions: 'restart pause reverse pause', //'pause',
                     },
                     opacity: 0,
-                    filter: "drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))",
+                    filter: 'drop-shadow(0 0 600px var(--color-primary)) drop-shadow(0 0 1600px var(--color-secondary))',
                     ease: 'back',
                     duration: 2,
                     /*filter: "drop-shadow(0 0 6px var(--color-primary)) drop-shadow(0 0 0px var(--color-secondary))",*/
@@ -134,15 +137,15 @@ const HeroSection = () => {
                         toggleActions: 'play pause play resume',//'pause',
                     },*/
                     opacity: 1,
-                    filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",
+                    filter: 'drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))',
                     ease: 'back',
                     /*filter: "drop-shadow(0 0 60px var(--color-primary)) drop-shadow(0 0 160px var(--color-secondary))",*/
                     delay: 0.3,
                     duration: 2,
                     yoyo: true,
                     repeat: -1,
-                },
-            )/*.fromTo(callToActionRef.current,
+                }
+            ); /*.fromTo(callToActionRef.current,
             {
                 filter: "drop-shadow(0 0 160px var(--color-primary)) drop-shadow(0 0 20px var(--color-secondary)) ",
                 ease: 'none',
@@ -158,33 +161,58 @@ const HeroSection = () => {
                 duration: 4,
                 repeat: -1,
             },
-        )*/;
+        )*/
     }, []);
 
     const handleCTAClick = () => {
         document.querySelector('#contact-section').scrollIntoView('smooth');
-    }
+    };
 
     return (
         <section id={'hero-section'}>
             <Container sx={sxStyles.heroTextContainer}>
-
-                <FastEffectString delay={1000} text={'Design'} extraClass={'animated-typo-1 animated-typo'} sxStyles={sxStyles.typoDesign}/>
-                <FastEffectString delay={2000} text={'Develop'} extraClass={'animated-typo-2 animated-typo'} sxStyles={sxStyles.typoDevelop}/>
+                <FastEffectString
+                    delay={1000}
+                    text={'Design'}
+                    extraClass={'animated-typo-1 animated-typo'}
+                    sxStyles={sxStyles.typoDesign}
+                />
+                <FastEffectString
+                    delay={2000}
+                    text={'Develop'}
+                    extraClass={'animated-typo-2 animated-typo'}
+                    sxStyles={sxStyles.typoDevelop}
+                />
                 <Box className={'power-up-box'} mb={9} sx={sxStyles.powerUpBox}>
-                    <FastEffectString delay={2700} text={'POWER'} extraClass={'animated-typo-3 animated-typo'} duration={300} sxStyles={sxStyles.typoPower}/>
+                    <FastEffectString
+                        delay={2700}
+                        text={'POWER'}
+                        extraClass={'animated-typo-3 animated-typo'}
+                        duration={300}
+                        sxStyles={sxStyles.typoPower}
+                    />
                     {/*<FastEffectString delay={3300} text={'UP'} extraClass={'animated-typo-4 animated-typo'} duration={100} sxStyles={sxStyles.typoUp}/>*/}
-                    <Typography ref={typoUpRef} sx={sxStyles.typoUp} className={'text-outline-dark text-shadow animated-typo-4 '}>UP</Typography>
+                    <Typography
+                        ref={typoUpRef}
+                        sx={sxStyles.typoUp}
+                        className={
+                            'text-outline-dark text-shadow animated-typo-4 '
+                        }
+                    >
+                        UP
+                    </Typography>
                 </Box>
                 {/*<Link ref={callToActionRef} className={'call-to-action-btn box-highlight'} href={'mailto:birkhoferantoine@gmail.com'} underline={'none'}>
                     <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Start</Typography>
                 </Link>*/}
-                <CallToActionButton ref={callToActionRef} href={'mailto:birkhoferantoine@gmail.com'} className={'call-to-action-btn box-highlight'}>
-                    <Typography sx={{fontSize: '20pt', fontWeight: 'bold'}}>Contact Me</Typography>
+                <CallToActionButton
+                    ref={callToActionRef}
+                    callback={handleCTAClick}
+                    className={'call-to-action-btn box-highlight'}
+                >
+                    Contact Me
                 </CallToActionButton>
             </Container>
-
-
         </section>
     );
 };

@@ -1,14 +1,13 @@
 import React from 'react';
-import {Box, IconButton, useTheme} from "@mui/material";
-import { SiGithub, SiWhatsapp, SiGmail, SiSkype } from "react-icons/si";
+import { Box, IconButton, useTheme } from '@mui/material';
+import { SiGithub, SiWhatsapp, SiGmail, SiSkype } from 'react-icons/si';
 
-const SocialMediaBox = ({hideOnMobile}) => {
-
+const SocialMediaBox = ({ hideOnMobile }) => {
     const theme = useTheme();
 
     const sxStyles = {
         container: {
-            display: hideOnMobile ? {xs: 'none', md:'flex'} : 'flex',
+            display: hideOnMobile ? { xs: 'none', md: 'flex' } : 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
             /*padding: theme.spacing(2),*/
@@ -19,21 +18,37 @@ const SocialMediaBox = ({hideOnMobile}) => {
         iconButton: {
             color: 'var(--color-primary)',
             padding: theme.spacing(1),
-        }
+        },
     };
 
     return (
         <Box sx={sxStyles.container}>
-            <IconButton aria-label="whatsapp" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
+            <IconButton
+                aria-label="whatsapp"
+                sx={sxStyles.iconButton}
+                className={'text-outline-yellow filter-highlight'}
+            >
                 <SiWhatsapp />
             </IconButton>
-            <IconButton aria-label="github" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
+            <IconButton
+                aria-label="github"
+                sx={sxStyles.iconButton}
+                className={'text-outline-yellow filter-highlight'}
+            >
                 <SiGithub />
             </IconButton>
-            <IconButton aria-label="skype" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
+            <IconButton
+                aria-label="skype"
+                sx={sxStyles.iconButton}
+                className={'text-outline-yellow filter-highlight'}
+            >
                 <SiSkype />
             </IconButton>
-            <IconButton aria-label="gmail" sx={sxStyles.iconButton} className={'text-outline-yellow filter-highlight'}>
+            <IconButton
+                aria-label="gmail"
+                sx={sxStyles.iconButton}
+                className={'text-outline-yellow filter-highlight'}
+            >
                 <SiGmail />
             </IconButton>
         </Box>
