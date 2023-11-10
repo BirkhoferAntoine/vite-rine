@@ -105,7 +105,7 @@ const AboutSection = () => {
             setAboutTextIndex(0);
             stopInterval();
         };
-    }, [text, startInterval]);
+    }, [text.length]);
 
     useEffect(() => {
         alternateTextAnimation(textRef.current);

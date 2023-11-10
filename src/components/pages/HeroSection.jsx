@@ -165,7 +165,7 @@ const HeroSection = () => {
     }, []);
 
     const handleCTAClick = () => {
-        document.querySelector('#contact-section').scrollIntoView('smooth');
+        document.querySelector('#contact-section').scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
     };
 
     return (
@@ -185,7 +185,7 @@ const HeroSection = () => {
                 />
                 <Box className={'power-up-box'} mb={9} sx={sxStyles.powerUpBox}>
                     <FastEffectString
-                        delay={2700}
+                        delay={2800}
                         text={'POWER'}
                         extraClass={'animated-typo-3 animated-typo'}
                         duration={300}

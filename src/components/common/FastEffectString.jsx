@@ -7,7 +7,7 @@ const charactersLength = characters.length;
 
 const FastEffectString = ({
     text,
-    delay = false,
+    delay = 0,
     duration = 1000,
     sxStyles,
     extraClass = '',
@@ -45,7 +45,7 @@ const FastEffectString = ({
             clearInterval(intervalRef.current);
             clearTimeout(timer);
         };
-    }, [text, delay, duration, startAnimation, endAnimation]);
+    }, [text, delay, duration]);
 
     return (
         <Typography
