@@ -1,11 +1,11 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import Word from './Word.jsx';
+import { backClick } from './orb.config.js';
 
-export const Cloud = ({ skillList, handleOrbTextClick }) => {
+export const Cloud = ({ skillList, noClick, handleOrbTextClick }) => {
     const [radius, setRadius] = useState(16);
     const [count, setCount] = useState(0);
-    const noClick = skillList.includes('../Back');
 
     useEffect(() => {
         setCount(Math.ceil(Math.sqrt(skillList.length)));
@@ -39,7 +39,7 @@ export const Cloud = ({ skillList, handleOrbTextClick }) => {
         return (
             <Word
                 key={'orb-word-' + index}
-                {...((!noClick || word === '../Back') && {
+                {...((!noClick || word === backClick) && {
                     handleOrbTextClick: handleOrbTextClick,
                 })}
                 position={pos}

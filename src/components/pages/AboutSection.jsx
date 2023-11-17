@@ -6,11 +6,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
     slideInFrom,
     slideInFromWithReverseY,
-    alternateTextAnimation,
+    fadeIn,
     paperFadeIn,
     slightFlyingMovementAnimation,
     filterShadowAnimation,
-} from '../common/GSAPFunctions.jsx';
+} from '../../helpers/animation.helper.js';
 gsap.registerPlugin(ScrollTrigger);
 
 const devMode = false; //import.meta.env.MODE
@@ -32,6 +32,20 @@ const AboutSection = () => {
     const bgPaperRef = useRef(null);
     const losangeRef = useRef(null);
     const smallBoxRef = useRef(null);
+
+    const sxStyles = {
+        pictureBox: {
+            height: { xs: '15vh', md: '20vh' },
+            width: { xs: '15vh', md: '20vh' },
+            mt: { xs: '10vh', md: '00vh' },
+            ml: { xs: '-50vw', md: '-50vw' },
+        },
+        textBox: {
+            fontSize: '1.5em',
+            rotate: '-45deg',
+            zIndex: 9999,
+        }
+    }
 
     const textInterval = 3000;
 
@@ -108,7 +122,7 @@ const AboutSection = () => {
     }, [text.length]);
 
     useEffect(() => {
-        alternateTextAnimation(textRef.current);
+        fadeIn(textRef.current);
         setAboutText(text[aboutTextIndex]);
     }, [aboutTextIndex]);
 
@@ -127,11 +141,7 @@ const AboutSection = () => {
 
                     <Typography
                         ref={textRef}
-                        sx={{
-                            fontSize: '1.5em',
-                            rotate: '-45deg',
-                            zIndex: 9999,
-                        }}
+                        sx={sxStyles.textBox}
                         className={'about-text typography-highlight'}
                     >
                         {aboutText}
@@ -142,12 +152,7 @@ const AboutSection = () => {
                 <Box
                     ref={picBoxRef}
                     mt={1}
-                    sx={{
-                        height: { xs: '15vh', md: '20vh' },
-                        width: { xs: '15vh', md: '20vh' },
-                        mt: { xs: '10vh', md: '00vh' },
-                        ml: { xs: '-50vw', md: '-50vw' },
-                    }}
+                    sx={sxStyles.pictureBox}
                     className={
                         'about-picture-box floating shadow-highlight backdrop-filter-blur'
                     }

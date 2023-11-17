@@ -2,14 +2,30 @@ import React, { forwardRef } from 'react';
 import { Button, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const sxStyles = {
+const hardcoreCTA = {
     position: 'relative',
     background:
-        'linear-gradient(45deg, var(--color-secondary),var(--color-primary) 60%,var(--color-secondary))',
-    color: 'white', //#fcd-81-c,
+        'linear-gradient(45deg, var(--color-secondary), var(--color-primary) 60%, var(--color-secondary))',
     padding: '0 30px',
     border: '2px solid var(--red-carnelian)',
     borderRadius: '50px',
+};
+
+const softCTA = {
+    position: 'relative',
+    background: 'transparent',
+    padding: '0 30px',
+    border: '2px solid var(--color-primary)',
+    borderRadius: '50px',
+};
+
+const sxStyles = {
+    button: softCTA,
+    text: {
+        fontSize: '20pt',
+        fontWeight: 'bold',
+        color: 'f6f4eb',
+    },
 };
 
 export const CallToActionButton = forwardRef(function (
@@ -20,14 +36,13 @@ export const CallToActionButton = forwardRef(function (
         return (
             <Link
                 ref={ref}
-                sx={sxStyles}
+                sx={sxStyles.button}
                 to={href}
                 variant={'contained'}
+                color={'inherit'}
                 className={'call-to-action-btn box-highlight'}
             >
-                <Typography sx={{ fontSize: '20pt', fontWeight: 'bold' }}>
-                    {children}
-                </Typography>
+                <Typography sx={sxStyles.text}>{children}</Typography>
             </Link>
         );
     }
@@ -35,14 +50,13 @@ export const CallToActionButton = forwardRef(function (
     return (
         <Button
             ref={ref}
-            sx={sxStyles}
+            sx={sxStyles.button}
             onClick={callback}
             variant={'contained'}
+            color={'inherit'}
             className={'call-to-action-btn box-highlight'}
         >
-            <Typography sx={{ fontSize: '20pt', fontWeight: 'bold' }}>
-                {children}
-            </Typography>
+            <Typography sx={sxStyles.text}>{children}</Typography>
         </Button>
     );
 });

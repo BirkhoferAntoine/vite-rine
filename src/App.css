@@ -242,7 +242,7 @@ section {
 }
 
 .circuit-line-losange-container {
-    z-index: 5;
+    z-index: 6;
     position: relative;
     display: flex;
     flex-direction: row;

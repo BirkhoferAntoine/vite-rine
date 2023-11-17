@@ -70,7 +70,7 @@ export const animateCTAButton = (element, trigger) => {
         )*/;
 };
 
-export const slideAnimation = (element, x, y) => {
+export const slideAnimation = (element, x, y, toX = 0, toY = 0) => {
     gsap.fromTo(
         element,
         {
@@ -157,7 +157,32 @@ export const slideInFromWithReverseY = (
     });
 };
 
-export const alternateTextAnimation = (element, delay = 0, duration = 1.5) => {
+export const slideOutFromWithReverseY = (
+    element,
+    trigger = element,
+    direction = 'up',
+    delay = 1,
+    duration = 1
+) => {
+    const { x, y } = assignDirection(direction);
+
+    hide(element);
+    ScrollTrigger.create({
+        trigger: trigger,
+        start: 'top center',
+        end: 'bottom center',
+        duration: duration || 1,
+        delay: delay || 1,
+        devMode,
+        toggleActions: 'play reverse restart restart', //'pause',
+        onEnter: () => {
+            slideAnimation(element, 0, 0, x, y);
+        },
+        /*onLeave:        () => { hide(element); },*/
+    });
+};
+
+export const fadeIn = (element, delay = 0, duration = 1.5) => {
     gsap.fromTo(
         element,
         {
@@ -171,7 +196,38 @@ export const alternateTextAnimation = (element, delay = 0, duration = 1.5) => {
         }
     );
 };
-export const fadeIn = (element, trigger = element, delay = 1, duration = 1) => {
+
+export const fadeOut = (element, delay = 0, duration = 1.5) => {
+    gsap.to(
+        element,
+        {
+            opacity: 0,
+            duration: duration,
+            delay: delay,
+            ease: 'slow',
+        }
+    );
+};
+
+export const fadeOutFromTrigger = (element, trigger = element, delay = 1, duration = 1) => {
+    gsap.to(
+        element,
+        {
+            opacity: 0,
+            duration: duration || 1,
+            delay: delay || 1,
+            ease: 'slow',
+            scrollTrigger: {
+                trigger,
+                start: 'top center',
+                end: 'bottom center',
+                devMode,
+                toggleActions: 'play reverse restart reverse',
+            },
+        }
+    );
+};
+export const fadeInFromTrigger = (element, trigger = element, delay = 1, duration = 1) => {
     gsap.fromTo(
         element,
         {
@@ -435,7 +491,7 @@ export const alternateOrbScaleAnimation = (
 /*
 
 export const animateScale = (element, scale, delay = 1, duration = 1) => {
-    console.log('=>(GSAPFunctions.jsx:330) element', element);
+    console.log('=>(animation.helper.js:330) element', element);
 
     /!*gsap.to(element.current.style.scale, {
         x: scale,

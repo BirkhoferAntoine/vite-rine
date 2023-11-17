@@ -6,7 +6,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 export const TextList = forwardRef(function TextList(
-    { textArray, onClick },
+    { textArray, onClick, backClick },
     ref
 ) {
     return (
@@ -20,7 +20,7 @@ export const TextList = forwardRef(function TextList(
             }}
             className={'skills-text typography-highlight'}
         >
-            {textArray[0] === '../Back' && (
+            {textArray[0] === backClick && (
                 <>
                     <nav aria-label="secondary back folders">
                         <List>
@@ -37,7 +37,7 @@ export const TextList = forwardRef(function TextList(
                                             paddingBottom: { md: 0 },
                                             fontSize: '2em',
                                         }}
-                                        secondary="../Back"
+                                        secondary={backClick}
                                     />
                                 </ListItemButton>
                             </ListItem>
@@ -50,13 +50,13 @@ export const TextList = forwardRef(function TextList(
                 <List>
                     {textArray.map((element, index) => {
                         return (
-                            element !== '../Back' && (
+                            element !== backClick && (
                                 <ListItem
                                     key={'text-box-list-item-' + index}
                                     disablePadding
                                     onClick={onClick}
                                 >
-                                    {textArray.includes('../Back') ? (
+                                    {textArray.includes(backClick) ? (
                                         <ListItemText primary={element} />
                                     ) : (
                                         <ListItemButton

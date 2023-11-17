@@ -2,22 +2,22 @@ import React, { useEffect, useRef, useState, useContext } from 'react';
 import { Box, Button, Container, Paper } from '@mui/material';
 import { OrbTextThree } from '../orb/OrbTextThree.jsx';
 import {
-    alternateTextAnimation,
+    fadeIn,
     paperFadeIn,
     paperBorderFadeIn,
-    fadeIn,
+    fadeInFromTrigger,
     alternateOrbScaleAnimation,
-} from '../common/GSAPFunctions.jsx';
-import { SkillsContext } from '../../context/skills.context.jsx';
+} from '../../helpers/animation.helper.js';
+import { SkillsContext } from '../../contexts/skills.context.jsx';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextList } from '../common/TextList.jsx';
+import { backClick, startClick, skillListObject } from '../orb/orb.config.js';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const SkillsSection = () => {
     const { orbInit, setOrbInit } = useContext(SkillsContext);
-    const { skillListObject } = useContext(SkillsContext);
     const { skillsArray, setSkillsArray } = useContext(SkillsContext);
     const [switchView, setSwitchView] = useState(
         window.innerWidth >= 1024 ? 'both' : 'Orb'
@@ -64,19 +64,19 @@ const SkillsSection = () => {
 
         let newWordsArray;
         if (
-            skillName === '../Back' ||
-            skillName === 'Click here to start' ||
+            skillName === backClick ||
+            skillName === startClick ||
             skillName === 'Or here...'
         ) {
             newWordsArray = Object.keys(skillListObject);
         } else {
             newWordsArray = skillListObject[skillName]
-                ? ['../Back', ...skillListObject[skillName]]
+                ? [backClick, ...skillListObject[skillName]]
                 : null;
         }
 
         if (newWordsArray) {
-            alternateTextAnimation(textRef.current);
+            fadeIn(textRef.current);
             alternateOrbScaleAnimation(orbRef.current, 0, 1);
             setSkillsArray(newWordsArray);
         }
@@ -90,7 +90,8 @@ const SkillsSection = () => {
     };
 
     const handleSwitchViewButton = ({ target }) => {
-        console.log(target.textContent);
+        fadeIn(bgPaperRef.current);
+        document.querySelector('#skill-section').scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
         setSwitchView(target.textContent);
     };
 
@@ -112,6 +113,7 @@ const SkillsSection = () => {
             bgPaperRef.current.style.justifyContent = 'center';
         }
         if (switchView === 'Orb') {
+            fadeIn(orbRef.current, 0.5, 1.5);
             roundPaperRef.current.style.display = 'flex';
             textBoxRef.current.style.display = 'none';
             //textBoxRef.current.style.height = '60vh';
@@ -164,11 +166,11 @@ const SkillsSection = () => {
     }, []);
 
     useEffect(() => {
-        fadeIn(orbRef.current, bgPaperRef.current, 2, 1);
+        fadeInFromTrigger(orbRef.current, bgPaperRef.current, 2, 1);
     }, []);
 
     useEffect(() => {
-        fadeIn(textBoxRef.current, bgPaperRef.current, 2.5, 1);
+        fadeInFromTrigger(textBoxRef.current, bgPaperRef.current, 2.5, 1);
     }, []);
 
     return (
@@ -227,6 +229,7 @@ const SkillsSection = () => {
                                 textArray={
                                     orbInit ? skillsArray : ['Or here...']
                                 }
+                                backClick={backClick}
                                 onClick={handleBoxTextClick}
                             />
                         )}

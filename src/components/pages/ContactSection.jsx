@@ -1,6 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Container, Paper, Typography } from '@mui/material';
-import { animateCTAButton } from '../common/GSAPFunctions.jsx';
+import {
+    animateCTAButton,
+    fadeOutFromTrigger,
+} from '../../helpers/animation.helper.js';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import SmartphoneMockup from '../common/smartphonemockup/SmartphoneMockup.jsx';
@@ -42,6 +45,11 @@ const ContactSection = () => {
 
     useEffect(() => {
         animateCTAButton(callToActionRef.current, 'contact-container');
+    }, []);
+
+    useEffect(() => {
+        fadeOutFromTrigger('.header', '#contact-section', 1, 1.5);
+        fadeOutFromTrigger('.footer', '#contact-section', 1, 1.5);
     }, []);
 
     return (

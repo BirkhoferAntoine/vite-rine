@@ -88,7 +88,7 @@ export const Navigation = () => {
 
     return (
         <>
-            <AppBar position={'fixed'} sx={sxStyles.header}>
+            <AppBar className={'header'} position={'fixed'} sx={sxStyles.header}>
                 <Toolbar sx={sxStyles.toolbar}>
                     <IconButton
                         onClick={toggleDrawer}

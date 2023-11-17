@@ -2,13 +2,20 @@ import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
 import { useFrame } from '@react-three/fiber';
 import { Text } from '@react-three/drei';
+import { backClick, startClick } from './orb.config.js';
+
+
 
 const jost = 'src/assets/jost-all-500-normal.woff';
 const beth = 'src/assets/beth-ellen-latin-400-normal.woff';
-const Word = ({ children, handleOrbTextClick = null, ...props }) => {
-    const ref = useRef();
-    const [hovered, setHovered] = useState(false);
 
+
+const Word = ({ children, handleOrbTextClick = null, ...props }) => {
+    const ref   = useRef();
+    const [hovered, setHovered] = useState(false);
+    const isSpecialWord = children === backClick || children === startClick;
+
+    const wordColor = isSpecialWord ? '#FF9F00' : '#FCD81C';
     const color = new THREE.Color();
     const fontProps = {
         font: jost,
@@ -42,12 +49,7 @@ const Word = ({ children, handleOrbTextClick = null, ...props }) => {
         // Animate font color
         ref.current.material.color.lerp(
             color.set(
-                hovered
-                    ? '#E53D00'
-                    : children === '../Back' ||
-                      children === 'Click here to start'
-                    ? '#FF9F00'
-                    : '#FCD81C'
+                hovered ? '#E53D00' : wordColor
             ),
             0.1
         );
@@ -56,7 +58,7 @@ const Word = ({ children, handleOrbTextClick = null, ...props }) => {
     return (
         <Text
             ref={ref}
-            {...(handleOrbTextClick && { onClick: handleWordClick })}
+            {...(handleOrbTextClick && { onClick: handleWordClick, onTouchEnd: handleWordClick })}
             onPointerOver={over}
             onPointerOut={out}
             {...props}
