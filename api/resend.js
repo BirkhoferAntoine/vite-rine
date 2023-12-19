@@ -6,8 +6,6 @@ export default async function handler(request, response) {
         return response.status(204);
     }
 
-    console.log(request)
-
     if (request.method !== "POST") {
         return response.status(405).send("Method Not Allowed");
     }
