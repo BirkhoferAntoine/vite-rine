@@ -48,7 +48,7 @@ export const skillListObject = {
             'Moon Modeler',
             'Postman',
         ],
-        Database: ['MySQL', 'PostgreSQL', 'PDO', 'MangoDB'],
+        Database: ['MySQL', 'PostgreSQL', 'PDO', 'MongoDB'],
         Frameworks: [
             'React.js',
             'Next.js',
