@@ -7,6 +7,11 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import { DefaultThemeProvider } from './themes/DefaultThemeProvider';
+import { inject } from '@vercel/analytics';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+injectSpeedInsights();
+inject();
+
 // import { DevSupport } from '@react-buddy/ide-toolbox';
 // import { ComponentPreviews, useInitial } from './dev';
 
