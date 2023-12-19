@@ -24,4 +24,6 @@ dist-ssr
 *.sw?
 
 .runtimeconfig.json
-/functions/
+
+.vercel
+/.env

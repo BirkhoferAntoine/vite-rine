@@ -61,7 +61,7 @@ function ContactForm() {
         console.log('=>(ContactForm.jsx:13) data', data);
         try {
             fetch(
-                'https://us-central1-viterine-3fbfd.cloudfunctions.net/sendEmail', //http://127.0.0.1:5001/viterine-3fbfd/us-central1/sendEmail
+                'api/resend', //http://127.0.0.1:5001/viterine-3fbfd/us-central1/sendEmail
                 {
                     method: 'POST',
                     headers: {
