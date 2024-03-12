@@ -2,12 +2,9 @@ import * as THREE from 'three';
 import { useRef, useState, useMemo, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import {
-    Sphere,
     Text,
-    Torus,
     TrackballControls,
     Svg,
-    OrbitControls,
 } from '@react-three/drei';
 
 const jost = 'src/assets/jost-all-500-normal.woff';

@@ -5,7 +5,6 @@ import { Text } from '@react-three/drei';
 import { backClick, startClick } from './orb.config.js';
 
 
-
 const jost = 'src/assets/jost-all-500-normal.woff';
 const beth = 'src/assets/beth-ellen-latin-400-normal.woff';
 
