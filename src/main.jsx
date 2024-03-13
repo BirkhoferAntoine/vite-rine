@@ -8,7 +8,8 @@ import App from './App';
 import './index.css';
 import { DefaultThemeProvider } from './themes/DefaultThemeProvider';
 import { inject } from '@vercel/analytics';
-import { SpeedInsights } from '@vercel/speed-insights/react';
+import { injectSpeedInsights } from '@vercel/speed-insights';
+injectSpeedInsights();
 inject();
 
 // import { DevSupport } from '@react-buddy/ide-toolbox';
@@ -18,7 +19,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <DefaultThemeProvider>
             <App />
-            <SpeedInsights />
         </DefaultThemeProvider>
     </React.StrictMode>
 );
